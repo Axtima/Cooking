@@ -6,17 +6,17 @@ var app = angular.module('cooking.recipe', [
 
 app.controller('RecipeCtrl', [
     '$scope',
-    'recipes',
+    'recipeService',
     'recipe',
-    'auth',
-    function ($scope, recipes, recipe, auth) {
+    'authService',
+    function ($scope, recipeService, recipe, authService) {
         $scope.recipe = recipe;
-        $scope.isLoggedIn = auth.isLoggedIn;
+        $scope.isLoggedIn = authService.isLoggedIn;
         $scope.addComment = function () {
             if ($scope.body === '') {
                 return;
             }
-            recipes.addComment(recipe._id, {
+            recipeService.addComment(recipe._id, {
                 body: $scope.body,
                 author: 'user',
             }).success(function (comment) {

@@ -9,8 +9,8 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
             templateUrl: constants.angularDirectory + '/templates/home.html',
             controller: 'MainCtrl'/*,
             resolve: {
-                recipePromise: ['recipes', function (recipes) {
-                        return recipes.getAll();
+                recipePromise: ['recipeService', function (recipeService) {
+                        return recipeService.getAll();
                     }]
             }*/
         }).otherwise({
@@ -20,9 +20,9 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
 
 app.controller('MainCtrl', [
     '$scope',
-    'auth',
-    function ($scope, auth) {
-        $scope.isLoggedIn = auth.isLoggedIn;
+    'authService',
+    function ($scope, authService) {
+        $scope.isLoggedIn = authService.isLoggedIn;
         /*$scope.addPost = function () {
             if (!$scope.title || $scope.title === '') {
                 return;
@@ -40,11 +40,11 @@ app.controller('MainCtrl', [
 
 app.controller('NavCtrl', [
     '$scope',
-    'auth',
-    function ($scope, auth) {
-        $scope.isLoggedIn = auth.isLoggedIn;
-        $scope.currentUser = auth.currentUser;
-        $scope.logOut = auth.logOut;
+    'authService',
+    function ($scope, authService) {
+        $scope.isLoggedIn = authService.isLoggedIn;
+        $scope.currentUser = authService.currentUser;
+        $scope.logOut = authService.logOut;
     }]);
 
 

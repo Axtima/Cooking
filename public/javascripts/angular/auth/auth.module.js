@@ -16,12 +16,12 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
 app.controller('AuthCtrl', [
     '$scope',
     '$location',
-    'auth',
-    function ($scope, $location, auth) {
+    'authService',
+    function ($scope, $location, authService) {
         $scope.user = {};
 
         $scope.register = function () {
-            auth.register($scope.user).error(function (error) {
+            authService.register($scope.user).error(function (error) {
                 $scope.error = error;
             }).then(function () {
                 $location.path('/home');
@@ -29,7 +29,7 @@ app.controller('AuthCtrl', [
         };
 
         $scope.logIn = function () {
-            auth.logIn($scope.user).error(function (error) {
+            authService.logIn($scope.user).error(function (error) {
                 $scope.error = error;
             }).then(function () {
                 $location.path('/home');

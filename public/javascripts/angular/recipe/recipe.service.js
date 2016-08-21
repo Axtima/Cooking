@@ -1,7 +1,7 @@
 var app = angular.module('cooking.recipe');
 
 
-app.factory('recipes', ['$http', 'auth', function ($http, auth) {
+app.factory('recipeService', ['$http', 'authService', function ($http, authService) {
 
         var o = {
             recipes: []
@@ -20,7 +20,7 @@ app.factory('recipes', ['$http', 'auth', function ($http, auth) {
 
         o.create = function (recipe) {
             return $http.post('/rest/recipe', recipe, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
                 o.recipes.push(data);
             });
@@ -28,7 +28,7 @@ app.factory('recipes', ['$http', 'auth', function ($http, auth) {
 
         o.upvote = function (recipe) {
             return $http.put('/rest/recipe/' + recipe._id + '/upvote', null, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
                 recipe.upvotes += 1;
             });
@@ -36,7 +36,7 @@ app.factory('recipes', ['$http', 'auth', function ($http, auth) {
 
         o.addComment = function (id, comment) {
             return $http.post('/rest/recipe/' + id + '/comments', comment, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             });
         };
 

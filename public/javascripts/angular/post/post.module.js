@@ -1,6 +1,6 @@
 var app = angular.module('cooking.post', ['cooking.auth']);
 
-app.factory('posts', ['$http', 'auth', function ($http, auth) {
+app.factory('posts', ['$http', 'authService', function ($http, authService) {
 
         var o = {
             posts: []
@@ -19,7 +19,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
         
         o.create = function (post) {
             return $http.post('/rest/posts', post, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
                 o.posts.push(data);
             });
@@ -27,7 +27,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
         o.upvote = function (post) {
             return $http.put('/rest/posts/' + post._id + '/upvote', null, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
                 post.upvotes += 1;
             });
@@ -35,13 +35,13 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
         o.addComment = function (id, comment) {
             return $http.post('/rest/posts/' + id + '/comments', comment, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             });
         };
 
         o.upvoteComment = function (post, comment) {
             return $http.put('/rest/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
-                headers: {Authorization: 'Bearer ' + auth.getToken()}
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
                 comment.upvotes += 1;
             });
@@ -55,10 +55,10 @@ app.controller('PostsCtrl', [
     '$scope',
     'posts',
     'post',
-    'auth',
-    function ($scope, posts, post, auth) {
+    'authService',
+    function ($scope, posts, post, authService) {
         $scope.post = post;
-        $scope.isLoggedIn = auth.isLoggedIn;
+        $scope.isLoggedIn = authService.isLoggedIn;
         $scope.addComment = function () {
             if ($scope.body === '') {
                 return;

@@ -1,37 +1,37 @@
 var app = angular.module('cooking.auth');
 
-app.factory('auth', ['$http', '$window', 'constants', function ($http, $window, constants) {
-        var auth = {};
-        auth.saveToken = function (token) {
+app.factory('authService', ['$http', '$window', 'constants', function ($http, $window, constants) {
+        var authService = {};
+        authService.saveToken = function (token) {
             $window.localStorage[constants.authTokenName] = token;
         };
 
-        auth.getToken = function () {
+        authService.getToken = function () {
             return $window.localStorage[constants.authTokenName];
         };
-        auth.currentUser = function () {
-            if (auth.isLoggedIn()) {
-                var token = auth.getToken();
+        authService.currentUser = function () {
+            if (authService.isLoggedIn()) {
+                var token = authService.getToken();
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
 
                 return payload.username;
             }
         };
-        auth.register = function (user) {
+        authService.register = function (user) {
             return $http.post('/rest/user/register', user).success(function (data) {
-                auth.saveToken(data.token);
+                authService.saveToken(data.token);
             });
         };
-        auth.logIn = function (user) {
+        authService.logIn = function (user) {
             return $http.post('/rest/user/login', user).success(function (data) {
-                auth.saveToken(data.token);
+                authService.saveToken(data.token);
             });
         };
-        auth.logOut = function () {
+        authService.logOut = function () {
             $window.localStorage.removeItem(constants.authTokenName);
         };
-        auth.isLoggedIn = function () {
-            var token = auth.getToken();
+        authService.isLoggedIn = function () {
+            var token = authService.getToken();
 
             if (token) {
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
@@ -41,5 +41,5 @@ app.factory('auth', ['$http', '$window', 'constants', function ($http, $window, 
                 return false;
             }
         };
-        return auth;
+        return authService;
     }]);
