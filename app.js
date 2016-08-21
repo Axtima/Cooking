@@ -7,16 +7,17 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-require('./models/Posts');
-require('./models/Comments');
-require('./models/Users');
+require('./models/User');
+require('./models/Recipe');
+require('./models/Step');
+require('./models/Opinion');
 
 require('./config/passport');
 
-mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://localhost/cooking');
 
 var routes = require('./routes/index');
-var posts = require('./routes/rest/posts');
+var recipes = require('./routes/rest/recipes');
 var users = require('./routes/rest/users');
 
 var app = express();
@@ -34,8 +35,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-app.use('/rest/posts', posts);
-app.use('/rest/users', users);
+app.use('/rest/recipe', recipes);
+app.use('/rest/user', users);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -68,6 +69,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

@@ -7,10 +7,10 @@ var app = angular.module('cooking', [
 app.config(['$routeProvider', 'constants', function ($routeProvider, constants) {
         $routeProvider.when('/home', {
             templateUrl: constants.angularDirectory + '/templates/home.html',
-            controller: 'MainCtrl',
-            /*resolve: {
-                postPromise: ['posts', function (posts) {
-                        return posts.getAll();
+            controller: 'MainCtrl'/*,
+            resolve: {
+                recipePromise: ['recipes', function (recipes) {
+                        return recipes.getAll();
                     }]
             }*/
         }).otherwise({

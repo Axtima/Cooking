@@ -1,0 +1,15 @@
+<div ng-hide="isLoggedIn()">
+    <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour proposer une recette</h3>
+</div>
+<form ng-submit="addRecipe()" ng-show="isLoggedIn()">
+    <h3>Ajouter une nouvelle recette</h3>
+
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Titre"
+               ng-model="title" />
+    </div>
+
+    <button type="submit" class="btn">Valider</button>
+</form>

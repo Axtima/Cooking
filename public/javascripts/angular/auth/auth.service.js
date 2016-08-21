@@ -18,12 +18,12 @@ app.factory('auth', ['$http', '$window', 'constants', function ($http, $window, 
             }
         };
         auth.register = function (user) {
-            return $http.post('/rest/users/register', user).success(function (data) {
+            return $http.post('/rest/user/register', user).success(function (data) {
                 auth.saveToken(data.token);
             });
         };
         auth.logIn = function (user) {
-            return $http.post('/rest/users/login', user).success(function (data) {
+            return $http.post('/rest/user/login', user).success(function (data) {
                 auth.saveToken(data.token);
             });
         };
