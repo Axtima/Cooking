@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>True recipe</title>
+
+        <!-- Imports CSS -->
+        <link href="/javascripts/bootstrap.min.css" rel="stylesheet">
+        <link href="/stylesheets/style.css" rel="stylesheet">
+
+        <!-- Imports Javascript Lib -->
+        <!--<script src="/javascripts/angular/lib/angular.min.js"></script>-->
+        <script src="/javascripts/angular/lib/angular.js"></script>
+        <script src="/javascripts/angular/lib/angular-route.js"></script>
+        
+        <!-- Imports Javascript application -->
+        
+        <!-- Common -->
+        <script src="/javascripts/angular/constant.module.js"></script>
+       
+        <!-- Auth -->
+        <script src="/javascripts/angular/auth/auth.module.js"></script>
+        <script src="/javascripts/angular/auth/auth.service.js"></script>
+
+        <!-- Recipe -->
+        <script src="/javascripts/angular/recipe/recipe.module.js"></script>
+        
+        <!-- Global -->
+        <script src="/javascripts/angular/app.js"></script>
+    </head>
+    <body ng-app="cooking">
+        <div id="header">
+            <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+                <ul class="nav navbar-nav">
+                    <li ng-show="isLoggedIn()"><a>Bienvenue {{ currentUser()}}</a></li>
+                    <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+                    <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+                    <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+                </ul>
+            </nav>
+            <div class="container">
+                <ul class="nav nav-pills spacer">
+                    <li class="active"><a href="/">Accueil</a></li>
+                    <li><a href="/admin">Administration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <div ng-view></div>
+<!--
+            <script type="text/ng-template" id="/posts.html">
+                <div class="page-header">
+                <h3>
+                <a ng-show="post.link" href="{{post.link}}">
+                {{post.title}}
+                </a>
+                <span ng-hide="post.link">
+                {{post.title}}
+                </span>
+                </h3>
+                </div>
+
+                <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
+                {{comment.upvotes}} - by {{comment.author}}
+                <span style="font-size:20px; margin-left:10px;">
+                {{comment.body}}
+                </span>
+                </div>
+
+            <div ng-hide="isLoggedIn()">
+              <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+            </div>
+
+            <form ng-submit="addComment()"
+              ng-show="isLoggedIn()"
+              style="margin-top:30px;">
+                <h3>Add a new comment</h3>
+                <div class="form-group">
+                <input type="text"
+                class="form-control"
+                placeholder="Comment"
+                ng-model="body"></input>
+                </div>
+                <button type="submit" class="btn">Post</button>
+                </form>
+            </script>
+-->
+        </div>
+    </body>
+</html>
