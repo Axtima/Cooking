@@ -73,7 +73,7 @@ a:hover {
     border-radius: 0px;
 }
 
-.nav>li>a:hover, .nav>li>a:focus {
+.nav-pills>li>a:hover, .nav>li>a:focus {
     color: #45bf55;
     background-color: transparent;
     text-decoration: underline;
@@ -90,4 +90,13 @@ a:hover {
 .btn {
     background-color: #45bf55;
     color: white;
+}
+
+/* Listes */
+
+ul {
+}
+
+ul li {
+    list-style-type: none;
 }

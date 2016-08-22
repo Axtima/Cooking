@@ -2,14 +2,37 @@
     <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour proposer une recette</h3>
 </div>
 <form ng-submit="addRecipe()" ng-show="isLoggedIn()">
+
+    <div class="alert alert-success" ng-show='successMsg'>
+        {{successMsg}}
+    </div>
+    <div class="alert alert-error" ng-show='errorMsg'>
+        {{errorMsg}}
+    </div>
+
     <h3>Ajouter une nouvelle recette</h3>
 
     <div class="form-group">
         <input type="text"
                class="form-control"
                placeholder="Titre"
-               ng-model="title" />
+               ng-model="recipe.title" />
+        
+        <table ng-show='recipe.steps'>
+            <tr ng-repeat="step in recipe.steps">
+                <td>
+                    Etape n°{{step.order}} :
+                </td>
+                <td>
+                    <input type="text"
+                        class="form-control"
+                        placeholder="Description"
+                        ng-model="step.description" />
+                </td>
+            </tr>
+        </table>
+        <a ng-click="addStep()">Ajouter une étape</a>
     </div>
-
+        
     <button type="submit" class="btn">Valider</button>
 </form>

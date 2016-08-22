@@ -1,6 +1,5 @@
 var app = angular.module('cooking.recipe');
 
-
 app.factory('recipeService', ['$http', 'authService', function ($http, authService) {
 
         var o = {
@@ -13,8 +12,11 @@ app.factory('recipeService', ['$http', 'authService', function ($http, authServi
         };
 
         o.getAll = function () {
-            return $http.get('/rest/recipe').success(function (data) {
+            /*return $http.get('/rest/recipe').success(function (data) {
                 angular.copy(data, o.recipes);
+            });*/
+            return $http.get('/rest/recipe').then(function (res) {
+                return res.data;
             });
         };
 

@@ -7,13 +7,30 @@ var app = angular.module('cooking', [
 app.config(['$routeProvider', 'constants', function ($routeProvider, constants) {
         $routeProvider.when('/home', {
             templateUrl: constants.angularDirectory + '/templates/home.html',
-            controller: 'MainCtrl'/*,
+            controller: 'MainCtrl',
             resolve: {
-                recipePromise: ['recipeService', function (recipeService) {
-                        return recipeService.getAll();
-                    }]
-            }*/
-        }).otherwise({
+                recipes: ['recipeService', function (recipeService) {
+                    return recipeService.getAll();
+                }]
+            }
+        });
+        $routeProvider.when('/recipe/form', {
+            templateUrl: constants.angularDirectory + '/recipe/templates/form.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: function() {return {};}
+            }
+        });
+        $routeProvider.when('/recipe/form/{id}', {
+            templateUrl: constants.angularDirectory + '/recipe/templates/form.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: ['$routeParams', 'recipeService', function ($routeParams, recipeService) {
+                    return recipeService.get($routeParams.id);
+                }]
+            }
+        });
+        $routeProvider.otherwise({
             redirectTo: '/home'
         });
     }]);
@@ -21,19 +38,10 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
 app.controller('MainCtrl', [
     '$scope',
     'authService',
-    function ($scope, authService) {
+    'recipes',
+    function ($scope, authService, recipes) {
         $scope.isLoggedIn = authService.isLoggedIn;
-        /*$scope.addPost = function () {
-            if (!$scope.title || $scope.title === '') {
-                return;
-            }
-            posts.create({
-                title: $scope.title,
-                link: $scope.link,
-            });
-            $scope.title = '';
-            $scope.link = '';
-        };*/
+        $scope.recipes = recipes;
     }
 
 ]);

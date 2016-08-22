@@ -22,13 +22,21 @@
 
         <!-- Recipe -->
         <script src="/javascripts/angular/recipe/recipe.module.js"></script>
-        
+        <script src="/javascripts/angular/recipe/recipe.service.js"></script>
+
         <!-- Global -->
         <script src="/javascripts/angular/app.js"></script>
     </head>
+
     <body ng-app="cooking">
         <%- include('common/header'); %>
-        <div id="content">
+        <ul ng-show="isLoggedIn()" ng-controller="NavCtrl">
+            <li>
+                <a href='/#/recipe/form'>Proposer une recette</a>
+            </li>
+        </ul>
+        
+        <div class="container">
             <div ng-view></div>
         </div>
         <%- include('common/footer'); %>
