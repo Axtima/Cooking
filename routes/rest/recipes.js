@@ -59,7 +59,6 @@ router.get('/', function (req, res, next) {
 router.post('/', auth, function (req, res, next) {
     var recipe = new Recipe(req.body);
     recipe.author = req.payload.username;
-
     recipe.save(function (err, recipe) {
         if (err) {
             return next(err);

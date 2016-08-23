@@ -18,19 +18,17 @@
                placeholder="Titre"
                ng-model="recipe.title" />
         
-        <table ng-show='recipe.steps'>
-            <tr ng-repeat="step in recipe.steps">
-                <td>
-                    Etape n°{{step.order}} :
-                </td>
-                <td>
-                    <input type="text"
-                        class="form-control"
-                        placeholder="Description"
-                        ng-model="step.description" />
-                </td>
-            </tr>
-        </table>
+        <div ng-show='recipe.steps'>
+            <div class="update-step" ng-repeat="step in recipe.steps">
+                <label for="desc{{step.order}}">
+                    Etape n°{{step.order}} 
+                    <span ng-click="stepDown(step)" class="glyphicon glyphicon-arrow-down"></span>
+                    <span ng-click="stepUp(step)" class="glyphicon glyphicon-arrow-up"></span>
+                </label><br />
+                <textarea style='width: 80%;' id="desc{{step.order}}" ng-model="step.description" rows="5"></textarea>
+                
+            </div>
+        </div>
         <a ng-click="addStep()">Ajouter une étape</a>
     </div>
         

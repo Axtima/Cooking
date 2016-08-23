@@ -14,7 +14,7 @@ app.controller('RecipeCtrl', [
         $scope.errorMsg = null;
         $scope.recipe = recipe;
         $scope.isLoggedIn = authService.isLoggedIn;
-        $scope.addRecipe = function() {
+        $scope.addRecipe = function () {
             recipeService.create({
                 title: $scope.recipe.title,
                 steps: $scope.recipe.steps
@@ -24,7 +24,7 @@ app.controller('RecipeCtrl', [
                 $scope.steps = [];
             });
         };
-        $scope.addStep = function() {
+        $scope.addStep = function () {
             if (!$scope.recipe.steps) {
                 $scope.recipe.steps = [];
             }
@@ -33,32 +33,54 @@ app.controller('RecipeCtrl', [
                 description: ''
             });
         };
+        $scope.stepDown = function (step) {
+            if (step.order < $scope.recipe.steps.length) {
+                var stepReplaced = $scope.recipe.steps[step.order];
+                stepReplaced.order = step.order;
+                step.order = step.order + 1;
+                
+                // Echange des places dans la liste
+                $scope.recipe.steps[step.order - 1] = step;
+                $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+            }
+        };
+        $scope.stepUp = function (step) {
+            if ((step.order - 2) >= 0) {
+                var stepReplaced = $scope.recipe.steps[step.order - 2];
+                stepReplaced.order = step.order;
+                step.order = step.order - 1;
+                
+                // Echange des places dans la liste
+                $scope.recipe.steps[step.order - 1] = step;
+                $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+            }
+        };
         /*$scope.addComment = function () {
-            if ($scope.body === '') {
-                return;
-            }
-            recipeService.addComment(recipe._id, {
-                body: $scope.body,
-                author: 'user',
-            }).success
-            if (!$scope.recipe.steps) {
-                $scope.recipe.steps = [];
-            }
-            $scope.recipe.steps.push({
-                order: $scope.recipe.steps.length + 1,
-                description: ''
-            });
-        }
-        /*$scope.addComment = function () {
-            if ($scope.body === '') {
-                return;
-            }
-            recipeService.addComment(recipe._id, {
-                body: $scope.body,
-                author: 'user',
-            }).success(function (comment) {
-                $scope.recipe.comments.push(comment);
-            });
-            $scope.body = '';
-        };*/
+         if ($scope.body === '') {
+         return;
+         }
+         recipeService.addComment(recipe._id, {
+         body: $scope.body,
+         author: 'user',
+         }).success
+         if (!$scope.recipe.steps) {
+         $scope.recipe.steps = [];
+         }
+         $scope.recipe.steps.push({
+         order: $scope.recipe.steps.length + 1,
+         description: ''
+         });
+         }
+         /*$scope.addComment = function () {
+         if ($scope.body === '') {
+         return;
+         }
+         recipeService.addComment(recipe._id, {
+         body: $scope.body,
+         author: 'user',
+         }).success(function (comment) {
+         $scope.recipe.comments.push(comment);
+         });
+         $scope.body = '';
+         };*/
     }]);
