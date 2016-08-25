@@ -47,26 +47,49 @@ router.param('comment', function (req, res, next, id) {
 /* Requests */
 
 router.get('/', function (req, res, next) {
-    Recipe.find(function (err, recipes) {
+    Recipe.find().exec(function (err, recipes) {
         if (err) {
             return next(err);
         }
+        res.json(recipes);
+    });
+});
 
+router.get('/full', function (req, res, next) {
+    Recipe.find().populate('steps').exec(function (err, recipes) {
+        if (err) {
+            return next(err);
+        }
         res.json(recipes);
     });
 });
 
 router.post('/', auth, function (req, res, next) {
-    var recipe = new Recipe(req.body);
-    recipe.author = req.payload.username;
-    recipe.save(function (err, recipe) {
+    
+    // Création des étapes
+    var steps = req.body.steps;
+    Step.create(steps, function(err, stepsData) {
+        // Gestion des erreurs
         if (err) {
             return next(err);
         }
-
-        res.json(recipe);
-    });
+        var stepIds = stepsData.map(function(stepData) {
+            return stepData._id;
+        });
+        // Création de la recette
+        var recipe = new Recipe(req.body);
+        recipe.steps = stepIds;
+        recipe.author = req.payload.username;
+        recipe.save(function (err, recipeData) {
+            // Gestion des erreurs
+            if (err) {
+                return next(err);
+            }
+            res.json(recipeData);
+        });
+    }); 
 });
+
 
 router.get('/:recipe', function (req, res, next) {
     req.recipe.populate('comments', function (err, recipe) {

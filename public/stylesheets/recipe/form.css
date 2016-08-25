@@ -1,3 +1,7 @@
 .update-step {
-    margin-top: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+.update-step textarea {
+    width: 100%;
 }

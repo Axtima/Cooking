@@ -19,17 +19,18 @@
                ng-model="recipe.title" />
         
         <div ng-show='recipe.steps'>
-            <div class="update-step" ng-repeat="step in recipe.steps">
+            <div ng-class="{alt:step.order%2 === 0}" class="update-step" ng-repeat="step in recipe.steps">
                 <label for="desc{{step.order}}">
                     Etape n°{{step.order}} 
-                    <span ng-click="stepDown(step)" class="glyphicon glyphicon-arrow-down"></span>
-                    <span ng-click="stepUp(step)" class="glyphicon glyphicon-arrow-up"></span>
+                    <button ng-hide="step.order === recipe.steps.length" ng-click="stepDown(step)" class="glyphicon glyphicon-arrow-down"></button>
+                    <button ng-hide="step.order === 1" ng-click="stepUp(step)" class="glyphicon glyphicon-arrow-up"></button>
+                    <button ng-click="remove(step)" class="glyphicon glyphicon-remove"></button>
                 </label><br />
-                <textarea style='width: 80%;' id="desc{{step.order}}" ng-model="step.description" rows="5"></textarea>
-                
+                <textarea id="desc{{step.order}}" ng-model="step.description" rows="5"></textarea>
+                <input type="file" ng-file-select="onFileSelect(step, $files)">
             </div>
         </div>
-        <a ng-click="addStep()">Ajouter une étape</a>
+        <button ng-click="addStep()" class="glyphicon glyphicon-plus"></button>
     </div>
         
     <button type="submit" class="btn">Valider</button>

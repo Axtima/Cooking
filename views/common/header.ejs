@@ -2,16 +2,28 @@
     <div id="banner">
         <nav class="pull-right" ng-controller="NavCtrl">
             <ul>
-                <li ng-show="isLoggedIn()"><a>Bienvenue {{ currentUser()}}</a></li>
-                <li class="last" ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Se déconnecter</a></li>
-                <li ng-hide="isLoggedIn()"><a href="/#/login">S'identifier</a></li>
-                <li class="last" ng-hide="isLoggedIn()"><a href="/#/register">S'enregistrer</a></li>
+                <li ng-show="isLoggedIn()">
+                    Bienvenue {{ currentUser()}}
+                </li>
+                <li class="last" ng-show="isLoggedIn()">
+                    <a href="" ng-click="logOut()">Se déconnecter</a>
+                </li>
+                <li ng-hide="isLoggedIn()">
+                    <a href="/#/login">S'identifier</a>
+                </li>
+                <li class="last" ng-hide="isLoggedIn()">
+                    <a href="/#/register">S'enregistrer</a>
+                </li>
             </ul>
         </nav>
         <h1>Cooking</h1>
     </div>
     <ul class="nav nav-pills spacer">
-        <li class="active"><a href="/">Accueil</a></li>
-        <li><a href="/admin">Administration</a></li>
+        <li class="active">
+            <a href="/">Accueil</a>
+        </li>
+        <li>
+            <a href="/admin">Administration</a>
+        </li>
     </ul>
 </div>

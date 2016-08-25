@@ -1,7 +1,15 @@
+.clearer {
+    clear: both;
+}
+
 .spacer {
     margin-top: 20px;
 }
 
 .clickable {
     cursor: pointer;
+}
+
+.alt {
+    background-color: #EEE;
 }

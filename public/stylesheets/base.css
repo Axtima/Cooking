@@ -1,12 +1,12 @@
 /* Fonts */
 
 @font-face{ 
-	font-family: 'Roboto';
-	src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot');
-	src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
-	     url('../fonts/roboto_regular/Roboto-Regular-webfont.woff') format('woff'),
-	     url('../fonts/roboto_regular/Roboto-Regular-webfont.ttf') format('truetype'),
-	     url('../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
+    font-family: 'Roboto';
+    src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot');
+    src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
+        url('../fonts/roboto_regular/Roboto-Regular-webfont.woff') format('woff'),
+        url('../fonts/roboto_regular/Roboto-Regular-webfont.ttf') format('truetype'),
+        url('../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
 }
 
 body, p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -64,6 +64,16 @@ a:hover {
     color: #005A31;
 }
 
+button.glyphicon,
+button.glyphicon:hover,
+button.glyphicon:active,
+button.glyphicon:focus,
+button.glyphicon:visited {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 /* Navigation */
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:hover,
@@ -86,6 +96,10 @@ a:hover {
 }
 
 /* Forms */
+textarea {
+    border-radius: 5px;
+    border-color: #3B3738;
+}
 
 .btn {
     background-color: #45bf55;

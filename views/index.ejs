@@ -11,6 +11,7 @@
         <!--<script src="/javascripts/angular/lib/angular.min.js"></script>-->
         <script src="/javascripts/angular/lib/angular.js"></script>
         <script src="/javascripts/angular/lib/angular-route.js"></script>
+        <script src="/javascripts/angular/lib/angular-file-upload.min.js"></script>
         
         <!-- Imports Javascript application -->
         
@@ -33,7 +34,7 @@
         <%- include('common/header'); %>
         <ul ng-show="isLoggedIn()" ng-controller="NavCtrl">
             <li>
-                <a href='/#/recipe/form'>Proposer une recette</a>
+                <a class="clickable" href='/#/recipe/form'>Proposer une recette</a>
             </li>
         </ul>
         
