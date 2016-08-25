@@ -2,7 +2,7 @@ var app = angular.module('cooking.recipe', [
     'cooking.auth',
     'ngRoute',
     'cooking.constant',
-    'angularFileUpload'
+    'ngFileUpload'
 ]);
 
 app.controller('RecipeCtrl', [
@@ -10,7 +10,8 @@ app.controller('RecipeCtrl', [
     'recipeService',
     'recipe',
     'authService',
-    function ($scope, recipeService, recipe, authService) {
+    'Upload',
+    function ($scope, recipeService, recipe, authService, Upload) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
@@ -59,37 +60,27 @@ app.controller('RecipeCtrl', [
         $scope.remove = function (step) {
             $scope.recipe.steps.splice(step.order - 1, 1);
             var i = 0;
-            $scope.recipe.steps.forEach(function(step) {
+            $scope.recipe.steps.forEach(function (step) {
                 i++;
                 step.order = i;
             });
         };
-        $scope.onFileSelect = function (step, file) {
-            $scope.uploadInProgress = true;
-            $scope.uploadProgress = 0;
-
-            if (angular.isArray(image)) {
-                image = image[0];
+        $scope.upload = function (file) {
+            if ($scope.form.file.$valid && $scope.file) {
+                var file = $scope.file;
+                Upload.upload({
+                    url: 'upload/url',
+                    data: {file: file, 'username': $scope.username}
+                }).then(function (resp) {
+                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                }, function (resp) {
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                });
             }
-
-            $scope.upload = $upload.upload({
-                url: '/rest/file',
-                method: 'POST',
-                data: {
-                    step: step
-                },
-                file: image
-            }).progress(function (event) {
-                $scope.uploadProgress = Math.floor(event.loaded / event.total);
-                $scope.$apply();
-            }).success(function (data, status, headers, config) {
-                AlertService.success('Photo uploaded!');
-            }).error(function (err) {
-                $scope.uploadInProgress = false;
-                AlertService.error('Error uploading file: ' + err.message || err);
-            });
         };
-
 
         /*$scope.addComment = function () {
          if ($scope.body === '') {
