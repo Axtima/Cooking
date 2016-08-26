@@ -4,4 +4,37 @@
 
 .update-step textarea {
     width: 500px;
+    float: left;
+}
+
+.thumb {
+    margin-left: 10px;
+}
+
+.update-step.ng-enter,
+.update-step.ng-leave,
+.update-step.ng-move {
+  -webkit-transition: 0.8s linear all;
+  -moz-transition: 0.8s linear all;
+  -o-transition: 0.8s linear all;
+  transition: 0.8s linear all;
+  position:relative;
+}
+
+.update-step.ng-enter {
+  left:-30px;
+  opacity:0;
+}
+.update-step.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.update-step.ng-leave {
+  left:0;
+  opacity:1;
+}
+.update-step.ng-leave.ng-leave-active {
+  left:-30px;
+  opacity:0;
 }

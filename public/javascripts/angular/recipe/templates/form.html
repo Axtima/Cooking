@@ -23,9 +23,9 @@
                 <div>
                     <label for="desc{{step.order}}">
                         Etape n°{{step.order}} 
-                        <button ng-hide="step.order === recipe.steps.length" ng-click="stepDown(step)" class="glyphicon glyphicon-arrow-down"></button>
-                        <button ng-hide="step.order === 1" ng-click="stepUp(step)" class="glyphicon glyphicon-arrow-up"></button>
-                        <button ng-click="remove(step)" class="glyphicon glyphicon-remove"></button>
+                        <button type="button" ng-hide="step.order === recipe.steps.length" ng-click="stepDown(step)" class="glyphicon glyphicon-arrow-down"></button>
+                        <button type="button" ng-hide="step.order === 1" ng-click="stepUp(step)" class="glyphicon glyphicon-arrow-up"></button>
+                        <button type="button" ng-click="remove(step)" class="glyphicon glyphicon-remove"></button>
                     </label><br />
                     <textarea id="desc{{step.order}}" ng-model="step.description" rows="5"></textarea>
                     <span>
@@ -39,7 +39,7 @@
 
             </div>
         </div>
-        <button ng-click="addStep()" class="glyphicon glyphicon-plus"></button>
+        <button type="button" ng-click="addStep()" class="glyphicon glyphicon-plus"></button>
     </div>
 
     <button type="submit" class="btn">Valider</button>

@@ -2,7 +2,8 @@ var app = angular.module('cooking.recipe', [
     'cooking.auth',
     'ngRoute',
     'cooking.constant',
-    'ngFileUpload'
+    'ngFileUpload',
+    'ngAnimate'
 ]);
 
 app.controller('RecipeCtrl', [
@@ -17,6 +18,7 @@ app.controller('RecipeCtrl', [
         $scope.recipe = recipe;
         $scope.isLoggedIn = authService.isLoggedIn;
         $scope.addRecipe = function () {
+            debugger;
             recipeService.create({
                 title: $scope.recipe.title,
                 steps: $scope.recipe.steps
