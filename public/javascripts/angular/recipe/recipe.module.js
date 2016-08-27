@@ -12,7 +12,8 @@ app.controller('RecipeCtrl', [
     'recipe',
     'authService',
     'Upload',
-    function ($scope, recipeService, recipe, authService, Upload) {
+    '$timeout',
+    function ($scope, recipeService, recipe, authService, Upload, $timeout) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
@@ -40,23 +41,38 @@ app.controller('RecipeCtrl', [
         $scope.stepDown = function (step) {
             if (step.order < $scope.recipe.steps.length) {
                 var stepReplaced = $scope.recipe.steps[step.order];
-                stepReplaced.order = step.order;
-                step.order = step.order + 1;
+                stepReplaced.movingUp = true;
+                step.movingDown = true;
+                
+                $timeout(function() {
+                    stepReplaced.movingUp = false;
+                    step.movingDown = false;
+                    
+                    stepReplaced.order = step.order;
+                    step.order = step.order + 1;
 
-                // Echange des places dans la liste
-                $scope.recipe.steps[step.order - 1] = step;
-                $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+                    // Echange des places dans la liste
+                    $scope.recipe.steps[step.order - 1] = step;
+                    $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+                }, 2000);
             }
         };
         $scope.stepUp = function (step) {
             if ((step.order - 2) >= 0) {
                 var stepReplaced = $scope.recipe.steps[step.order - 2];
-                stepReplaced.order = step.order;
-                step.order = step.order - 1;
-
-                // Echange des places dans la liste
-                $scope.recipe.steps[step.order - 1] = step;
-                $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+                step.movingUp = true;
+                stepReplaced.movingDown = true;
+                $timeout(function() {
+                    step.movingUp = false;
+                    stepReplaced.movingDown = false;
+                    
+                    stepReplaced.order = step.order;
+                    step.order = step.order - 1;
+                    
+                    // Echange des places dans la liste
+                    $scope.recipe.steps[step.order - 1] = step;
+                    $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
+                }, 2000);
             }
         };
         $scope.remove = function (step) {

@@ -1,5 +1,7 @@
 .update-step {
     padding: 10px 15px 10px 15px;
+    position: relative;
+    height: 150px;
 }
 
 .update-step textarea {
@@ -37,4 +39,21 @@
 .update-step.ng-leave.ng-leave-active {
   left:-30px;
   opacity:0;
+}
+
+@keyframes slideDown {
+  0%   { top: 0; }
+  100% { top: 170px; }
+}
+
+@keyframes slideUp {
+  0%   { top: 0; }
+  100% { top: -170px; }
+}
+
+.update-step.slideDown {
+    animation: slideDown 2s ease;
+}
+.update-step.slideUp {
+    animation: slideUp 2s ease;
 }

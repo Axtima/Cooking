@@ -9,12 +9,14 @@
         url('../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
 }
 
-body, p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+body, p, h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', Arial, sans-serif;
 }
 
 body, p {
     color: #3B3738;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Colors */
@@ -64,11 +66,15 @@ a:hover {
     color: #005A31;
 }
 
-button.glyphicon,
-button.glyphicon:hover,
-button.glyphicon:active,
-button.glyphicon:focus,
-button.glyphicon:visited {
+button:hover {
+    cursor: pointer;
+}
+
+button.fa,
+button.fa:hover,
+button.fa:active,
+button.fa:focus,
+button.fa:visited {
     background-color: transparent;
     border: none;
     outline: none;
