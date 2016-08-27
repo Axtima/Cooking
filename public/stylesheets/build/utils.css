@@ -1,56 +1,26 @@
-/* Colors */
-/* line 3, ../sass/utils.scss */
-.gray-dark {
-  color: #3B3738;
-}
-
-/* line 7, ../sass/utils.scss */
-.gray-dark-bg {
-  background-color: #3B3738;
-}
-
-/* line 11, ../sass/utils.scss */
-.green-dark {
-  color: #005A31;
-}
-
-/* line 15, ../sass/utils.scss */
-.green-dark-bg {
-  background-color: #005A31;
-}
-
-/* line 19, ../sass/utils.scss */
-.green {
-  color: #45bf55;
-}
-
-/* line 23, ../sass/utils.scss */
-.green-bg {
-  background-color: #45bf55;
-}
-
+/* Variables */
 /* Others */
-/* line 29, ../sass/utils.scss */
+/* line 9, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 33, ../sass/utils.scss */
+/* line 13, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 37, ../sass/utils.scss */
+/* line 17, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 41, ../sass/utils.scss */
+/* line 21, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 45, ../sass/utils.scss */
+/* line 25, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;

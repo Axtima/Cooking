@@ -1,106 +1,74 @@
-/* Fonts */
-@font-face {
-  font-family: 'Roboto';
-  src: url("../fonts/roboto_regular/Roboto-Regular-webfont.eot");
-  src: url("../fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix") format("eot"), url("../fonts/roboto_regular/Roboto-Regular-webfont.woff") format("woff"), url("../fonts/roboto_regular/Roboto-Regular-webfont.ttf") format("truetype"), url("../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont") format("svg");
-}
-/* line 12, ../sass/base.scss */
-body, p, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', Arial, sans-serif;
-}
+/*
+Error: Undefined variable: "$color-gray-dark".
+        on line 17 of /home/axtima/Workspace/cooking/public/stylesheets/sass/base.scss
 
-/* line 16, ../sass/base.scss */
-body, p {
-  color: #3B3738;
-  margin: 0px;
-  padding: 0px;
-}
+12: body, p, h1, h2, h3, h4, h5, h6 {
+13:     font-family: 'Roboto', Arial, sans-serif;
+14: }
+15: 
+16: body, p {
+17:     color: $color-gray-dark;
+18:     margin: 0px;
+19:     padding: 0px;
+20: }
+21: 
+22: h1, h2, h3 {
 
-/* line 22, ../sass/base.scss */
-h1, h2, h3 {
-  color: #45bf55;
-}
-
-/* line 26, ../sass/base.scss */
-a {
-  color: #45bf55;
-  text-decoration: none;
-}
-
-/* line 31, ../sass/base.scss */
-a:hover {
-  color: #005A31;
-}
-
-/* line 35, ../sass/base.scss */
-input {
-  border: solid #005A31 1px;
-  border-radius: 5px;
-  padding: 2px 4px;
-}
-
-/* line 41, ../sass/base.scss */
-button {
-  border: none;
-  font-size: 1.2em;
-  padding: 5px 8px;
-  border-radius: 4px;
-}
-
-/* line 48, ../sass/base.scss */
-button:hover {
-  cursor: pointer;
-}
-
-/* line 52, ../sass/base.scss */
-button.fa,
-button.fa:hover,
-button.fa:active,
-button.fa:focus,
-button.fa:visited {
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-/* Navigation */
-/* line 63, ../sass/base.scss */
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-  color: #fff;
-  background-color: #45bf55;
-  border-radius: 0px;
-}
-
-/* line 71, ../sass/base.scss */
-.nav-pills > li > a:hover, .nav > li > a:focus {
-  color: #45bf55;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-/* Titles */
-/* line 79, ../sass/base.scss */
-.page-header {
-  border-bottom-color: #3B3738;
-}
-
-/* Forms */
-/* line 84, ../sass/base.scss */
-textarea {
-  border-radius: 5px;
-  border-color: #3B3738;
-}
-
-/* line 89, ../sass/base.scss */
-.btn {
-  background-color: #45bf55;
-  color: white;
-}
-
-/* Listes */
-/* line 99, ../sass/base.scss */
-ul li {
-  list-style-type: none;
-}
+Backtrace:
+/home/axtima/Workspace/cooking/public/stylesheets/sass/base.scss:17
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:281:in `render'
+/var/lib/gems/2.3.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+/var/lib/gems/2.3.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+/var/lib/gems/2.3.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:494:in `update_stylesheet'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/sass_compiler.rb:40:in `compile!'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/commands/update_project.rb:49:in `perform'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
+/var/lib/gems/2.3.0/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
+/usr/local/bin/compass:22:in `load'
+/usr/local/bin/compass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$color-gray-dark\".\A         on line 17 of /home/axtima/Workspace/cooking/public/stylesheets/sass/base.scss\A \A 12: body, p, h1, h2, h3, h4, h5, h6 {\A 13:     font-family: 'Roboto', Arial, sans-serif;\A 14: }\A 15: \A 16: body, p {\A 17:     color: $color-gray-dark;\A 18:     margin: 0px;\A 19:     padding: 0px;\A 20: }\A 21: \A 22: h1, h2, h3 {"; }

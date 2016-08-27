@@ -1,6 +1,6 @@
-@import url("base.css");
-@import url("home.css");
-@import url("utils.css");
+@import 'utils';
+@import 'base';
+@import 'home';
 
 /* Recipes */
-@import url("recipe/form.css");
+@import 'recipe/form';

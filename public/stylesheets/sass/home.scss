@@ -14,7 +14,7 @@
     float: left;
     list-style-type: none;
     padding: 0px 10px;
-    border-right: solid #45bf55 1px;
+    border-right: solid $color-green 1px;
 }
 
 #banner ul li.last {
@@ -22,12 +22,12 @@
 }
 
 #banner a {
-    color: #45bf55;
+    color: $color-green;
 }
 
 #banner h1 {
     margin: 0px;
-    color: #45bf55;
+    color: $color-green;
     padding: 25px 0px 0px 70px;
 }
 
@@ -39,7 +39,7 @@
     float: left;
     margin-right: 10px;
     padding-right: 10px;
-    border-right: solid #45bf55 1px;
+    border-right: solid $color-green 1px;
 }
 
 #container {
@@ -49,7 +49,7 @@
 /**** FOOTER ****/
 
 #footer {
-    background-color: #3B3738;
+    background-color: $color-gray-dark;
     width: 100%;
     float: left;
     padding: 15px 40px;
