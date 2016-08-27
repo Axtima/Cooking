@@ -1,0 +1,68 @@
+/**** HEADER ****/
+/* line 4, ../sass/home.scss */
+#banner {
+  width: 100%;
+  height: 100px;
+}
+
+/* line 9, ../sass/home.scss */
+#banner ul {
+  float: right;
+}
+
+/* line 13, ../sass/home.scss */
+#banner ul li {
+  float: left;
+  list-style-type: none;
+  padding: 0px 10px;
+  border-right: solid #45bf55 1px;
+}
+
+/* line 20, ../sass/home.scss */
+#banner ul li.last {
+  border-right: none;
+}
+
+/* line 24, ../sass/home.scss */
+#banner a {
+  color: #45bf55;
+}
+
+/* line 28, ../sass/home.scss */
+#banner h1 {
+  margin: 0px;
+  color: #45bf55;
+  padding: 25px 0px 0px 70px;
+}
+
+/* line 38, ../sass/home.scss */
+#headerMenu li {
+  float: left;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: solid #45bf55 1px;
+}
+
+/* line 45, ../sass/home.scss */
+#container {
+  margin: 0px 20%;
+}
+
+/**** FOOTER ****/
+/* line 51, ../sass/home.scss */
+#footer {
+  background-color: #3B3738;
+  width: 100%;
+  float: left;
+  padding: 15px 40px;
+}
+
+/* line 58, ../sass/home.scss */
+#footer ul {
+  float: left;
+}
+
+/* line 66, ../sass/home.scss */
+#footer ul li a {
+  color: white;
+}

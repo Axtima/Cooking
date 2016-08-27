@@ -1,2 +1,5 @@
 # Ignorer tous les fichiers log
 *.log
+
+public/stylesheets/build/
+public/stylesheets/.sass-cache/

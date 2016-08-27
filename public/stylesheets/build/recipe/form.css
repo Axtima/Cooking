@@ -1,0 +1,78 @@
+/* line 1, ../../sass/recipe/form.scss */
+.update-step {
+  padding: 10px 15px 10px 15px;
+  position: relative;
+  height: 120px;
+}
+
+/* line 7, ../../sass/recipe/form.scss */
+.update-step textarea {
+  width: 500px;
+  float: left;
+}
+
+/* line 12, ../../sass/recipe/form.scss */
+.thumb {
+  margin-left: 10px;
+}
+
+/* line 16, ../../sass/recipe/form.scss */
+.update-step.ng-enter,
+.update-step.ng-leave,
+.update-step.ng-move {
+  -webkit-transition: 0.8s linear all;
+  -moz-transition: 0.8s linear all;
+  -o-transition: 0.8s linear all;
+  transition: 0.8s linear all;
+  position: relative;
+}
+
+/* line 26, ../../sass/recipe/form.scss */
+.update-step.ng-enter {
+  left: -30px;
+  opacity: 0;
+}
+
+/* line 30, ../../sass/recipe/form.scss */
+.update-step.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 1;
+}
+
+/* line 35, ../../sass/recipe/form.scss */
+.update-step.ng-leave {
+  left: 0;
+  opacity: 1;
+}
+
+/* line 39, ../../sass/recipe/form.scss */
+.update-step.ng-leave.ng-leave-active {
+  left: -30px;
+  opacity: 0;
+}
+
+@keyframes slideDown {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 140px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -140px;
+  }
+}
+/* line 54, ../../sass/recipe/form.scss */
+.update-step.slideDown {
+  animation: slideDown 2s ease;
+}
+
+/* line 57, ../../sass/recipe/form.scss */
+.update-step.slideUp {
+  animation: slideUp 2s ease;
+}
