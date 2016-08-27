@@ -19,40 +19,6 @@ body, p {
     padding: 0px;
 }
 
-/* Colors */
-
-.gray-dark {
-    color: #3B3738;
-}
-
-.gray-dark-bg {
-    background-color: #3B3738;
-}
-
-.green-dark {
-    color: #005A31;
-}
-
-.green-dark-bg {
-    background-color: #005A31;
-}
-
-.green {
-    color: #45bf55;
-}
-
-.green-bg {
-    background-color: #45bf55;
-}
-
-/***** Bootstrap overrides ******/
-
-/* Base */
-
-body {
-    font-family: sans-serif;
-}
-
 h1, h2, h3 {
     color: #45bf55;
 }
@@ -64,6 +30,19 @@ a {
 
 a:hover {
     color: #005A31;
+}
+
+input {
+    border: solid #005A31 1px;
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+button {
+    border: none;
+    font-size: 1.2em;
+    padding: 5px 8px;
+    border-radius: 4px;
 }
 
 button:hover {

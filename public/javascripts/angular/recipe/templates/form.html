@@ -29,7 +29,7 @@
                         <button type="button" ng-hide="step.order === 1" ng-click="stepUp(step)" class="fa fa-arrow-up"></button>
                         <button type="button" ng-click="remove(step)" class="fa fa-times"></button>
                     </label><br />
-                    <textarea id="desc{{step.order}}" ng-model="step.description" rows="5"></textarea>
+                    <textarea id="desc{{step.order}}" ng-model="step.description" rows="6"></textarea>
                     <span>
                         <img class="thumb" ngf-thumbnail="file || '/images/thumb.jpg'">
                         <button class="fa fa-camera" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"

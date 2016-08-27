@@ -1,6 +1,6 @@
 <div id="header">
     <div id="banner">
-        <nav class="pull-right" ng-controller="NavCtrl">
+        <nav ng-controller="NavCtrl">
             <ul>
                 <li ng-show="isLoggedIn()">
                     Bienvenue {{ currentUser()}}
@@ -18,12 +18,13 @@
         </nav>
         <h1>Cooking</h1>
     </div>
-    <ul class="nav nav-pills spacer">
+    <ul id="headerMenu" class="spacer">
         <li class="active">
             <a href="/">Accueil</a>
         </li>
         <li>
-            <a href="/admin">Administration</a>
+            <a href='/#/recipe/form'>Proposer une recette</a>
         </li>
     </ul>
+    <div class="clearer"></div>
 </div>

@@ -1,3 +1,31 @@
+/* Colors */
+
+.gray-dark {
+    color: #3B3738;
+}
+
+.gray-dark-bg {
+    background-color: #3B3738;
+}
+
+.green-dark {
+    color: #005A31;
+}
+
+.green-dark-bg {
+    background-color: #005A31;
+}
+
+.green {
+    color: #45bf55;
+}
+
+.green-bg {
+    background-color: #45bf55;
+}
+
+/* Others */
+
 .clearer {
     clear: both;
 }
