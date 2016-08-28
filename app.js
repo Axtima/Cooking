@@ -11,14 +11,16 @@ require('./models/User');
 require('./models/Recipe');
 require('./models/Step');
 require('./models/Opinion');
+require('./models/Glossary');
 
 require('./config/passport');
 
 mongoose.connect('mongodb://localhost/cooking');
 
 var routes = require('./routes/index');
-var recipes = require('./routes/rest/recipes');
-var users = require('./routes/rest/users');
+var userRoutes = require('./routes/rest/user');
+var recipeRoutes = require('./routes/rest/recipe');
+var glossaryRoutes = require('./routes/rest/glossary');
 
 var app = express();
 
@@ -35,8 +37,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-app.use('/rest/recipe', recipes);
-app.use('/rest/user', users);
+app.use('/rest/recipe', recipeRoutes);
+app.use('/rest/user', userRoutes);
+app.use('/rest/glossary', glossaryRoutes);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

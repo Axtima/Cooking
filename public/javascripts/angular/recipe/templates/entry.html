@@ -1,0 +1,5 @@
+<div ng-repeat="step in recipe.steps| orderBy:'+order'">
+    <div class="recipe-description">
+        <span ng-bind-html="displayDescription(step)"></span>
+    </div>
+</div>

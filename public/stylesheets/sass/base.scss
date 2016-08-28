@@ -9,14 +9,24 @@
         url('../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
 }
 
-body, p, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', Arial, sans-serif;
+body {
+    font-size: 1.2em;
+    background-color: $color-white;
+    margin: 0px 20%;
+    padding: 0px;
 }
 
-body, p {
+body, p, input, select, textarea, option {
     color: $color-gray-dark;
+}
+
+p {
     margin: 0px;
     padding: 0px;
+}
+
+body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 h1, h2, h3 {
@@ -32,15 +42,11 @@ a:hover {
     color: $color-green-dark;
 }
 
-input {
-    border: solid $color-green-dark 1px;
-    border-radius: 5px;
-    padding: 2px 4px;
-}
-
 button {
+    background-color: $color-green;
+    color: $color-white;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: 5px 8px;
     border-radius: 4px;
 }
@@ -57,6 +63,7 @@ button.fa:visited {
     background-color: transparent;
     border: none;
     outline: none;
+    color: $color-gray-dark;
 }
 
 /* Navigation */
@@ -81,14 +88,26 @@ button.fa:visited {
 }
 
 /* Forms */
+
 textarea {
     border-radius: 5px;
     border-color: $color-gray-dark;
 }
 
-.btn {
-    background-color: $color-green;
-    color: white;
+input[type="text"],
+input[type="text"]:focus {
+    border: solid $color-gray 1px;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 1.1em;
+    outline: none;
+}
+
+textarea {
+    border: solid $color-gray 1px;
+    border-radius: 5px;
+    padding: 2px 4px;
+    font-size: 1.2em;
 }
 
 /* Listes */

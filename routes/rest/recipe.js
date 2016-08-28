@@ -92,7 +92,7 @@ router.post('/', auth, function (req, res, next) {
 
 
 router.get('/:recipe', function (req, res, next) {
-    req.recipe.populate('comments', function (err, recipe) {
+    req.recipe.populate('steps', function (err, recipe) {
         if (err) {
             return next(err);
         }

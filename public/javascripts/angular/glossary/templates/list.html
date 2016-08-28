@@ -1,0 +1,16 @@
+<h2>Glossaire</h2>
+
+<a href='/#/glossary/form'>Ajouter une définition</a>
+
+<div ng-repeat="glossary in glossaries| orderBy:'+term'">
+    <div class="glossary-definition">
+        Termes : 
+        <a href="#/glossary/form/{{glossary._id}}">
+            <div ng-repeat="term in glossary.terms">
+                {{term}}&nbsp;
+            </div>
+        </a>
+        Définition : {{glossary.definition}}
+        
+    </div>
+</div>

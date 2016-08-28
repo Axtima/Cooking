@@ -1,8 +1,58 @@
 /* Variables */
 
+$color-white: #FAFAFA;
+$color-gray: #DDDDDD;
 $color-gray-dark: #3B3738;
-$color-green-dark: #005A31;
 $color-green: #45bf55;
+$color-green-dark: #005A31;
+
+/* Tooltip */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    width: 300px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -150px;
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+    
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
 
 /* Others */
 

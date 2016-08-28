@@ -1,0 +1,24 @@
+<div ng-hide="isLoggedIn()">
+    <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour modifier le glossaire</h3>
+</div>
+<form ng-submit="addGlossary()" ng-show="isLoggedIn()">
+
+    <div class="alert alert-success" ng-show='successMsg'>
+        {{successMsg}}
+    </div>
+    <div class="alert alert-error" ng-show='errorMsg'>
+        {{errorMsg}}
+    </div>
+
+    <h3>Glossaire</h3>
+
+    <div>
+        <input type="text"
+               placeholder="Terme"
+               ng-model="glossary.term" />
+        
+        <textarea ng-model="glossary.definition" rows="6"></textarea>
+    </div>
+
+    <button type="submit" class="btn">Valider</button>
+</form>

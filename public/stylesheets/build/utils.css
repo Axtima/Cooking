@@ -1,26 +1,81 @@
 /* Variables */
+/* Tooltip */
+/* line 11, ../sass/utils.scss */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+/* line 18, ../sass/utils.scss */
+.tooltip .tooltiptext {
+  width: 300px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -150px;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* line 33, ../sass/utils.scss */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* line 37, ../sass/utils.scss */
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/* line 48, ../sass/utils.scss */
+.tooltip .tooltiptext {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* line 53, ../sass/utils.scss */
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
 /* Others */
-/* line 9, ../sass/utils.scss */
+/* line 59, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 13, ../sass/utils.scss */
+/* line 63, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 17, ../sass/utils.scss */
+/* line 67, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 21, ../sass/utils.scss */
+/* line 71, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 25, ../sass/utils.scss */
+/* line 75, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;

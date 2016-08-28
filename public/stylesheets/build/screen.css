@@ -1,26 +1,81 @@
 /* Variables */
+/* Tooltip */
+/* line 11, ../sass/utils.scss */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+/* line 18, ../sass/utils.scss */
+.tooltip .tooltiptext {
+  width: 300px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -150px;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* line 33, ../sass/utils.scss */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* line 37, ../sass/utils.scss */
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/* line 48, ../sass/utils.scss */
+.tooltip .tooltiptext {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* line 53, ../sass/utils.scss */
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
 /* Others */
-/* line 9, ../sass/utils.scss */
+/* line 59, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 13, ../sass/utils.scss */
+/* line 63, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 17, ../sass/utils.scss */
+/* line 67, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 21, ../sass/utils.scss */
+/* line 71, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 25, ../sass/utils.scss */
+/* line 75, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;
@@ -34,54 +89,61 @@
   src: url("../fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix") format("eot"), url("../fonts/roboto_regular/Roboto-Regular-webfont.woff") format("woff"), url("../fonts/roboto_regular/Roboto-Regular-webfont.ttf") format("truetype"), url("../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont") format("svg");
 }
 /* line 12, ../sass/base.scss */
-body, p, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', Arial, sans-serif;
+body {
+  font-size: 1.2em;
+  background-color: #FAFAFA;
+  margin: 0px 20%;
+  padding: 0px;
 }
 
-/* line 16, ../sass/base.scss */
-body, p {
+/* line 19, ../sass/base.scss */
+body, p, input, select, textarea, option {
   color: #3B3738;
+}
+
+/* line 23, ../sass/base.scss */
+p {
   margin: 0px;
   padding: 0px;
 }
 
-/* line 22, ../sass/base.scss */
+/* line 28, ../sass/base.scss */
+body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* line 32, ../sass/base.scss */
 h1, h2, h3 {
   color: #45bf55;
 }
 
-/* line 26, ../sass/base.scss */
+/* line 36, ../sass/base.scss */
 a {
   color: #45bf55;
   text-decoration: none;
 }
 
-/* line 31, ../sass/base.scss */
+/* line 41, ../sass/base.scss */
 a:hover {
   color: #005A31;
 }
 
-/* line 35, ../sass/base.scss */
-input {
-  border: solid #005A31 1px;
-  border-radius: 5px;
-  padding: 2px 4px;
-}
-
-/* line 41, ../sass/base.scss */
+/* line 45, ../sass/base.scss */
 button {
+  background-color: #45bf55;
+  color: #FAFAFA;
   border: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 5px 8px;
   border-radius: 4px;
 }
 
-/* line 48, ../sass/base.scss */
+/* line 54, ../sass/base.scss */
 button:hover {
   cursor: pointer;
 }
 
-/* line 52, ../sass/base.scss */
+/* line 58, ../sass/base.scss */
 button.fa,
 button.fa:hover,
 button.fa:active,
@@ -90,10 +152,11 @@ button.fa:visited {
   background-color: transparent;
   border: none;
   outline: none;
+  color: #3B3738;
 }
 
 /* Navigation */
-/* line 63, ../sass/base.scss */
+/* line 70, ../sass/base.scss */
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
@@ -102,7 +165,7 @@ button.fa:visited {
   border-radius: 0px;
 }
 
-/* line 71, ../sass/base.scss */
+/* line 78, ../sass/base.scss */
 .nav-pills > li > a:hover, .nav > li > a:focus {
   color: #45bf55;
   background-color: transparent;
@@ -110,26 +173,38 @@ button.fa:visited {
 }
 
 /* Titles */
-/* line 79, ../sass/base.scss */
+/* line 86, ../sass/base.scss */
 .page-header {
   border-bottom-color: #3B3738;
 }
 
 /* Forms */
-/* line 84, ../sass/base.scss */
+/* line 92, ../sass/base.scss */
 textarea {
   border-radius: 5px;
   border-color: #3B3738;
 }
 
-/* line 89, ../sass/base.scss */
-.btn {
-  background-color: #45bf55;
-  color: white;
+/* line 97, ../sass/base.scss */
+input[type="text"],
+input[type="text"]:focus {
+  border: solid #DDDDDD 1px;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 1.1em;
+  outline: none;
+}
+
+/* line 106, ../sass/base.scss */
+textarea {
+  border: solid #DDDDDD 1px;
+  border-radius: 5px;
+  padding: 2px 4px;
+  font-size: 1.2em;
 }
 
 /* Listes */
-/* line 99, ../sass/base.scss */
+/* line 118, ../sass/base.scss */
 ul li {
   list-style-type: none;
 }

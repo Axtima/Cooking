@@ -1,5 +1,6 @@
 var app = angular.module('cooking.recipe', [
     'cooking.auth',
+    'cooking.glossary',
     'ngRoute',
     'cooking.constant',
     'ngFileUpload',
@@ -10,16 +11,45 @@ app.controller('RecipeCtrl', [
     '$scope',
     'recipeService',
     'recipe',
+    'glossaries',
     'authService',
     'Upload',
     '$timeout',
-    function ($scope, recipeService, recipe, authService, Upload, $timeout) {
+    '$sce',
+    function ($scope, recipeService, recipe, glossaries, authService, Upload, $timeout, $sce) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
         $scope.isLoggedIn = authService.isLoggedIn;
+        
+        /**
+         * Get html of step description with glossary tooltips
+         */
+        $scope.displayDescription = function(step) {
+            var description = step.description;
+            glossaries.forEach(function(glossary) {
+                glossary.terms.forEach(function(term) {
+                    var index = description.search(term);
+                    if(index >= 0) {
+                        var text = description.slice(0, index) +
+                            '<div class="tooltip">' +
+                                description.slice(index, index + term.length) +
+                                '<span class="tooltiptext">' +
+                                    glossary.definition +
+                                '</span>' +
+                            '</div>'+
+                            description.slice(index + term.length);
+                        description = text;
+                    }
+                });
+            });
+            var res = $sce.trustAsHtml(description);
+            return res;
+        },
+        /**
+         * Add a recipe
+         */
         $scope.addRecipe = function () {
-            debugger;
             recipeService.create({
                 title: $scope.recipe.title,
                 steps: $scope.recipe.steps
@@ -29,6 +59,9 @@ app.controller('RecipeCtrl', [
                 $scope.steps = [];
             });
         };
+        /**
+         * Add a step
+         */
         $scope.addStep = function () {
             if (!$scope.recipe.steps) {
                 $scope.recipe.steps = [];
@@ -38,6 +71,9 @@ app.controller('RecipeCtrl', [
                 description: ''
             });
         };
+        /**
+         * Move down a step
+         */
         $scope.stepDown = function (step) {
             if (step.order < $scope.recipe.steps.length) {
                 var stepReplaced = $scope.recipe.steps[step.order];
@@ -57,6 +93,9 @@ app.controller('RecipeCtrl', [
                 }, 2000);
             }
         };
+        /**
+         * Move up a step
+         */
         $scope.stepUp = function (step) {
             if ((step.order - 2) >= 0) {
                 var stepReplaced = $scope.recipe.steps[step.order - 2];
@@ -75,6 +114,9 @@ app.controller('RecipeCtrl', [
                 }, 2000);
             }
         };
+        /**
+         * Remove a step
+         */
         $scope.remove = function (step) {
             $scope.recipe.steps.splice(step.order - 1, 1);
             var i = 0;
@@ -83,6 +125,9 @@ app.controller('RecipeCtrl', [
                 step.order = i;
             });
         };
+        /**
+         * Upload a picture
+         */
         $scope.upload = function (file) {
             if ($scope.form.file.$valid && $scope.file) {
                 var file = $scope.file;
