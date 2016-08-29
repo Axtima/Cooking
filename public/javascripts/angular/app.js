@@ -8,7 +8,7 @@ var app = angular.module('cooking', [
 app.config(['$routeProvider', 'constants', function ($routeProvider, constants) {
         // Home
         $routeProvider.when('/home', {
-            templateUrl: constants.angularDirectory + '/templates/home.html',
+            templateUrl: constants.angularDirectory + 'templates/home.html',
             controller: 'MainCtrl',
             resolve: {
                 recipes: ['recipeService', function (recipeService) {
@@ -18,7 +18,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
         });
         // Recipe
         $routeProvider.when('/recipe/:id', {
-            templateUrl: constants.angularDirectory + '/recipe/templates/entry.html',
+            templateUrl: constants.angularDirectory + 'recipe/templates/entry.html',
             controller: 'RecipeCtrl',
             resolve: {
                 recipe: ['$route', 'recipeService', function ($route, recipeService) {
@@ -29,25 +29,27 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 }]
             }
         });
-        $routeProvider.when('/recipe/form', {
-            templateUrl: constants.angularDirectory + '/recipe/templates/form.html',
+        $routeProvider.when('/recipef', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
             controller: 'RecipeCtrl',
             resolve: {
-                recipe: function() {return {};}
+                recipe: function() {return {};},
+                glossaries: function() {return [{}];}
             }
         });
-        $routeProvider.when('/recipe/form/:id', {
-            templateUrl: constants.angularDirectory + '/recipe/templates/form.html',
+        $routeProvider.when('/recipef/:id', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
             controller: 'RecipeCtrl',
             resolve: {
                 recipe: ['$route', 'recipeService', function ($route, recipeService) {
                     return recipeService.get($route.current.params.id);
-                }]
+                }],
+                glossaries: function() {return [{}];}
             }
         });
         // Glossary
         $routeProvider.when('/glossary', {
-            templateUrl: constants.angularDirectory + '/glossary/templates/list.html',
+            templateUrl: constants.angularDirectory + 'glossary/templates/list.html',
             controller: 'GlossaryCtrl',
             resolve: {
                 glossaries: ['$route', 'glossaryService', function ($route, glossaryService) {
@@ -57,7 +59,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
             }
         });
         $routeProvider.when('/glossary/form', {
-            templateUrl: constants.angularDirectory + '/glossary/templates/form.html',
+            templateUrl: constants.angularDirectory + 'glossary/templates/form.html',
             controller: 'GlossaryCtrl',
             resolve: {
                 glossaries: function() {return [{}];},
@@ -65,7 +67,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
             }
         });
         $routeProvider.when('/glossary/form/:id', {
-            templateUrl: constants.angularDirectory + '/glossary/templates/form.html',
+            templateUrl: constants.angularDirectory + 'glossary/templates/form.html',
             controller: 'GlossaryCtrl',
             resolve: {
                 glossaries: function() {return [{}];},

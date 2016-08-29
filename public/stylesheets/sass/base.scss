@@ -2,22 +2,26 @@
 
 @font-face{ 
     font-family: 'Roboto';
-    src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot');
-    src: url('../fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
-        url('../fonts/roboto_regular/Roboto-Regular-webfont.woff') format('woff'),
-        url('../fonts/roboto_regular/Roboto-Regular-webfont.ttf') format('truetype'),
-        url('../fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
+    src: url('/fonts/roboto_regular/Roboto-Regular-webfont.eot');
+    src: url('/fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
+        url('/fonts/roboto_regular/Roboto-Regular-webfont.woff') format('woff'),
+        url('/fonts/roboto_regular/Roboto-Regular-webfont.ttf') format('truetype'),
+        url('/fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
 }
 
 body {
     font-size: 1.2em;
     background-color: $color-white;
-    margin: 0px 20%;
+    margin: 0px 10%;
     padding: 0px;
 }
 
 body, p, input, select, textarea, option {
     color: $color-gray-dark;
+}
+
+input, select, button, textarea {
+    margin-top: 10px;
 }
 
 p {
@@ -30,7 +34,7 @@ body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3 {
-    color: $color-green;
+    color: $color-gray-dark;
 }
 
 a {
@@ -64,6 +68,8 @@ button.fa:visited {
     border: none;
     outline: none;
     color: $color-gray-dark;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Navigation */
@@ -95,19 +101,14 @@ textarea {
 }
 
 input[type="text"],
-input[type="text"]:focus {
+input[type="text"]:focus,
+textarea {
     border: solid $color-gray 1px;
     border-radius: 5px;
     padding: 5px 8px;
     font-size: 1.1em;
     outline: none;
-}
-
-textarea {
-    border: solid $color-gray 1px;
-    border-radius: 5px;
-    padding: 2px 4px;
-    font-size: 1.2em;
+    width: 500px;
 }
 
 /* Listes */

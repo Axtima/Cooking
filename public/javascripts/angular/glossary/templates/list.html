@@ -4,13 +4,7 @@
 
 <div ng-repeat="glossary in glossaries| orderBy:'+term'">
     <div class="glossary-definition">
-        Termes : 
-        <a href="#/glossary/form/{{glossary._id}}">
-            <div ng-repeat="term in glossary.terms">
-                {{term}}&nbsp;
-            </div>
-        </a>
-        Définition : {{glossary.definition}}
-        
+        <a href="#/glossary/form/{{glossary._id}}">{{glossary.title}}</a>
+        <button class="fa fa-times" ng-click='remove(glossary)'></button>
     </div>
 </div>

@@ -1,7 +1,7 @@
 .update-step {
     padding: 10px 15px 10px 15px;
     position: relative;
-    height: 120px;
+    height: 150px;
 }
 
 .update-step textarea {
@@ -43,12 +43,12 @@
 
 @keyframes slideDown {
   0%   { top: 0; }
-  100% { top: 140px; }
+  100% { top: 170px; }
 }
 
 @keyframes slideUp {
   0%   { top: 0; }
-  100% { top: -140px; }
+  100% { top: -170px; }
 }
 
 .update-step.slideDown {

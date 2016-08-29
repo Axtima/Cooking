@@ -1,7 +1,7 @@
 <div ng-hide="isLoggedIn()">
     <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour modifier le glossaire</h3>
 </div>
-<form ng-submit="addGlossary()" ng-show="isLoggedIn()">
+<form ng-submit="saveGlossary()" ng-show="isLoggedIn()">
 
     <div class="alert alert-success" ng-show='successMsg'>
         {{successMsg}}
@@ -14,8 +14,12 @@
 
     <div>
         <input type="text"
-               placeholder="Terme"
-               ng-model="glossary.term" />
+               placeholder='Titre'
+               ng-model="glossary.title" />
+        
+        <input type="text"
+               placeholder='Termes à remplacer, séparés par des ","'
+               ng-model="glossary.terms" />
         
         <textarea ng-model="glossary.definition" rows="6"></textarea>
     </div>

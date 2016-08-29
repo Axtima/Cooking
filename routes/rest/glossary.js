@@ -50,6 +50,37 @@ router.post('/', auth, function (req, res, next) {
     });
 });
 
+router.post('/:glossary', auth, function (req, res, next) {
+    
+    // Mise à jour de l'entrée de glossaire
+    var glossary = req.glossary;
+    glossary.title = req.body.title;
+    glossary.terms = req.body.terms;
+    glossary.definition = req.body.definition;
+    
+    glossary.save(function (err, glossaryData) {
+        // Gestion des erreurs
+        if (err) {
+            return next(err);
+        }
+        res.json(glossaryData);
+    });
+});
+
+router.delete('/:glossary', function (req, res, next) {
+
+    // Suppression de l'entrée de glossaire
+    var glossary = req.glossary;
+    
+    glossary.remove(function (err) {
+        // Gestion des erreurs
+        if (err) {
+            return next(err);
+        }
+        return res.sendStatus(204);
+    });
+});
+
 
 router.get('/:glossary', function (req, res, next) {
     res.json(req.glossary);

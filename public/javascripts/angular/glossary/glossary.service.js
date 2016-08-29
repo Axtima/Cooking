@@ -24,20 +24,28 @@ app.factory('glossaryService', ['$http', 'authService', function ($http, authSer
                 o.glossaries.push(data);
             });
         };
-
-        o.upvote = function (glossary) {
-            return $http.put('/rest/glossary/' + glossary._id + '/upvote', null, {
+        
+        o.update = function (glossary) {
+            return $http.post('/rest/glossary/' + glossary._id, glossary, {
                 headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
-                glossary.upvotes += 1;
+            });
+        };
+        
+        o.delete = function (glossaryId) {
+            return $http.delete('/rest/glossary/' + glossaryId, glossaryId, {
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
+            }).success(function (data) {
             });
         };
 
+/*
         o.addComment = function (id, comment) {
             return $http.post('/rest/glossary/' + id + '/comments', comment, {
                 headers: {Authorization: 'Bearer ' + authService.getToken()}
             });
         };
+        */
 
         return o;
     }]

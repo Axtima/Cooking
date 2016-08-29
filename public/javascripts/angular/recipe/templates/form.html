@@ -13,9 +13,8 @@
     <h3>Ajouter une nouvelle recette</h3>
 
     <div>
-        <input type="text"
-               placeholder="Titre"
-               ng-model="recipe.title" />
+        <input type="text" placeholder="Titre"
+               ng-model="recipe.title" width='100%' />
 
         <div ng-show='recipe.steps'>
             <div ng-class="{alt:step.order % 2 === 0 && !step.movingDown && !step.movingUp, slideDown:step.movingDown, slideUp:step.movingUp}"

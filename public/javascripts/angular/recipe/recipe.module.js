@@ -21,7 +21,6 @@ app.controller('RecipeCtrl', [
         $scope.errorMsg = null;
         $scope.recipe = recipe;
         $scope.isLoggedIn = authService.isLoggedIn;
-        
         /**
          * Get html of step description with glossary tooltips
          */
