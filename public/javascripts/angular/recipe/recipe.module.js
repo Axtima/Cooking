@@ -22,6 +22,32 @@ app.controller('RecipeCtrl', [
         $scope.recipe = recipe;
         $scope.isLoggedIn = authService.isLoggedIn;
         /**
+         * Upload d'un fichier
+         */
+        $scope.uploadFile = function(recipeId, stepOrder, file) {
+            var url = '/rest/recipe/upload/'+recipeId;
+            if(stepOrder) {
+                url = url + '/step/' + stepOrder;
+            }
+            Upload.upload({
+                url: url,
+                data:{
+                    file:file
+                }
+            }).then(function (resp) {
+                if(resp.data.error_code === 0) {
+                    $scope.successMsg = file.name + ' transféré avec succès';
+                } else {
+                    $scope.errorMsg = "Erreur lors de l'envoi du fichier " + file.filename;
+                }
+            }, function (resp) {
+                $scope.errorMsg = "Erreur lors de l'envoi du fichier " + file.filename;
+            }, function (evt) { 
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                file.progress = progressPercentage;
+            });
+        },
+        /**
          * Get html of step description with glossary tooltips
          */
         $scope.displayDescription = function(step) {
@@ -53,7 +79,24 @@ app.controller('RecipeCtrl', [
                 title: $scope.recipe.title,
                 steps: $scope.recipe.steps
             }).success(function (recipe) {
-                $scope.successMsg = 'Recette créée avec succès';
+                var nbFiles = 0;
+                if($scope.recipe.file) {
+                    nbFiles++;
+                    $scope.uploadFile(recipe._id, null, $scope.recipe.file);
+                }
+                if($scope.recipe.steps) {
+                    $scope.recipe.steps.forEach(function(step) {
+                        if(step.file) {
+                            nbFiles++;
+                            $scope.uploadFile(recipe._id, step.order, step.file);
+                        }
+                    });
+                }
+                if(nbFiles === 0) {
+                    $scope.successMsg = 'Recette créée avec succès';
+                } else {
+                    $scope.successMsg = 'Envoi des images ...';
+                }
                 $scope.title = '';
                 $scope.steps = [];
             });

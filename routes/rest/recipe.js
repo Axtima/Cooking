@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var jwt = require('express-jwt');
+var multer = require('multer');
 
 var router = express.Router();
 
@@ -9,6 +10,20 @@ var Step = mongoose.model('Step');
 var Opinion = mongoose.model('Opinion');
 
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+
+
+var storage = multer.diskStorage({//multers disk storage settings
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads/')
+    },
+    filename: function (req, file, cb) {
+        var datetimestamp = Date.now();
+        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+    }
+});
+var upload = multer({//multer settings
+    storage: storage
+}).single('file');
 
 /* Params */
 
@@ -65,17 +80,20 @@ router.get('/full', function (req, res, next) {
 });
 
 router.post('/', auth, function (req, res, next) {
-    
+
     // Création des étapes
     var steps = req.body.steps;
-    Step.create(steps, function(err, stepsData) {
+    Step.create(steps, function (err, stepsData) {
         // Gestion des erreurs
         if (err) {
             return next(err);
         }
-        var stepIds = stepsData.map(function(stepData) {
-            return stepData._id;
-        });
+        var stepIds = [];
+        if (stepsData && stepsData.constructor === Array) {
+            stepsData.map(function (stepData) {
+                return stepData._id;
+            });
+        }
         // Création de la recette
         var recipe = new Recipe(req.body);
         recipe.steps = stepIds;
@@ -87,7 +105,7 @@ router.post('/', auth, function (req, res, next) {
             }
             res.json(recipeData);
         });
-    }); 
+    });
 });
 
 
@@ -101,45 +119,78 @@ router.get('/:recipe', function (req, res, next) {
     });
 });
 
-router.put('/:recipe/upvote', auth, function (req, res, next) {
-    req.recipe.upvote(function (err, recipe) {
+router.post('/upload/:recipe/step/:stepOrder', function (req, res) {
+    upload(req, res, function (err) {
         if (err) {
-            return next(err);
+            res.json({error_code: 1, err_desc: err});
+            return;
         }
-
-        res.json(recipe);
-    });
-});
-
-router.post('/:recipe/comments', auth, function (req, res, next) {
-    var comment = new Comment(req.body);
-    comment.recipe = req.recipe;
-    comment.author = req.payload.username;
-
-    comment.save(function (err, comment) {
-        if (err) {
-            return next(err);
-        }
-
-        req.recipe.comments.push(comment);
-        req.recipe.save(function (err, recipe) {
+        // Récupération de l'étape
+        Step.findOne({
+            'recipe._id': req.recipe._id,
+            'order': req.params.stepOrder
+        }, function (err, step) {
             if (err) {
-                return next(err);
+                return handleError(err);
             }
-
-            res.json(comment);
+            step.imageName = req.file.filename;
+            step.save(function (err, step) {
+                if (err) {
+                    return next(err);
+                }
+                res.json({error_code: 0, err_desc: null});
+            });
         });
     });
 });
 
-router.put('/:recipe/comments/:comment/upvote', auth, function (req, res, next) {
-    req.comment.upvote(function (err, recipe) {
+router.post('/upload/:recipe', function (req, res) {
+    upload(req, res, function (err) {
         if (err) {
-            return next(err);
+            res.json({error_code: 1, err_desc: err});
+            return;
         }
-
-        res.json(recipe);
+        req.recipe.imageName = req.file.filename;
+        req.recipe.save(function (err, recipe) {
+            if (err) {
+                return next(err);
+            }
+            res.json({error_code: 0, err_desc: null});
+        });
     });
 });
+
+/*
+ router.post('/:recipe/comments', auth, function (req, res, next) {
+ var comment = new Comment(req.body);
+ comment.recipe = req.recipe;
+ comment.author = req.payload.username;
+ 
+ comment.save(function (err, comment) {
+ if (err) {
+ return next(err);
+ }
+ 
+ req.recipe.comments.push(comment);
+ req.recipe.save(function (err, recipe) {
+ if (err) {
+ return next(err);
+ }
+ 
+ res.json(comment);
+ });
+ });
+ });
+ 
+ router.put('/:recipe/comments/:comment/upvote', auth, function (req, res, next) {
+ req.comment.upvote(function (err, recipe) {
+ if (err) {
+ return next(err);
+ }
+ 
+ res.json(recipe);
+ });
+ });
+ */
 
 module.exports = router;

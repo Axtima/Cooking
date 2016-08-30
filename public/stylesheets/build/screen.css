@@ -91,7 +91,7 @@
 /* line 12, ../sass/base.scss */
 body {
   font-size: 1.2em;
-  background-color: #FAFAFA;
+  background-color: #FDFDFD;
   margin: 0px 10%;
   padding: 0px;
 }
@@ -134,12 +134,12 @@ a:hover {
 }
 
 /* line 49, ../sass/base.scss */
-button {
+button, input[type="submit"] {
   background-color: #45bf55;
-  color: #FAFAFA;
+  color: #FDFDFD;
   border: none;
-  font-size: 1.1em;
-  padding: 5px 8px;
+  font-size: 0.9em;
+  padding: 10px 15px;
   border-radius: 4px;
 }
 
@@ -276,7 +276,7 @@ ul li {
 
 /* line 66, ../sass/home.scss */
 #footer ul li a {
-  color: white;
+  color: #FDFDFD;
 }
 
 /* Recipes */

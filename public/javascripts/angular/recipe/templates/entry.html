@@ -1,3 +1,7 @@
+
+<h2>{{recipe.title}}</h2>
+<img class="thumbs" src="/uploads/{{recipe.imageName}}" />
+
 <div ng-repeat="step in recipe.steps| orderBy:'+order'">
     <div class="recipe-description">
         <span ng-bind-html="displayDescription(step)"></span>
