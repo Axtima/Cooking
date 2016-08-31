@@ -3,6 +3,10 @@
 </div>
 <form ng-submit="saveGlossary()" ng-show="isLoggedIn()">
 
+    <cook-modal show='modalShown' width='400px' height='60%'>
+      Test
+    </cook-modal>
+    
     <div class="alert alert-success" ng-show='successMsg'>
         {{successMsg}}
     </div>
@@ -15,14 +19,20 @@
     <div>
         <input type="text"
                placeholder='Titre'
+               ng-required="true"
                ng-model="glossary.title" />
         
         <input type="text"
                placeholder='Termes à remplacer, séparés par des ","'
+               ng-required="true"
                ng-model="glossary.terms" />
         
-        <textarea ng-model="glossary.definition" rows="6"></textarea>
+        <textarea ng-required="true"
+                  ng-model="glossary.definition"
+                  rows="6"></textarea>
     </div>
 
+    <a href="#/glossary">Annuler</a>
     <button type="submit" class="btn">Valider</button>
+    
 </form>

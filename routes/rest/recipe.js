@@ -90,7 +90,7 @@ router.post('/', auth, function (req, res, next) {
         }
         var stepIds = [];
         if (stepsData && stepsData.constructor === Array) {
-            stepsData.map(function (stepData) {
+            stepIds = stepsData.map(function (stepData) {
                 return stepData._id;
             });
         }
@@ -98,12 +98,28 @@ router.post('/', auth, function (req, res, next) {
         var recipe = new Recipe(req.body);
         recipe.steps = stepIds;
         recipe.author = req.payload.username;
-        recipe.save(function (err, recipeData) {
+        recipe.save(function (err, recipe) {
             // Gestion des erreurs
             if (err) {
                 return next(err);
             }
-            res.json(recipeData);
+            Recipe.findOne(recipe).populate('steps').exec(function(err, recipe) {
+                // Gestion des erreurs
+                if (err) {
+                    return next(err);
+                }
+                recipe.steps.forEach(function(step) {
+                    step.recipe = recipe._id;
+                });
+                recipe.steps.save(function(err, stepsData) {
+                //Step.update(recipe.steps, function(err, stepsData) {
+                    // Gestion des erreurs
+                    if (err) {
+                        return next(err);
+                    }
+                    res.json(recipe);
+                });
+            });
         });
     });
 });

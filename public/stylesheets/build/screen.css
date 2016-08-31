@@ -1,22 +1,29 @@
 /* Variables */
+/*
+$color-white: #FDFDFD;
+$color-gray: #DDDDDD;
+$color-gray-dark: #3B3738;
+$color-green: #45bf55;
+$color-green-dark: #005A31;
+*/
 /* Tooltip */
-/* line 11, ../sass/utils.scss */
+/* line 18, ../sass/utils.scss */
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
+  border-bottom: 1px dotted #10222B;
   /* If you want dots under the hoverable text */
 }
 
-/* Tooltip text */
-/* line 18, ../sass/utils.scss */
+/* line 24, ../sass/utils.scss */
 .tooltip .tooltiptext {
   width: 300px;
+  font-size: 0.8em;
   bottom: 100%;
   left: 50%;
   margin-left: -150px;
   visibility: hidden;
-  background-color: black;
+  background-color: #10222B;
   color: #fff;
   text-align: center;
   padding: 5px 0;
@@ -25,12 +32,12 @@
   z-index: 1;
 }
 
-/* line 33, ../sass/utils.scss */
+/* line 40, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-/* line 37, ../sass/utils.scss */
+/* line 44, ../sass/utils.scss */
 .tooltip .tooltiptext::after {
   content: " ";
   position: absolute;
@@ -40,46 +47,105 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: #10222B transparent transparent transparent;
 }
 
-/* line 48, ../sass/utils.scss */
+/* line 55, ../sass/utils.scss */
 .tooltip .tooltiptext {
   opacity: 0;
   transition: opacity 1s;
 }
 
-/* line 53, ../sass/utils.scss */
+/* line 60, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   opacity: 1;
 }
 
+/* Modal Window */
+/* line 66, ../sass/utils.scss */
+.ng-modal-overlay {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.8;
+}
+
+/* line 77, ../sass/utils.scss */
+.ng-modal-dialog {
+  z-index: 10000;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+
+/* line 90, ../sass/utils.scss */
+.ng-modal-dialog-content {
+  padding: 10px;
+  text-align: left;
+}
+
+/* line 95, ../sass/utils.scss */
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}
+
 /* Others */
-/* line 59, ../sass/utils.scss */
+/* line 109, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 63, ../sass/utils.scss */
+/* line 113, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 67, ../sass/utils.scss */
+/* line 117, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 71, ../sass/utils.scss */
+/* line 121, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 75, ../sass/utils.scss */
+/* line 125, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;
   max-height: 100px;
+}
+
+/* line 131, ../sass/utils.scss */
+.padding-icon::before {
+  padding-right: 5px;
+  top: 2px;
+  position: relative;
+}
+
+/* line 137, ../sass/utils.scss */
+button.link,
+button.fa.link {
+  color: #95AB63;
 }
 
 /* Fonts */
@@ -91,14 +157,14 @@
 /* line 12, ../sass/base.scss */
 body {
   font-size: 1.2em;
-  background-color: #FDFDFD;
+  background-color: #FFFFFF;
   margin: 0px 10%;
   padding: 0px;
 }
 
 /* line 19, ../sass/base.scss */
 body, p, input, select, textarea, option {
-  color: #3B3738;
+  color: #10222B;
 }
 
 /* line 23, ../sass/base.scss */
@@ -119,24 +185,24 @@ body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
 
 /* line 36, ../sass/base.scss */
 h1, h2, h3 {
-  color: #3B3738;
+  color: #10222B;
 }
 
 /* line 40, ../sass/base.scss */
 a {
-  color: #45bf55;
+  color: #95AB63;
   text-decoration: none;
 }
 
 /* line 45, ../sass/base.scss */
 a:hover {
-  color: #005A31;
+  color: #95AB63;
 }
 
 /* line 49, ../sass/base.scss */
 button, input[type="submit"] {
-  background-color: #45bf55;
-  color: #FDFDFD;
+  background-color: #95AB63;
+  color: #FFFFFF;
   border: none;
   font-size: 0.9em;
   padding: 10px 15px;
@@ -157,7 +223,7 @@ button.fa:visited {
   background-color: transparent;
   border: none;
   outline: none;
-  color: #3B3738;
+  color: #10222B;
   margin: 0px;
   padding: 0px;
 }
@@ -168,13 +234,13 @@ button.fa:visited {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #45bf55;
+  background-color: #95AB63;
   border-radius: 0px;
 }
 
 /* line 84, ../sass/base.scss */
 .nav-pills > li > a:hover, .nav > li > a:focus {
-  color: #45bf55;
+  color: #95AB63;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -182,21 +248,21 @@ button.fa:visited {
 /* Titles */
 /* line 92, ../sass/base.scss */
 .page-header {
-  border-bottom-color: #3B3738;
+  border-bottom-color: #10222B;
 }
 
 /* Forms */
 /* line 98, ../sass/base.scss */
 textarea {
   border-radius: 5px;
-  border-color: #3B3738;
+  border-color: #10222B;
 }
 
 /* line 103, ../sass/base.scss */
 input[type="text"],
 input[type="text"]:focus,
 textarea {
-  border: solid #DDDDDD 1px;
+  border: solid #E2F0D6 1px;
   border-radius: 5px;
   padding: 5px 8px;
   font-size: 1.1em;
@@ -210,73 +276,119 @@ ul li {
   list-style-type: none;
 }
 
+/* Table */
+/* line 125, ../sass/base.scss */
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* line 132, ../sass/base.scss */
+table tr th,
+table tr td {
+  padding: 5px 10px 5px 20px;
+}
+
+/* line 137, ../sass/base.scss */
+table tr th {
+  border-top: none;
+  border-right: none;
+  border-bottom: solid 2px #95AB63;
+  border-left: none;
+}
+
+/* line 144, ../sass/base.scss */
+table tr td {
+  border-top: none;
+  border-right: none;
+  border-bottom: solid 1px #E2F0D6;
+  border-left: none;
+}
+
+/* line 151, ../sass/base.scss */
+table tr td.icon {
+  width: 40px;
+}
+
 /**** HEADER ****/
 /* line 4, ../sass/home.scss */
 #banner {
   width: 100%;
-  height: 100px;
+  padding: 10px;
 }
 
 /* line 9, ../sass/home.scss */
-#banner ul {
+#banner nav {
   float: right;
 }
 
 /* line 13, ../sass/home.scss */
+#banner nav ul {
+  margin: 0px;
+}
+
+/* line 17, ../sass/home.scss */
 #banner ul li {
   float: left;
   list-style-type: none;
   padding: 0px 10px;
-  border-right: solid #45bf55 1px;
+  border-right: solid #95AB63 1px;
 }
 
-/* line 20, ../sass/home.scss */
+/* line 24, ../sass/home.scss */
 #banner ul li.last {
   border-right: none;
 }
 
-/* line 24, ../sass/home.scss */
-#banner a {
-  color: #45bf55;
+/* line 28, ../sass/home.scss */
+#logo img {
+  width: 120px;
 }
 
-/* line 28, ../sass/home.scss */
+/* line 32, ../sass/home.scss */
+#banner a {
+  color: #95AB63;
+}
+
+/* line 36, ../sass/home.scss */
 #banner h1 {
   margin: 0px;
-  color: #45bf55;
+  color: #95AB63;
   padding: 25px 0px 0px 70px;
 }
 
-/* line 38, ../sass/home.scss */
+/* line 46, ../sass/home.scss */
 #headerMenu li {
   float: left;
   margin-right: 10px;
   padding-right: 10px;
-  border-right: solid #45bf55 1px;
+  border-right: solid #95AB63 1px;
 }
 
-/* line 45, ../sass/home.scss */
+/* line 53, ../sass/home.scss */
 #container {
   margin: 0px 20%;
 }
 
 /**** FOOTER ****/
-/* line 51, ../sass/home.scss */
+/* line 59, ../sass/home.scss */
 #footer {
-  background-color: #3B3738;
+  margin-top: 30px;
+  background-color: #10222B;
   width: 100%;
-  float: left;
-  padding: 15px 40px;
-}
-
-/* line 58, ../sass/home.scss */
-#footer ul {
   float: left;
 }
 
 /* line 66, ../sass/home.scss */
+#footer ul {
+  float: left;
+}
+
+/* line 74, ../sass/home.scss */
 #footer ul li a {
-  color: #FDFDFD;
+  color: #FFFFFF;
 }
 
 /* Recipes */

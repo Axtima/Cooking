@@ -1,27 +1,34 @@
 /* Variables */
-
+/*
 $color-white: #FDFDFD;
 $color-gray: #DDDDDD;
 $color-gray-dark: #3B3738;
 $color-green: #45bf55;
 $color-green-dark: #005A31;
+*/
+
+$color-white: #FFFFFF;
+$color-gray: #E2F0D6;
+$color-gray-dark: #10222B;
+$color-green: #95AB63;
+$color-green-dark: #95AB63;
 
 /* Tooltip */
 
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    border-bottom: 1px dotted $color-gray-dark; /* If you want dots under the hoverable text */
 }
 
-/* Tooltip text */
 .tooltip .tooltiptext {
     width: 300px;
+    font-size: 0.8em;
     bottom: 100%;
     left: 50%;
     margin-left: -150px;
     visibility: hidden;
-    background-color: black;
+    background-color: $color-gray-dark;
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -33,7 +40,7 @@ $color-green-dark: #005A31;
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
-    
+
 .tooltip .tooltiptext::after {
     content: " ";
     position: absolute;
@@ -42,7 +49,7 @@ $color-green-dark: #005A31;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: $color-gray-dark transparent transparent transparent;
 }
 
 .tooltip .tooltiptext {
@@ -52,6 +59,49 @@ $color-green-dark: #005A31;
 
 .tooltip:hover .tooltiptext {
     opacity: 1;
+}
+
+/* Modal Window */
+
+.ng-modal-overlay {
+    position:absolute;
+    z-index:9999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000000;
+    opacity: 0.8;
+}
+
+.ng-modal-dialog {
+    z-index:10000;
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
+}
+
+.ng-modal-dialog-content {
+    padding:10px;
+    text-align: left;
+}
+
+.ng-modal-close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
 }
 
 /* Others */
@@ -76,4 +126,15 @@ $color-green-dark: #005A31;
     border-radius: 5px;
     max-width: 100px;
     max-height: 100px;
+}
+
+.padding-icon::before {
+    padding-right: 5px;
+    top: 2px;
+    position: relative;
+}
+
+button.link,
+button.fa.link {
+    color: $color-green;
 }

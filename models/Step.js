@@ -6,8 +6,8 @@ var StepSchema = new mongoose.Schema({
     imageName: String,
     lastModificationDate: Date,
     description: String,
-    opinions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Opinion'}],
-    recipe: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
+    recipe: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+    opinions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Opinion'}]
 });
 
 mongoose.model('Step', StepSchema);

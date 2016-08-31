@@ -15,11 +15,13 @@ app.controller('GlossaryCtrl', [
         if(glossary && glossary.terms) {
             glossary.terms = glossary.terms.toString();
         }
-        $scope.successMsg = null;
-        $scope.errorMsg = null;
+        
         $scope.glossary = glossary;
         $scope.glossaries = glossaries;
         $scope.isLoggedIn = authService.isLoggedIn;
+        $scope.successMsg = null;
+        $scope.errorMsg = null;
+
         $scope.saveGlossary = function () {
             if(!$scope.glossary._id) {
                 glossaryService.create({

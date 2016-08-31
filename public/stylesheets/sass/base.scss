@@ -119,3 +119,35 @@ ul {
 ul li {
     list-style-type: none;
 }
+
+/* Table */
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table tr th,
+table tr td {
+    padding: 5px 10px 5px 20px;
+}
+
+table tr th {
+    border-top: none;
+    border-right: none;
+    border-bottom: solid 2px $color-green;
+    border-left: none;
+}
+
+table tr td {
+    border-top: none;
+    border-right: none;
+    border-bottom: solid 1px $color-gray;
+    border-left: none;
+}
+
+table tr td.icon {
+    width: 40px;
+}

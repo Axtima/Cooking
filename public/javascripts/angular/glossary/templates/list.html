@@ -1,10 +1,21 @@
 <h2>Glossaire</h2>
 
-<a href='/#/glossary/form'>Ajouter une définition</a>
+<a class="fa fa-plus padding-icon" href='/#/glossary/form'>Ajouter une définition</a>
 
-<div ng-repeat="glossary in glossaries| orderBy:'+term'">
-    <div class="glossary-definition">
-        <a href="#/glossary/form/{{glossary._id}}">{{glossary.title}}</a>
-        <button class="fa fa-times" ng-click='remove(glossary)'></button>
-    </div>
-</div>
+<table>
+    <tr>
+        <th>
+            Définition
+        </th>
+        <th>
+        </th>
+    </tr>
+    <tr ng-repeat="glossary in glossaries| orderBy:'+term'">
+        <td>
+            <a href="#/glossary/form/{{glossary._id}}">{{glossary.title}}</a>
+        </td>
+        <td class="icon">
+            <button class="fa fa-times" ng-click='remove(glossary)'></button>
+        </td>
+    </tr>
+</table>

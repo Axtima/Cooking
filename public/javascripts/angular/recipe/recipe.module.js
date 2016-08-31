@@ -4,7 +4,8 @@ var app = angular.module('cooking.recipe', [
     'ngRoute',
     'cooking.constant',
     'ngFileUpload',
-    'ngAnimate'
+    'ngAnimate',
+    'cooking.modal'
 ]);
 
 app.controller('RecipeCtrl', [
