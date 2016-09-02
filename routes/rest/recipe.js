@@ -108,11 +108,8 @@ router.post('/', auth, function (req, res, next) {
                 if (err) {
                     return next(err);
                 }
-                recipe.steps.forEach(function(step) {
-                    step.recipe = recipe._id;
-                });
-                recipe.steps.save(function(err, stepsData) {
-                //Step.update(recipe.steps, function(err, stepsData) {
+                //recipe.steps.save(function(err, stepsData) {
+                Step.update({_id: {"$in":stepIds}}, {recipe: recipe._id}, {multi: true}, function(err, stepsData) {
                     // Gestion des erreurs
                     if (err) {
                         return next(err);
@@ -143,7 +140,7 @@ router.post('/upload/:recipe/step/:stepOrder', function (req, res) {
         }
         // Récupération de l'étape
         Step.findOne({
-            'recipe._id': req.recipe._id,
+            'recipe': req.recipe._id,
             'order': req.params.stepOrder
         }, function (err, step) {
             if (err) {

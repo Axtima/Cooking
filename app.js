@@ -16,6 +16,7 @@ require('./models/Glossary');
 require('./config/passport');
 
 mongoose.connect('mongodb://localhost/cooking');
+mongoose.set('debug', true);
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/rest/user');
