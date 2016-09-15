@@ -12,7 +12,7 @@
 body {
     font-size: 1.2em;
     background-color: $color-white;
-    margin: 0px 10%;
+    margin: 0px;
     padding: 0px;
 }
 
@@ -35,6 +35,10 @@ body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3 {
     color: $color-gray-dark;
+}
+
+h2 {
+    text-transform: uppercase;
 }
 
 a {
@@ -114,10 +118,18 @@ textarea {
 /* Listes */
 
 ul {
+    margin: 0px;
+    padding: 0px;
 }
 
 ul li {
     list-style-type: none;
+    padding: 0px 0px 10px 0px;
+} 
+
+ul li:before {
+    content: "- ";
+    color: $color-green;
 }
 
 /* Table */

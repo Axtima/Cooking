@@ -25,25 +25,25 @@ app.controller('RecipeCtrl', [
         /**
          * Upload d'un fichier
          */
-        $scope.uploadFile = function(recipeId, stepOrder, file) {
-            var url = '/rest/recipe/upload/'+recipeId;
-            if(stepOrder) {
+        $scope.uploadFile = function (recipeId, stepOrder, file) {
+            var url = '/rest/recipe/upload/' + recipeId;
+            if (stepOrder) {
                 url = url + '/step/' + stepOrder;
             }
             Upload.upload({
                 url: url,
-                data:{
-                    file:file
+                data: {
+                    file: file
                 }
             }).then(function (resp) {
-                if(resp.data.error_code === 0) {
+                if (resp.data.error_code === 0) {
                     $scope.successMsg = file.name + ' transféré avec succès';
                 } else {
                     $scope.errorMsg = "Erreur lors de l'envoi du fichier " + file.filename;
                 }
             }, function (resp) {
                 $scope.errorMsg = "Erreur lors de l'envoi du fichier " + file.filename;
-            }, function (evt) { 
+            }, function (evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 file.progress = progressPercentage;
             });
@@ -51,20 +51,20 @@ app.controller('RecipeCtrl', [
         /**
          * Get html of step description with glossary tooltips
          */
-        $scope.displayDescription = function(step) {
+        $scope.displayDescription = function (step) {
             var description = step.description;
-            glossaries.forEach(function(glossary) {
-                glossary.terms.forEach(function(term) {
+            glossaries.forEach(function (glossary) {
+                glossary.terms.forEach(function (term) {
                     var index = description.search(term);
-                    if(index >= 0) {
+                    if (index >= 0) {
                         var text = description.slice(0, index) +
-                            '<div class="tooltip">' +
+                                '<div class="tooltip">' +
                                 description.slice(index, index + term.length) +
                                 '<span class="tooltiptext">' +
-                                    glossary.definition +
+                                glossary.definition +
                                 '</span>' +
-                            '</div>'+
-                            description.slice(index + term.length);
+                                '</div>' +
+                                description.slice(index + term.length);
                         description = text;
                     }
                 });
@@ -78,28 +78,95 @@ app.controller('RecipeCtrl', [
         $scope.addRecipe = function () {
             recipeService.create({
                 title: $scope.recipe.title,
-                steps: $scope.recipe.steps
+                steps: $scope.recipe.steps,
+                ingredients: $scope.recipe.ingredients
             }).success(function (recipe) {
                 var nbFiles = 0;
-                if($scope.recipe.file) {
+                if ($scope.recipe.file) {
                     nbFiles++;
                     $scope.uploadFile(recipe._id, null, $scope.recipe.file);
                 }
-                if($scope.recipe.steps) {
-                    $scope.recipe.steps.forEach(function(step) {
-                        if(step.file) {
+                if ($scope.recipe.steps) {
+                    $scope.recipe.steps.forEach(function (step) {
+                        if (step.file) {
                             nbFiles++;
                             $scope.uploadFile(recipe._id, step.order, step.file);
                         }
                     });
                 }
-                if(nbFiles === 0) {
+                if (nbFiles === 0) {
                     $scope.successMsg = 'Recette créée avec succès';
                 } else {
                     $scope.successMsg = 'Envoi des images ...';
                 }
                 $scope.title = '';
                 $scope.steps = [];
+            });
+        };
+        /**
+         * Add a ingredient
+         */
+        $scope.addIngredient = function () {
+            if (!$scope.recipe.ingredients) {
+                $scope.recipe.ingredients = [];
+            }
+            $scope.recipe.ingredients.push({
+                order: $scope.recipe.ingredients.length + 1,
+                name: ''
+            });
+        };
+        /**
+         * Move down a ingredient
+         */
+        $scope.ingredientDown = function (ingredient) {
+            if (ingredient.order < $scope.recipe.ingredients.length) {
+                var ingredientReplaced = $scope.recipe.ingredients[ingredient.order];
+                ingredientReplaced.movingUp = true;
+                ingredient.movingDown = true;
+
+                $timeout(function () {
+                    ingredientReplaced.movingUp = false;
+                    ingredient.movingDown = false;
+
+                    ingredientReplaced.order = ingredient.order;
+                    ingredient.order = ingredient.order + 1;
+
+                    // Echange des places dans la liste
+                    $scope.recipe.ingredients[ingredient.order - 1] = ingredient;
+                    $scope.recipe.ingredients[ingredientReplaced.order - 1] = ingredientReplaced;
+                }, 2000);
+            }
+        };
+        /**
+         * Move up a ingredient
+         */
+        $scope.ingredientUp = function (ingredient) {
+            if ((ingredient.order - 2) >= 0) {
+                var ingredientReplaced = $scope.recipe.ingredients[ingredient.order - 2];
+                ingredient.movingUp = true;
+                ingredientReplaced.movingDown = true;
+                $timeout(function () {
+                    ingredient.movingUp = false;
+                    ingredientReplaced.movingDown = false;
+
+                    ingredientReplaced.order = ingredient.order;
+                    ingredient.order = ingredient.order - 1;
+
+                    // Echange des places dans la liste
+                    $scope.recipe.ingredients[ingredient.order - 1] = ingredient;
+                    $scope.recipe.ingredients[ingredientReplaced.order - 1] = ingredientReplaced;
+                }, 2000);
+            }
+        };
+        /**
+         * Remove a ingredient
+         */
+        $scope.removeIngredient = function (ingredient) {
+            $scope.recipe.ingredients.splice(ingredient.order - 1, 1);
+            var i = 0;
+            $scope.recipe.ingredients.forEach(function (ingredient) {
+                i++;
+                ingredient.order = i;
             });
         };
         /**
@@ -122,11 +189,11 @@ app.controller('RecipeCtrl', [
                 var stepReplaced = $scope.recipe.steps[step.order];
                 stepReplaced.movingUp = true;
                 step.movingDown = true;
-                
-                $timeout(function() {
+
+                $timeout(function () {
                     stepReplaced.movingUp = false;
                     step.movingDown = false;
-                    
+
                     stepReplaced.order = step.order;
                     step.order = step.order + 1;
 
@@ -144,13 +211,13 @@ app.controller('RecipeCtrl', [
                 var stepReplaced = $scope.recipe.steps[step.order - 2];
                 step.movingUp = true;
                 stepReplaced.movingDown = true;
-                $timeout(function() {
+                $timeout(function () {
                     step.movingUp = false;
                     stepReplaced.movingDown = false;
-                    
+
                     stepReplaced.order = step.order;
                     step.order = step.order - 1;
-                    
+
                     // Echange des places dans la liste
                     $scope.recipe.steps[step.order - 1] = step;
                     $scope.recipe.steps[stepReplaced.order - 1] = stepReplaced;
@@ -160,7 +227,7 @@ app.controller('RecipeCtrl', [
         /**
          * Remove a step
          */
-        $scope.remove = function (step) {
+        $scope.removeStep = function (step) {
             $scope.recipe.steps.splice(step.order - 1, 1);
             var i = 0;
             $scope.recipe.steps.forEach(function (step) {
@@ -187,33 +254,4 @@ app.controller('RecipeCtrl', [
                 });
             }
         };
-
-        /*$scope.addComment = function () {
-         if ($scope.body === '') {
-         return;
-         }
-         recipeService.addComment(recipe._id, {
-         body: $scope.body,
-         author: 'user',
-         }).success
-         if (!$scope.recipe.steps) {
-         $scope.recipe.steps = [];
-         }
-         $scope.recipe.steps.push({
-         order: $scope.recipe.steps.length + 1,
-         description: ''
-         });
-         }
-         /*$scope.addComment = function () {
-         if ($scope.body === '') {
-         return;
-         }
-         recipeService.addComment(recipe._id, {
-         body: $scope.body,
-         author: 'user',
-         }).success(function (comment) {
-         $scope.recipe.comments.push(comment);
-         });
-         $scope.body = '';
-         };*/
     }]);

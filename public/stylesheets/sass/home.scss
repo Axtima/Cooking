@@ -50,8 +50,11 @@
     border-right: solid $color-green 1px;
 }
 
+/**** MAIN CONTAINER ****/
+
 #container {
-    margin: 0px 20%;
+    margin: 0px auto;
+    width: 1000px;
 }
 
 /**** FOOTER ****/

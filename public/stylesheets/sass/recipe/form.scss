@@ -9,9 +9,16 @@
     float: left;
 }
 
+.update-ingredient {
+    padding: 10px 15px 10px 15px;
+    position: relative;
+}
+
 .thumb {
     margin-left: 10px;
 }
+
+/* Animation step */
 
 .update-step.ng-enter,
 .update-step.ng-leave,
@@ -27,6 +34,7 @@
   left:-30px;
   opacity:0;
 }
+
 .update-step.ng-enter.ng-enter-active {
   left:0;
   opacity:1;
@@ -36,24 +44,74 @@
   left:0;
   opacity:1;
 }
+
 .update-step.ng-leave.ng-leave-active {
   left:-30px;
   opacity:0;
 }
 
-@keyframes slideDown {
+.update-step.slideDown {
+    animation: stepSlideDown 2s ease;
+}
+.update-step.slideUp {
+    animation: stepSlideUp 2s ease;
+}
+
+@keyframes stepSlideDown {
   0%   { top: 0; }
   100% { top: 170px; }
 }
 
-@keyframes slideUp {
+@keyframes stepSlideUp {
   0%   { top: 0; }
   100% { top: -170px; }
 }
 
-.update-step.slideDown {
-    animation: slideDown 2s ease;
+/* Animation ingredient */
+
+.update-ingredient.ng-enter,
+.update-ingredient.ng-leave,
+.update-ingredient.ng-move {
+  -webkit-transition: 0.8s linear all;
+  -moz-transition: 0.8s linear all;
+  -o-transition: 0.8s linear all;
+  transition: 0.8s linear all;
+  position:relative;
 }
-.update-step.slideUp {
-    animation: slideUp 2s ease;
+
+.update-ingredient.ng-enter {
+  left:-30px;
+  opacity:0;
+}
+
+.update-ingredient.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.update-ingredient.ng-leave {
+  left:0;
+  opacity:1;
+}
+
+.update-ingredient.ng-leave.ng-leave-active {
+  left:-30px;
+  opacity:0;
+}
+
+.update-ingredient.slideDown {
+    animation: ingredientSlideDown 2s ease;
+}
+.update-ingredient.slideUp {
+    animation: ingredientSlideUp 2s ease;
+}
+
+@keyframes ingredientSlideDown {
+  0%   { top: 0; }
+  100% { top: 70px; }
+}
+
+@keyframes ingredientSlideUp {
+  0%   { top: 0; }
+  100% { top: -70px; }
 }

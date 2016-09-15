@@ -1,6 +1,14 @@
 
 <h2>{{recipe.title}}</h2>
+
 <img class="thumbs" src="/uploads/{{recipe.imageName}}" />
+
+<h3>Ingrédients :</h3>
+<ul>
+    <li ng-repeat="ingredient in recipe.ingredients| orderBy:'+order'">
+        {{ingredient.name}}
+    </li>
+</ul>
 
 <div ng-repeat="step in recipe.steps| orderBy:'+order'">
     <h3>Etape {{step.order}} :</h3>

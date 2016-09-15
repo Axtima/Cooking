@@ -13,8 +13,8 @@ app.factory('recipeService', ['$http', 'authService', function ($http, authServi
 
         o.getAll = function () {
             /*return $http.get('/rest/recipe').success(function (data) {
-                angular.copy(data, o.recipes);
-            });*/
+             angular.copy(data, o.recipes);
+             });*/
             return $http.get('/rest/recipe').then(function (res) {
                 return res.data;
             });

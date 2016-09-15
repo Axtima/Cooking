@@ -7,11 +7,11 @@ $color-green: #45bf55;
 $color-green-dark: #005A31;
 */
 
-$color-white: #FFFFFF;
-$color-gray: #E2F0D6;
-$color-gray-dark: #10222B;
-$color-green: #95AB63;
-$color-green-dark: #95AB63;
+$color-white: #F6F6F6;
+$color-gray: #E8E8E8;
+$color-gray-dark: #333333;
+$color-green: #B90504;
+$color-green-dark: #990100;
 
 /* Tooltip */
 
@@ -28,7 +28,7 @@ $color-green-dark: #95AB63;
     left: 50%;
     margin-left: -150px;
     visibility: hidden;
-    background-color: $color-gray-dark;
+    background-color: $color-green-dark;
     color: #fff;
     text-align: center;
     padding: 5px 0;

@@ -11,7 +11,7 @@ $color-green-dark: #005A31;
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted #10222B;
+  border-bottom: 1px dotted #333333;
   /* If you want dots under the hoverable text */
 }
 
@@ -23,7 +23,7 @@ $color-green-dark: #005A31;
   left: 50%;
   margin-left: -150px;
   visibility: hidden;
-  background-color: #10222B;
+  background-color: #990100;
   color: #fff;
   text-align: center;
   padding: 5px 0;
@@ -47,7 +47,7 @@ $color-green-dark: #005A31;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #10222B transparent transparent transparent;
+  border-color: #333333 transparent transparent transparent;
 }
 
 /* line 55, ../sass/utils.scss */
@@ -145,5 +145,5 @@ $color-green-dark: #005A31;
 /* line 137, ../sass/utils.scss */
 button.link,
 button.fa.link {
-  color: #95AB63;
+  color: #B90504;
 }

@@ -10,6 +10,7 @@ var RecipeSchema = new mongoose.Schema({
     difficulty: Number,
     cost: Number,
     points: Number,
+    ingredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}],
     steps: [{type: mongoose.Schema.Types.ObjectId, ref: 'Step'}],
     opinions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Opinion'}],
     removed: Boolean

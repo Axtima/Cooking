@@ -6,11 +6,11 @@ var multer = require('multer');
 var router = express.Router();
 
 var Recipe = mongoose.model('Recipe');
+var Ingredient = mongoose.model('Ingredient');
 var Step = mongoose.model('Step');
 var Opinion = mongoose.model('Opinion');
 
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
-
 
 var storage = multer.diskStorage({//multers disk storage settings
     destination: function (req, file, cb) {
@@ -71,7 +71,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/full', function (req, res, next) {
-    Recipe.find().populate('steps').exec(function (err, recipes) {
+    Recipe.find().populate('ingredients').populate('steps').exec(function (err, recipes) {
         if (err) {
             return next(err);
         }
@@ -79,42 +79,72 @@ router.get('/full', function (req, res, next) {
     });
 });
 
+/**
+ * Création d'une recette
+ */
 router.post('/', auth, function (req, res, next) {
 
-    // Création des étapes
+    // Récupération des valeurs à partir de la requête
     var steps = req.body.steps;
-    Step.create(steps, function (err, stepsData) {
-        // Gestion des erreurs
+    var ingredients = req.body.ingredients;
+
+    // Création des ingrédients
+    Ingredient.create(ingredients, function (err, ingredientsData) {
         if (err) {
             return next(err);
         }
-        var stepIds = [];
-        if (stepsData && stepsData.constructor === Array) {
-            stepIds = stepsData.map(function (stepData) {
-                return stepData._id;
-            });
-        }
-        // Création de la recette
-        var recipe = new Recipe(req.body);
-        recipe.steps = stepIds;
-        recipe.author = req.payload.username;
-        recipe.save(function (err, recipe) {
+        // Création des étapes
+        Step.create(steps, function (err, stepsData) {
             // Gestion des erreurs
             if (err) {
                 return next(err);
             }
-            Recipe.findOne(recipe).populate('steps').exec(function(err, recipe) {
+
+            // Transformation des objets associés en liste d'ids
+            var stepIds = [];
+            if (stepsData && stepsData.constructor === Array) {
+                stepIds = stepsData.map(function (stepData) {
+                    return stepData._id;
+                });
+            }
+            var ingredientIds = [];
+            if (ingredientsData && ingredientsData.constructor === Array) {
+                ingredientIds = ingredientsData.map(function (ingredientData) {
+                    return ingredientData._id;
+                });
+            }
+
+            // Création de la recette
+            var recipe = new Recipe(req.body);
+            recipe.steps = stepIds;
+            recipe.ingredients = ingredientIds;
+            recipe.author = req.payload.username;
+            recipe.save(function (err, recipe) {
                 // Gestion des erreurs
                 if (err) {
                     return next(err);
                 }
-                //recipe.steps.save(function(err, stepsData) {
-                Step.update({_id: {"$in":stepIds}}, {recipe: recipe._id}, {multi: true}, function(err, stepsData) {
+
+                Recipe.findOne(recipe).populate('steps').populate('ingredients').exec(function (err, recipe) {
                     // Gestion des erreurs
                     if (err) {
                         return next(err);
                     }
-                    res.json(recipe);
+                    
+                    // Association de la recette sur les étapes créées
+                    Step.update({_id: {"$in": stepIds}}, {recipe: recipe._id}, {multi: true}, function (err, stepsData) {
+                        // Gestion des erreurs
+                        if (err) {
+                            return next(err);
+                        }
+                        Ingredient.update({_id: {"$in": ingredientIds}}, {recipe: recipe._id}, {multi: true}, function (err, ingredientsData) {
+                            // Gestion des erreurs
+                            if (err) {
+                                return next(err);
+                            }
+                            res.json(recipe);
+                        });
+                    });
                 });
             });
         });
@@ -123,7 +153,7 @@ router.post('/', auth, function (req, res, next) {
 
 
 router.get('/:recipe', function (req, res, next) {
-    req.recipe.populate('steps', function (err, recipe) {
+    req.recipe.populate(['ingredients', 'steps'], function (err, recipe) {
         if (err) {
             return next(err);
         }

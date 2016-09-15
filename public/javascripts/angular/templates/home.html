@@ -4,6 +4,7 @@
     </div>
     <div class="panel-body">
         <div ng-repeat="recipe in recipes| orderBy:'-title'">
+            <img class="thumbs" src="/uploads/{{recipe.imageName}}" />
             <span>
                 <a href="#/recipe/{{recipe._id}}">
                     {{recipe.title}}

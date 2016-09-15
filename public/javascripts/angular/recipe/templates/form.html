@@ -10,7 +10,7 @@
         {{errorMsg}}
     </div>
 
-    <h3>Ajouter une nouvelle recette</h3>
+    <h2>Ajouter une nouvelle recette</h2>
 
     <div>
         <input type="text" placeholder="Titre" ng-required="true"
@@ -24,18 +24,34 @@
         </div>
         
         <div class="clearer">
+            <h3>Ingrédients :</h3>
+            <div ng-class="{alt:ingredient.order % 2 === 0 && !ingredient.movingDown && !ingredient.movingUp, slideDown:ingredient.movingDown, slideUp:ingredient.movingUp}"
+                 class="update-ingredient"
+                 ng-repeat="ingredient in recipe.ingredients">
+                <div>
+                    <input type="text" id="ingredientName{{ingredient.order}}" ng-model="ingredient.name" ng-required="true" />
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === recipe.ingredients.length" ng-click="ingredientDown(ingredient)" class="fa fa-arrow-down"></button>
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === 1" ng-click="ingredientUp(ingredient)" class="fa fa-arrow-up"></button>
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp" ng-click="removeIngredient(ingredient)" class="fa fa-times"></button>
+                </div>
+            </div>
+        </div>
+        <button type="button" ng-click="addIngredient()" class="fa fa-plus padding-icon link">Ajouter un ingrédient</button>
+        
+        <div class="clearer">
             <h3>Etapes :</h3>
             <div ng-class="{alt:step.order % 2 === 0 && !step.movingDown && !step.movingUp, slideDown:step.movingDown, slideUp:step.movingUp}"
                  class="update-step"
                  ng-repeat="step in recipe.steps">
                 <div>
-                    <label for="desc{{step.order}}">
-                        Etape n°{{step.order}} 
-                        <button type="button" ng-hide="step.order === recipe.steps.length" ng-click="stepDown(step)" class="fa fa-arrow-down"></button>
-                        <button type="button" ng-hide="step.order === 1" ng-click="stepUp(step)" class="fa fa-arrow-up"></button>
-                        <button type="button" ng-click="remove(step)" class="fa fa-times"></button>
-                    </label><br />
-                    <textarea id="desc{{step.order}}" ng-model="step.description" ng-required="true" rows="6"></textarea>
+                    <label for="stepDescription{{step.order}}">
+                        Etape n°{{step.order}}
+                    </label>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === recipe.steps.length" ng-click="stepDown(step)" class="fa fa-arrow-down"></button>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === 1" ng-click="stepUp(step)" class="fa fa-arrow-up"></button>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp" ng-click="removeStep(step)" class="fa fa-times"></button>
+                    <br />
+                    <textarea id="stepDescription{{step.order}}" ng-model="step.description" ng-required="true" rows="6"></textarea>
                     <span>
                         <img class="thumb" ngf-thumbnail="step.file || '/images/thumb.jpg'">
                         <button class="fa fa-camera" ngf-select ng-model="step.file" name="file" ngf-pattern="'image/*'"
