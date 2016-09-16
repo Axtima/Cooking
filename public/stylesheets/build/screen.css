@@ -1,13 +1,6 @@
 /* Variables */
-/*
-$color-white: #FDFDFD;
-$color-gray: #DDDDDD;
-$color-gray-dark: #3B3738;
-$color-green: #45bf55;
-$color-green-dark: #005A31;
-*/
 /* Tooltip */
-/* line 18, ../sass/utils.scss */
+/* line 10, ../sass/utils.scss */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -15,7 +8,7 @@ $color-green-dark: #005A31;
   /* If you want dots under the hoverable text */
 }
 
-/* line 24, ../sass/utils.scss */
+/* line 16, ../sass/utils.scss */
 .tooltip .tooltiptext {
   width: 300px;
   font-size: 0.8em;
@@ -32,12 +25,12 @@ $color-green-dark: #005A31;
   z-index: 1;
 }
 
-/* line 40, ../sass/utils.scss */
+/* line 32, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-/* line 44, ../sass/utils.scss */
+/* line 36, ../sass/utils.scss */
 .tooltip .tooltiptext::after {
   content: " ";
   position: absolute;
@@ -50,19 +43,19 @@ $color-green-dark: #005A31;
   border-color: #333333 transparent transparent transparent;
 }
 
-/* line 55, ../sass/utils.scss */
+/* line 47, ../sass/utils.scss */
 .tooltip .tooltiptext {
   opacity: 0;
   transition: opacity 1s;
 }
 
-/* line 60, ../sass/utils.scss */
+/* line 52, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   opacity: 1;
 }
 
 /* Modal Window */
-/* line 66, ../sass/utils.scss */
+/* line 58, ../sass/utils.scss */
 .ng-modal-overlay {
   position: absolute;
   z-index: 9999;
@@ -74,7 +67,7 @@ $color-green-dark: #005A31;
   opacity: 0.8;
 }
 
-/* line 77, ../sass/utils.scss */
+/* line 69, ../sass/utils.scss */
 .ng-modal-dialog {
   z-index: 10000;
   position: absolute;
@@ -88,13 +81,13 @@ $color-green-dark: #005A31;
   box-shadow: 4px 4px 80px #000;
 }
 
-/* line 90, ../sass/utils.scss */
+/* line 82, ../sass/utils.scss */
 .ng-modal-dialog-content {
   padding: 10px;
   text-align: left;
 }
 
-/* line 95, ../sass/utils.scss */
+/* line 87, ../sass/utils.scss */
 .ng-modal-close {
   position: absolute;
   top: 3px;
@@ -107,42 +100,60 @@ $color-green-dark: #005A31;
   font-family: 'arial', 'sans-serif';
 }
 
+/* Messages */
+/* line 101, ../sass/utils.scss */
+.alert {
+  padding: 20px 40px;
+}
+
+/* line 105, ../sass/utils.scss */
+.alert.alert-error {
+  border-top: solid #B90504 1px;
+  border-bottom: solid #B90504 1px;
+}
+
+/* line 110, ../sass/utils.scss */
+.alert.alert-success {
+  border-top: solid green 1px;
+  border-bottom: solid green 1px;
+}
+
 /* Others */
-/* line 109, ../sass/utils.scss */
+/* line 117, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 113, ../sass/utils.scss */
+/* line 121, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 117, ../sass/utils.scss */
+/* line 125, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 121, ../sass/utils.scss */
+/* line 129, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 125, ../sass/utils.scss */
+/* line 133, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;
   max-height: 100px;
 }
 
-/* line 131, ../sass/utils.scss */
+/* line 139, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
   position: relative;
 }
 
-/* line 137, ../sass/utils.scss */
+/* line 145, ../sass/utils.scss */
 button.link,
 button.fa.link {
   color: #B90504;
@@ -184,27 +195,34 @@ body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 36, ../sass/base.scss */
-h1, h2, h3 {
+h1 {
   color: #333333;
 }
 
 /* line 40, ../sass/base.scss */
 h2 {
+  color: #B90504;
+  font-size: 1.2em;
   text-transform: uppercase;
 }
 
-/* line 44, ../sass/base.scss */
+/* line 46, ../sass/base.scss */
+h3 {
+  color: #333333;
+}
+
+/* line 50, ../sass/base.scss */
 a {
   color: #B90504;
   text-decoration: none;
 }
 
-/* line 49, ../sass/base.scss */
-a:hover {
+/* line 55, ../sass/base.scss */
+a:hover, a:visited, a:active {
   color: #990100;
 }
 
-/* line 53, ../sass/base.scss */
+/* line 59, ../sass/base.scss */
 button, input[type="submit"] {
   background-color: #B90504;
   color: #F6F6F6;
@@ -212,14 +230,15 @@ button, input[type="submit"] {
   font-size: 0.9em;
   padding: 10px 15px;
   border-radius: 4px;
+  margin-top: 20px;
 }
 
-/* line 62, ../sass/base.scss */
+/* line 69, ../sass/base.scss */
 button:hover {
   cursor: pointer;
 }
 
-/* line 66, ../sass/base.scss */
+/* line 73, ../sass/base.scss */
 button.fa,
 button.fa:hover,
 button.fa:active,
@@ -228,13 +247,25 @@ button.fa:visited {
   background-color: transparent;
   border: none;
   outline: none;
-  color: #333333;
   margin: 0px;
   padding: 0px;
 }
 
+/* line 85, ../sass/base.scss */
+button.fa {
+  color: #B90504;
+}
+
+/* line 89, ../sass/base.scss */
+button.fa:hover,
+button.fa:active,
+button.fa:focus,
+button.fa:visited {
+  color: #990100;
+}
+
 /* Navigation */
-/* line 80, ../sass/base.scss */
+/* line 97, ../sass/base.scss */
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
@@ -243,7 +274,7 @@ button.fa:visited {
   border-radius: 0px;
 }
 
-/* line 88, ../sass/base.scss */
+/* line 105, ../sass/base.scss */
 .nav-pills > li > a:hover, .nav > li > a:focus {
   color: #B90504;
   background-color: transparent;
@@ -251,21 +282,25 @@ button.fa:visited {
 }
 
 /* Titles */
-/* line 96, ../sass/base.scss */
+/* line 113, ../sass/base.scss */
 .page-header {
   border-bottom-color: #333333;
 }
 
 /* Forms */
-/* line 102, ../sass/base.scss */
+/* line 119, ../sass/base.scss */
 textarea {
   border-radius: 5px;
   border-color: #333333;
 }
 
-/* line 107, ../sass/base.scss */
+/* line 124, ../sass/base.scss */
 input[type="text"],
 input[type="text"]:focus,
+input[type="password"],
+input[type="password"]:focus,
+input[type="email"],
+input[type="email"]:focus,
 textarea {
   border: solid #E8E8E8 1px;
   border-radius: 5px;
@@ -276,26 +311,26 @@ textarea {
 }
 
 /* Listes */
-/* line 120, ../sass/base.scss */
+/* line 141, ../sass/base.scss */
 ul {
   margin: 0px;
   padding: 0px;
 }
 
-/* line 125, ../sass/base.scss */
+/* line 146, ../sass/base.scss */
 ul li {
   list-style-type: none;
   padding: 0px 0px 10px 0px;
 }
 
-/* line 130, ../sass/base.scss */
+/* line 151, ../sass/base.scss */
 ul li:before {
   content: "- ";
   color: #B90504;
 }
 
 /* Table */
-/* line 137, ../sass/base.scss */
+/* line 158, ../sass/base.scss */
 table {
   margin-top: 20px;
   border-collapse: collapse;
@@ -303,13 +338,13 @@ table {
   width: 100%;
 }
 
-/* line 144, ../sass/base.scss */
+/* line 165, ../sass/base.scss */
 table tr th,
 table tr td {
   padding: 5px 10px 5px 20px;
 }
 
-/* line 149, ../sass/base.scss */
+/* line 170, ../sass/base.scss */
 table tr th {
   border-top: none;
   border-right: none;
@@ -317,7 +352,7 @@ table tr th {
   border-left: none;
 }
 
-/* line 156, ../sass/base.scss */
+/* line 177, ../sass/base.scss */
 table tr td {
   border-top: none;
   border-right: none;
@@ -325,7 +360,7 @@ table tr td {
   border-left: none;
 }
 
-/* line 163, ../sass/base.scss */
+/* line 184, ../sass/base.scss */
 table tr td.icon {
   width: 40px;
 }
@@ -356,28 +391,33 @@ table tr td.icon {
 }
 
 /* line 24, ../sass/home.scss */
+#banner ul li:before {
+  content: none;
+}
+
+/* line 28, ../sass/home.scss */
 #banner ul li.last {
   border-right: none;
 }
 
-/* line 28, ../sass/home.scss */
+/* line 32, ../sass/home.scss */
 #logo img {
   width: 120px;
 }
 
-/* line 32, ../sass/home.scss */
+/* line 36, ../sass/home.scss */
 #banner a {
   color: #B90504;
 }
 
-/* line 36, ../sass/home.scss */
+/* line 40, ../sass/home.scss */
 #banner h1 {
   margin: 0px;
   color: #B90504;
   padding: 25px 0px 0px 70px;
 }
 
-/* line 46, ../sass/home.scss */
+/* line 50, ../sass/home.scss */
 #headerMenu li {
   float: left;
   margin-right: 10px;
@@ -385,15 +425,20 @@ table tr td.icon {
   border-right: solid #B90504 1px;
 }
 
+/* line 57, ../sass/home.scss */
+#headerMenu li:before {
+  content: none;
+}
+
 /**** MAIN CONTAINER ****/
-/* line 55, ../sass/home.scss */
+/* line 63, ../sass/home.scss */
 #container {
   margin: 0px auto;
   width: 1000px;
 }
 
 /**** FOOTER ****/
-/* line 62, ../sass/home.scss */
+/* line 70, ../sass/home.scss */
 #footer {
   margin-top: 30px;
   background-color: #333333;
@@ -401,12 +446,17 @@ table tr td.icon {
   float: left;
 }
 
-/* line 69, ../sass/home.scss */
+/* line 77, ../sass/home.scss */
 #footer ul {
   float: left;
 }
 
-/* line 77, ../sass/home.scss */
+/* line 85, ../sass/home.scss */
+#footer ul li:before {
+  content: none;
+}
+
+/* line 89, ../sass/home.scss */
 #footer ul li a {
   color: #F6F6F6;
 }
@@ -416,7 +466,7 @@ table tr td.icon {
 .update-step {
   padding: 10px 15px 10px 15px;
   position: relative;
-  height: 150px;
+  height: 180px;
 }
 
 /* line 7, ../sass/recipe/form.scss */
@@ -487,7 +537,7 @@ table tr td.icon {
     top: 0;
   }
   100% {
-    top: 170px;
+    top: 200px;
   }
 }
 @keyframes stepSlideUp {
@@ -495,7 +545,7 @@ table tr td.icon {
     top: 0;
   }
   100% {
-    top: -170px;
+    top: -200px;
   }
 }
 /* Animation ingredient */

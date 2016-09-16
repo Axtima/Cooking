@@ -1,13 +1,6 @@
 /* Variables */
-/*
-$color-white: #FDFDFD;
-$color-gray: #DDDDDD;
-$color-gray-dark: #3B3738;
-$color-green: #45bf55;
-$color-green-dark: #005A31;
-*/
 /* Tooltip */
-/* line 18, ../sass/utils.scss */
+/* line 10, ../sass/utils.scss */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -15,7 +8,7 @@ $color-green-dark: #005A31;
   /* If you want dots under the hoverable text */
 }
 
-/* line 24, ../sass/utils.scss */
+/* line 16, ../sass/utils.scss */
 .tooltip .tooltiptext {
   width: 300px;
   font-size: 0.8em;
@@ -32,12 +25,12 @@ $color-green-dark: #005A31;
   z-index: 1;
 }
 
-/* line 40, ../sass/utils.scss */
+/* line 32, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-/* line 44, ../sass/utils.scss */
+/* line 36, ../sass/utils.scss */
 .tooltip .tooltiptext::after {
   content: " ";
   position: absolute;
@@ -50,19 +43,19 @@ $color-green-dark: #005A31;
   border-color: #333333 transparent transparent transparent;
 }
 
-/* line 55, ../sass/utils.scss */
+/* line 47, ../sass/utils.scss */
 .tooltip .tooltiptext {
   opacity: 0;
   transition: opacity 1s;
 }
 
-/* line 60, ../sass/utils.scss */
+/* line 52, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   opacity: 1;
 }
 
 /* Modal Window */
-/* line 66, ../sass/utils.scss */
+/* line 58, ../sass/utils.scss */
 .ng-modal-overlay {
   position: absolute;
   z-index: 9999;
@@ -74,7 +67,7 @@ $color-green-dark: #005A31;
   opacity: 0.8;
 }
 
-/* line 77, ../sass/utils.scss */
+/* line 69, ../sass/utils.scss */
 .ng-modal-dialog {
   z-index: 10000;
   position: absolute;
@@ -88,13 +81,13 @@ $color-green-dark: #005A31;
   box-shadow: 4px 4px 80px #000;
 }
 
-/* line 90, ../sass/utils.scss */
+/* line 82, ../sass/utils.scss */
 .ng-modal-dialog-content {
   padding: 10px;
   text-align: left;
 }
 
-/* line 95, ../sass/utils.scss */
+/* line 87, ../sass/utils.scss */
 .ng-modal-close {
   position: absolute;
   top: 3px;
@@ -107,42 +100,60 @@ $color-green-dark: #005A31;
   font-family: 'arial', 'sans-serif';
 }
 
+/* Messages */
+/* line 101, ../sass/utils.scss */
+.alert {
+  padding: 20px 40px;
+}
+
+/* line 105, ../sass/utils.scss */
+.alert.alert-error {
+  border-top: solid #B90504 1px;
+  border-bottom: solid #B90504 1px;
+}
+
+/* line 110, ../sass/utils.scss */
+.alert.alert-success {
+  border-top: solid green 1px;
+  border-bottom: solid green 1px;
+}
+
 /* Others */
-/* line 109, ../sass/utils.scss */
+/* line 117, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 113, ../sass/utils.scss */
+/* line 121, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 117, ../sass/utils.scss */
+/* line 125, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 121, ../sass/utils.scss */
+/* line 129, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 125, ../sass/utils.scss */
+/* line 133, ../sass/utils.scss */
 .thumb {
   border-radius: 5px;
   max-width: 100px;
   max-height: 100px;
 }
 
-/* line 131, ../sass/utils.scss */
+/* line 139, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
   position: relative;
 }
 
-/* line 137, ../sass/utils.scss */
+/* line 145, ../sass/utils.scss */
 button.link,
 button.fa.link {
   color: #B90504;

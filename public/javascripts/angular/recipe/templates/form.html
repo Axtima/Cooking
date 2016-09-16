@@ -19,12 +19,12 @@
             <h3>Illustration :</h3>
             <img class="thumb" ngf-thumbnail="recipe.file || '/images/thumb.jpg'">
             <button class="fa fa-camera" ngf-select ng-model="recipe.file" name="file" ngf-pattern="'image/*'"
-                ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
-                ngf-resize="{quality: .8, width: 100, height: 100}"></button>
+                    ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
+                    ngf-resize="{quality: .8, width: 100, height: 100}"></button>
         </div>
         
+        <h3>Ingrédients :</h3>
         <div class="clearer">
-            <h3>Ingrédients :</h3>
             <div ng-class="{alt:ingredient.order % 2 === 0 && !ingredient.movingDown && !ingredient.movingUp, slideDown:ingredient.movingDown, slideUp:ingredient.movingUp}"
                  class="update-ingredient"
                  ng-repeat="ingredient in recipe.ingredients">
@@ -36,10 +36,12 @@
                 </div>
             </div>
         </div>
-        <button type="button" ng-click="addIngredient()" class="fa fa-plus padding-icon link">Ajouter un ingrédient</button>
-        
         <div class="clearer">
-            <h3>Etapes :</h3>
+            <button type="button" ng-click="addIngredient()" class="fa fa-plus padding-icon link">Ajouter un ingrédient</button>
+        </div>
+
+        <h3>Etapes :</h3>
+        <div class="clearer">
             <div ng-class="{alt:step.order % 2 === 0 && !step.movingDown && !step.movingUp, slideDown:step.movingDown, slideUp:step.movingUp}"
                  class="update-step"
                  ng-repeat="step in recipe.steps">
@@ -61,7 +63,9 @@
                 </div>
             </div>
         </div>
-        <button type="button" ng-click="addStep()" class="fa fa-plus padding-icon link">Ajouter une étape</button>
+        <div class="clearer">
+            <button type="button" ng-click="addStep()" class="fa fa-plus padding-icon link">Ajouter une étape</button>
+        </div>
     </div>
 
     <button type="submit" class="btn">Valider</button>

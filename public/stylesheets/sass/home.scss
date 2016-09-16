@@ -18,7 +18,11 @@
     float: left;
     list-style-type: none;
     padding: 0px 10px;
-    border-right: solid $color-green 1px;
+    border-right: solid $color-main 1px;
+}
+
+#banner ul li:before {
+    content: none;
 }
 
 #banner ul li.last {
@@ -30,12 +34,12 @@
 }
 
 #banner a {
-    color: $color-green;
+    color: $color-main;
 }
 
 #banner h1 {
     margin: 0px;
-    color: $color-green;
+    color: $color-main;
     padding: 25px 0px 0px 70px;
 }
 
@@ -47,7 +51,11 @@
     float: left;
     margin-right: 10px;
     padding-right: 10px;
-    border-right: solid $color-green 1px;
+    border-right: solid $color-main 1px;
+}
+
+#headerMenu li:before {
+    content: none;
 }
 
 /**** MAIN CONTAINER ****/
@@ -72,6 +80,10 @@
 
 #footer ul li {
     
+}
+
+#footer ul li:before {
+    content: none;
 }
 
 #footer ul li a {

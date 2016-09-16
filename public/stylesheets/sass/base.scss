@@ -33,30 +33,37 @@ body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-h1, h2, h3 {
+h1 {
     color: $color-gray-dark;
 }
 
 h2 {
+    color: $color-main;
+    font-size: 1.2em;
     text-transform: uppercase;
 }
 
+h3 {
+    color: $color-gray-dark;
+}
+
 a {
-    color: $color-green;
+    color: $color-main;
     text-decoration: none;
 }
 
-a:hover {
-    color: $color-green-dark;
+a:hover, a:visited, a:active {
+    color: $color-main-dark;
 }
 
 button, input[type="submit"] {
-    background-color: $color-green;
+    background-color: $color-main;
     color: $color-white;
     border: none;
     font-size: 0.9em;
     padding: 10px 15px;
     border-radius: 4px;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -71,9 +78,19 @@ button.fa:visited {
     background-color: transparent;
     border: none;
     outline: none;
-    color: $color-gray-dark;
     margin: 0px;
     padding: 0px;
+}
+
+button.fa {
+    color: $color-main;
+}
+
+button.fa:hover,
+button.fa:active,
+button.fa:focus,
+button.fa:visited {
+    color: $color-main-dark;
 }
 
 /* Navigation */
@@ -81,12 +98,12 @@ button.fa:visited {
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
     color: #fff;
-    background-color: $color-green;
+    background-color: $color-main;
     border-radius: 0px;
 }
 
 .nav-pills>li>a:hover, .nav>li>a:focus {
-    color: $color-green;
+    color: $color-main;
     background-color: transparent;
     text-decoration: underline;
 }
@@ -106,6 +123,10 @@ textarea {
 
 input[type="text"],
 input[type="text"]:focus,
+input[type="password"],
+input[type="password"]:focus,
+input[type="email"],
+input[type="email"]:focus,
 textarea {
     border: solid $color-gray 1px;
     border-radius: 5px;
@@ -129,7 +150,7 @@ ul li {
 
 ul li:before {
     content: "- ";
-    color: $color-green;
+    color: $color-main;
 }
 
 /* Table */
@@ -149,7 +170,7 @@ table tr td {
 table tr th {
     border-top: none;
     border-right: none;
-    border-bottom: solid 2px $color-green;
+    border-bottom: solid 2px $color-main;
     border-left: none;
 }
 

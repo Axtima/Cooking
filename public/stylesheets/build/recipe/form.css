@@ -2,7 +2,7 @@
 .update-step {
   padding: 10px 15px 10px 15px;
   position: relative;
-  height: 150px;
+  height: 180px;
 }
 
 /* line 7, ../../sass/recipe/form.scss */
@@ -73,7 +73,7 @@
     top: 0;
   }
   100% {
-    top: 170px;
+    top: 200px;
   }
 }
 @keyframes stepSlideUp {
@@ -81,7 +81,7 @@
     top: 0;
   }
   100% {
-    top: -170px;
+    top: -200px;
   }
 }
 /* Animation ingredient */

@@ -9,11 +9,8 @@ passport.use(new LocalStrategy(
             if (err) {
                 return done(err);
             }
-            if (!user) {
-                return done(null, false, {message: 'Incorrect username.'});
-            }
-            if (!user.validPassword(password)) {
-                return done(null, false, {message: 'Incorrect password.'});
+            if (!user || !user.validPassword(password)) {
+                return done(null, false, {message: 'Email ou mot de passe invalide'});
             }
             return done(null, user);
         });

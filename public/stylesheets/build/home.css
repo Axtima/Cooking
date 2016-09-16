@@ -1,5 +1,5 @@
 /*
-Error: Undefined variable: "$color-green".
+Error: Undefined variable: "$color-main".
         on line 21 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss
 
 16: 
@@ -7,11 +7,11 @@ Error: Undefined variable: "$color-green".
 18:     float: left;
 19:     list-style-type: none;
 20:     padding: 0px 10px;
-21:     border-right: solid $color-green 1px;
+21:     border-right: solid $color-main 1px;
 22: }
 23: 
-24: #banner ul li.last {
-25:     border-right: none;
+24: #banner ul li:before {
+25:     content: none;
 26: }
 
 Backtrace:
@@ -72,4 +72,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-green\".\A         on line 21 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss\A \A 16: \A 17: #banner ul li {\A 18:     float: left;\A 19:     list-style-type: none;\A 20:     padding: 0px 10px;\A 21:     border-right: solid $color-green 1px;\A 22: }\A 23: \A 24: #banner ul li.last {\A 25:     border-right: none;\A 26: }"; }
+  content: "Error: Undefined variable: \"$color-main\".\A         on line 21 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss\A \A 16: \A 17: #banner ul li {\A 18:     float: left;\A 19:     list-style-type: none;\A 20:     padding: 0px 10px;\A 21:     border-right: solid $color-main 1px;\A 22: }\A 23: \A 24: #banner ul li:before {\A 25:     content: none;\A 26: }"; }
