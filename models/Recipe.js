@@ -7,6 +7,7 @@ var RecipeSchema = new mongoose.Schema({
     creationDate: Date,
     lastModificationDate: Date,
     duration: Number,
+    version: Number,
     difficulty: Number,
     cost: Number,
     points: Number,

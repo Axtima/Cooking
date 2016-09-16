@@ -66,6 +66,10 @@ button, input[type="submit"] {
     margin-top: 20px;
 }
 
+button.selected, input[type="submit"].selected {
+    background-color: $color-gray-dark;
+}
+
 button:hover {
     cursor: pointer;
 }

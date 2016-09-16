@@ -118,42 +118,61 @@
   border-bottom: solid green 1px;
 }
 
-/* Others */
+/* Thumbnails */
 /* line 117, ../sass/utils.scss */
+.thumbnail {
+  width: 200px;
+  max-height: 150px;
+}
+
+/* line 126, ../sass/utils.scss */
+.thumbs .thumb {
+  float: left;
+  width: 200px;
+}
+
+/* line 131, ../sass/utils.scss */
+.thumbs .thumb .thumb-image {
+  width: 200px;
+  max-height: 150px;
+}
+
+/* line 136, ../sass/utils.scss */
+.thumbs .thumb .thumb-text {
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Others */
+/* line 144, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 121, ../sass/utils.scss */
+/* line 148, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 125, ../sass/utils.scss */
+/* line 152, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 129, ../sass/utils.scss */
+/* line 156, ../sass/utils.scss */
 .alt {
   background-color: #EEE;
 }
 
-/* line 133, ../sass/utils.scss */
-.thumb {
-  border-radius: 5px;
-  max-width: 100px;
-  max-height: 100px;
-}
-
-/* line 139, ../sass/utils.scss */
+/* line 160, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
   position: relative;
 }
 
-/* line 145, ../sass/utils.scss */
+/* line 166, ../sass/utils.scss */
 button.link,
 button.fa.link {
   color: #B90504;

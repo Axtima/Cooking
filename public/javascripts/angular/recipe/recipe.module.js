@@ -17,7 +17,8 @@ app.controller('RecipeCtrl', [
     'Upload',
     '$timeout',
     '$sce',
-    function ($scope, recipeService, recipe, glossaries, authService, Upload, $timeout, $sce) {
+    'constants',
+    function ($scope, recipeService, recipe, glossaries, authService, Upload, $timeout, $sce, constants) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
@@ -78,6 +79,9 @@ app.controller('RecipeCtrl', [
         $scope.addRecipe = function () {
             recipeService.create({
                 title: $scope.recipe.title,
+                version: $scope.recipe.version,
+                difficulty: $scope.recipe.difficulty,
+                cost: $scope.recipe.cost,
                 steps: $scope.recipe.steps,
                 ingredients: $scope.recipe.ingredients
             }).success(function (recipe) {
@@ -253,5 +257,65 @@ app.controller('RecipeCtrl', [
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                 });
             }
+        };
+        /**
+         * Select version quick
+         */
+        $scope.selectVersionQuick = function () {
+            $scope.recipe.version = constants.recipe.version.quick;
+        };
+        /**
+         * Select version classic
+         */
+        $scope.selectVersionClassic = function () {
+            $scope.recipe.version = constants.recipe.version.classic;
+        };
+        /**
+         * Select version gastro
+         */
+        $scope.selectVersionGastro = function () {
+            $scope.recipe.version = constants.recipe.version.gastro;
+        };
+        /**
+         * Select difficulty easy
+         */
+        $scope.selectDifficultyEasy = function () {
+            $scope.recipe.difficulty = constants.recipe.difficulty.easy;
+        };
+        /**
+         * Select difficulty medium
+         */
+        $scope.selectDifficultyMedium = function () {
+            $scope.recipe.difficulty = constants.recipe.difficulty.medium;
+        };
+        /**
+         * Select difficulty hard
+         */
+        $scope.selectDifficultyHard = function () {
+            $scope.recipe.difficulty = constants.recipe.difficulty.hard;
+        };
+        /**
+         * Select cost low
+         */
+        $scope.selectCostLow = function () {
+            $scope.recipe.cost = constants.recipe.cost.low;
+        };
+        /**
+         * Select cost medium
+         */
+        $scope.selectCostMedium = function () {
+            $scope.recipe.cost = constants.recipe.cost.medium;
+        };
+        /**
+         * Select cost high
+         */
+        $scope.selectCostHigh = function () {
+            $scope.recipe.cost = constants.recipe.cost.high;
+        };
+        /**
+         * Select cost very high
+         */
+        $scope.selectCostVeryHigh = function () {
+            $scope.recipe.cost = constants.recipe.cost.veryHigh;
         };
     }]);

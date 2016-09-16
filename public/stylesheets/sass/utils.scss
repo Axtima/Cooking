@@ -112,6 +112,33 @@ $color-main-dark: #990100;
     border-bottom: solid green 1px;
 }
 
+/* Thumbnails */
+
+.thumbnail {
+    width: 200px;
+    max-height: 150px;
+}
+
+.thumbs{
+    
+}
+
+.thumbs .thumb {
+    float: left;
+    width: 200px
+}
+
+.thumbs .thumb .thumb-image {
+    width: 200px;
+    max-height: 150px;
+}
+
+.thumbs .thumb .thumb-text {
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
 /* Others */
 
 .clearer {
@@ -128,12 +155,6 @@ $color-main-dark: #990100;
 
 .alt {
     background-color: #EEE;
-}
-
-.thumb {
-    border-radius: 5px;
-    max-width: 100px;
-    max-height: 100px;
 }
 
 .padding-icon::before {

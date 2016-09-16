@@ -47,6 +47,11 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 glossaries: function() {return [{}];}
             }
         });
+        // Admin
+        $routeProvider.when('/admin', {
+            templateUrl: constants.angularDirectory + '/templates/admin.html',
+            controller: 'MainCtrl'
+        });
         // Glossary
         $routeProvider.when('/glossary', {
             templateUrl: constants.angularDirectory + 'glossary/templates/list.html',

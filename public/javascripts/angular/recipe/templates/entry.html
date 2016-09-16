@@ -1,7 +1,29 @@
 
 <h2>{{recipe.title}}</h2>
 
-<img class="thumbs" src="/uploads/{{recipe.imageName}}" />
+<div>
+    Version :
+    <span ng-show="{{recipe.version === 1}}">Rapide</span>
+    <span ng-show="{{recipe.version === 2}}">Classique</span>
+    <span ng-show="{{recipe.version === 3}}">Gastronomique</span>
+</div>
+
+<div>
+    Difficulté :
+    <span ng-show="{{recipe.difficulty === 1}}">Facile</span>
+    <span ng-show="{{recipe.difficulty === 2}}">Moyen</span>
+    <span ng-show="{{recipe.difficulty === 3}}">Difficile</span>
+</div>
+
+<div>
+    Coût :
+    <span ng-show="{{recipe.cost === 1}}">€</span>
+    <span ng-show="{{recipe.cost === 2}}">€€</span>
+    <span ng-show="{{recipe.cost === 3}}">€€€</span>
+    <span ng-show="{{recipe.cost === 4}}">€€€€</span>
+</div>
+
+<img ng-show="{{recipe.imageName}}" class="thumbnail" src="/uploads/{{recipe.imageName}}" />
 
 <h3>Ingrédients :</h3>
 <ul>
@@ -12,7 +34,7 @@
 
 <div ng-repeat="step in recipe.steps| orderBy:'+order'">
     <h3>Etape {{step.order}} :</h3>
-    <img class="thumbs" src="/uploads/{{step.imageName}}" />
+    <img ng-show="{{step.imageName}}" class="thumbnail" src="/uploads/{{step.imageName}}" />
     <div class="recipe-description">
         <span ng-bind-html="displayDescription(step)"></span>
     </div>
