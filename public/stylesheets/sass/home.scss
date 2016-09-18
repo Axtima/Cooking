@@ -8,6 +8,7 @@
 
 #banner nav {
     float: right;
+    margin-right: 10px;
 }
 
 #banner nav ul {
@@ -18,7 +19,6 @@
     float: left;
     list-style-type: none;
     padding: 0px 10px;
-    border-right: solid $color-main 1px;
 }
 
 #banner ul li:before {
@@ -38,9 +38,12 @@
 }
 
 #banner h1 {
-    margin: 0px;
-    color: $color-main;
-    padding: 25px 0px 0px 70px;
+    margin: 0px auto;
+    color: $color-gray;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 50px;
+    text-align: center;
 }
 
 #headerMenu {
@@ -69,17 +72,25 @@
 
 #footer {
     margin-top: 30px;
-    background-color: $color-gray-dark;
     width: 100%;
     float: left;
 }
 
 #footer ul {
-    float: left;
+    width: 400px;
+    margin: 0 auto;
 }
 
 #footer ul li {
-    
+    float: left;
+    border-right: solid $color-gray 1px;
+    padding: 0px 10px;
+    margin: 10px 0px;
+    line-height: 18px;
+}
+
+#footer ul li.last {
+    border-right: none;
 }
 
 #footer ul li:before {
@@ -87,5 +98,11 @@
 }
 
 #footer ul li a {
-    color: $color-white;
+    color: $color-gray-dark;
+    font-size: 0.8em;
+}
+
+.button-add-recipe {
+    float: right;
+    margin-top: 10px;
 }

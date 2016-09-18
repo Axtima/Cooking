@@ -1,12 +1,21 @@
 /* Fonts */
 
 @font-face{ 
-    font-family: 'Roboto';
+    font-family: 'Roboto-Regular';
     src: url('/fonts/roboto_regular/Roboto-Regular-webfont.eot');
     src: url('/fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
         url('/fonts/roboto_regular/Roboto-Regular-webfont.woff') format('woff'),
         url('/fonts/roboto_regular/Roboto-Regular-webfont.ttf') format('truetype'),
         url('/fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont') format('svg');
+}
+
+@font-face{ 
+    font-family: 'Roboto-Thin';
+    src: url('/fonts/roboto_thin/Roboto-Thin-webfont.eot');
+    src: url('/fonts/roboto_thin/Roboto-Thin-webfont.eot?iefix') format('eot'),
+        url('/fonts/roboto_thin/Roboto-Thin-webfont.woff') format('woff'),
+        url('/fonts/roboto_thin/Roboto-Thin-webfont.ttf') format('truetype'),
+        url('/fonts/roboto_thin/Roboto-Thin-webfont.svg#webfont') format('svg');
 }
 
 body {
@@ -29,18 +38,22 @@ p {
     padding: 0px;
 }
 
-body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', Arial, sans-serif;
+body {
+    font-family: 'Roboto-Thin', Arial, sans-serif;
 }
 
 h1 {
     color: $color-gray-dark;
+    letter-spacing: 4px;
 }
 
 h2 {
+    margin: 0px;
+    padding: 20px 0px 20px 0px;
     color: $color-main;
     font-size: 1.2em;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 h3 {
@@ -52,17 +65,13 @@ a {
     text-decoration: none;
 }
 
-a:hover, a:visited, a:active {
-    color: $color-main-dark;
-}
-
 button, input[type="submit"] {
     background-color: $color-main;
     color: $color-white;
     border: none;
     font-size: 0.9em;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 15px 20px;
+    text-transform: uppercase;
     margin-top: 20px;
 }
 
@@ -74,27 +83,12 @@ button:hover {
     cursor: pointer;
 }
 
-button.fa,
-button.fa:hover,
-button.fa:active,
-button.fa:focus,
-button.fa:visited {
-    background-color: transparent;
-    border: none;
+button:focus {
     outline: none;
-    margin: 0px;
-    padding: 0px;
 }
 
-button.fa {
-    color: $color-main;
-}
-
-button.fa:hover,
-button.fa:active,
-button.fa:focus,
-button.fa:visited {
-    color: $color-main-dark;
+button.fa::before {
+    padding-right: 8px;
 }
 
 /* Navigation */

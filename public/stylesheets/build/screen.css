@@ -16,7 +16,7 @@
   left: 50%;
   margin-left: -150px;
   visibility: hidden;
-  background-color: #990100;
+  background-color: #E22E2F;
   color: #fff;
   text-align: center;
   padding: 5px 0;
@@ -103,13 +103,13 @@
 /* Messages */
 /* line 101, ../sass/utils.scss */
 .alert {
-  padding: 20px 40px;
+  padding: 10px 40px;
 }
 
 /* line 105, ../sass/utils.scss */
 .alert.alert-error {
-  border-top: solid #B90504 1px;
-  border-bottom: solid #B90504 1px;
+  border-top: solid #E22E2F 1px;
+  border-bottom: solid #E22E2F 1px;
 }
 
 /* line 110, ../sass/utils.scss */
@@ -172,102 +172,14 @@
   position: relative;
 }
 
-/* line 166, ../sass/utils.scss */
-button.link,
-button.fa.link {
-  color: #B90504;
-}
-
-/* Fonts */
-@font-face {
-  font-family: 'Roboto';
-  src: url("/fonts/roboto_regular/Roboto-Regular-webfont.eot");
-  src: url("/fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix") format("eot"), url("/fonts/roboto_regular/Roboto-Regular-webfont.woff") format("woff"), url("/fonts/roboto_regular/Roboto-Regular-webfont.ttf") format("truetype"), url("/fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont") format("svg");
-}
-/* line 12, ../sass/base.scss */
-body {
-  font-size: 1.2em;
-  background-color: #F6F6F6;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* line 19, ../sass/base.scss */
-body, p, input, select, textarea, option {
-  color: #333333;
-}
-
-/* line 23, ../sass/base.scss */
-input, select, button, textarea {
-  margin-top: 10px;
-}
-
-/* line 27, ../sass/base.scss */
-p {
-  margin: 0px;
-  padding: 0px;
-}
-
-/* line 32, ../sass/base.scss */
-body, p, input, select, option, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', Arial, sans-serif;
-}
-
-/* line 36, ../sass/base.scss */
-h1 {
-  color: #333333;
-}
-
-/* line 40, ../sass/base.scss */
-h2 {
-  color: #B90504;
-  font-size: 1.2em;
-  text-transform: uppercase;
-}
-
-/* line 46, ../sass/base.scss */
-h3 {
-  color: #333333;
-}
-
-/* line 50, ../sass/base.scss */
-a {
-  color: #B90504;
-  text-decoration: none;
-}
-
-/* line 55, ../sass/base.scss */
-a:hover, a:visited, a:active {
-  color: #990100;
-}
-
-/* line 59, ../sass/base.scss */
-button, input[type="submit"] {
-  background-color: #B90504;
-  color: #F6F6F6;
-  border: none;
-  font-size: 0.9em;
-  padding: 10px 15px;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-/* line 69, ../sass/base.scss */
-button.selected, input[type="submit"].selected {
-  background-color: #333333;
-}
-
-/* line 73, ../sass/base.scss */
-button:hover {
-  cursor: pointer;
-}
-
-/* line 77, ../sass/base.scss */
-button.fa,
-button.fa:hover,
-button.fa:active,
-button.fa:focus,
-button.fa:visited {
+/* Simple icon without text, dark on white */
+/* line 168, ../sass/utils.scss */
+button.icon.fa,
+button.icon.fa:hover,
+button.icon.fa:active,
+button.icon.fa:focus,
+button.icon.fa:visited {
+  color: #A7A7A7;
   background-color: transparent;
   border: none;
   outline: none;
@@ -275,50 +187,150 @@ button.fa:visited {
   padding: 0px;
 }
 
-/* line 89, ../sass/base.scss */
-button.fa {
-  color: #B90504;
+/* Simple link main color on white, with or without icon */
+/* line 183, ../sass/utils.scss */
+button.link,
+button.fa.link {
+  background-color: transparent;
+  padding: 0px;
+  margin: 10px 0px 0px 0px;
+  color: #E22E2F;
 }
 
-/* line 93, ../sass/base.scss */
-button.fa:hover,
-button.fa:active,
-button.fa:focus,
-button.fa:visited {
-  color: #990100;
+/* line 191, ../sass/utils.scss */
+.no-margin-top {
+  margin-top: 0px !important;
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url("/fonts/roboto_regular/Roboto-Regular-webfont.eot");
+  src: url("/fonts/roboto_regular/Roboto-Regular-webfont.eot?iefix") format("eot"), url("/fonts/roboto_regular/Roboto-Regular-webfont.woff") format("woff"), url("/fonts/roboto_regular/Roboto-Regular-webfont.ttf") format("truetype"), url("/fonts/roboto_regular/Roboto-Regular-webfont.svg#webfont") format("svg");
+}
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: url("/fonts/roboto_thin/Roboto-Thin-webfont.eot");
+  src: url("/fonts/roboto_thin/Roboto-Thin-webfont.eot?iefix") format("eot"), url("/fonts/roboto_thin/Roboto-Thin-webfont.woff") format("woff"), url("/fonts/roboto_thin/Roboto-Thin-webfont.ttf") format("truetype"), url("/fonts/roboto_thin/Roboto-Thin-webfont.svg#webfont") format("svg");
+}
+/* line 21, ../sass/base.scss */
+body {
+  font-size: 1.2em;
+  background-color: #FFFFFF;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 28, ../sass/base.scss */
+body, p, input, select, textarea, option {
+  color: #333333;
+}
+
+/* line 32, ../sass/base.scss */
+input, select, button, textarea {
+  margin-top: 10px;
+}
+
+/* line 36, ../sass/base.scss */
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 41, ../sass/base.scss */
+body {
+  font-family: 'Roboto-Thin', Arial, sans-serif;
+}
+
+/* line 45, ../sass/base.scss */
+h1 {
+  color: #333333;
+  letter-spacing: 4px;
+}
+
+/* line 50, ../sass/base.scss */
+h2 {
+  margin: 0px;
+  padding: 20px 0px 20px 0px;
+  color: #E22E2F;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* line 59, ../sass/base.scss */
+h3 {
+  color: #333333;
+}
+
+/* line 63, ../sass/base.scss */
+a {
+  color: #E22E2F;
+  text-decoration: none;
+}
+
+/* line 68, ../sass/base.scss */
+button, input[type="submit"] {
+  background-color: #E22E2F;
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.9em;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+/* line 78, ../sass/base.scss */
+button.selected, input[type="submit"].selected {
+  background-color: #333333;
+}
+
+/* line 82, ../sass/base.scss */
+button:hover {
+  cursor: pointer;
+}
+
+/* line 86, ../sass/base.scss */
+button:focus {
+  outline: none;
+}
+
+/* line 90, ../sass/base.scss */
+button.fa::before {
+  padding-right: 8px;
 }
 
 /* Navigation */
-/* line 101, ../sass/base.scss */
+/* line 95, ../sass/base.scss */
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #B90504;
+  background-color: #E22E2F;
   border-radius: 0px;
 }
 
-/* line 109, ../sass/base.scss */
+/* line 103, ../sass/base.scss */
 .nav-pills > li > a:hover, .nav > li > a:focus {
-  color: #B90504;
+  color: #E22E2F;
   background-color: transparent;
   text-decoration: underline;
 }
 
 /* Titles */
-/* line 117, ../sass/base.scss */
+/* line 111, ../sass/base.scss */
 .page-header {
   border-bottom-color: #333333;
 }
 
 /* Forms */
-/* line 123, ../sass/base.scss */
+/* line 117, ../sass/base.scss */
 textarea {
   border-radius: 5px;
   border-color: #333333;
 }
 
-/* line 128, ../sass/base.scss */
+/* line 122, ../sass/base.scss */
 input[type="text"],
 input[type="text"]:focus,
 input[type="password"],
@@ -326,7 +338,7 @@ input[type="password"]:focus,
 input[type="email"],
 input[type="email"]:focus,
 textarea {
-  border: solid #E8E8E8 1px;
+  border: solid #A7A7A7 1px;
   border-radius: 5px;
   padding: 5px 8px;
   font-size: 1.1em;
@@ -335,26 +347,26 @@ textarea {
 }
 
 /* Listes */
-/* line 145, ../sass/base.scss */
+/* line 139, ../sass/base.scss */
 ul {
   margin: 0px;
   padding: 0px;
 }
 
-/* line 150, ../sass/base.scss */
+/* line 144, ../sass/base.scss */
 ul li {
   list-style-type: none;
   padding: 0px 0px 10px 0px;
 }
 
-/* line 155, ../sass/base.scss */
+/* line 149, ../sass/base.scss */
 ul li:before {
   content: "- ";
-  color: #B90504;
+  color: #E22E2F;
 }
 
 /* Table */
-/* line 162, ../sass/base.scss */
+/* line 156, ../sass/base.scss */
 table {
   margin-top: 20px;
   border-collapse: collapse;
@@ -362,29 +374,29 @@ table {
   width: 100%;
 }
 
-/* line 169, ../sass/base.scss */
+/* line 163, ../sass/base.scss */
 table tr th,
 table tr td {
   padding: 5px 10px 5px 20px;
 }
 
-/* line 174, ../sass/base.scss */
+/* line 168, ../sass/base.scss */
 table tr th {
   border-top: none;
   border-right: none;
-  border-bottom: solid 2px #B90504;
+  border-bottom: solid 2px #E22E2F;
   border-left: none;
 }
 
-/* line 181, ../sass/base.scss */
+/* line 175, ../sass/base.scss */
 table tr td {
   border-top: none;
   border-right: none;
-  border-bottom: solid 1px #E8E8E8;
+  border-bottom: solid 1px #A7A7A7;
   border-left: none;
 }
 
-/* line 188, ../sass/base.scss */
+/* line 182, ../sass/base.scss */
 table tr td.icon {
   width: 40px;
 }
@@ -399,19 +411,19 @@ table tr td.icon {
 /* line 9, ../sass/home.scss */
 #banner nav {
   float: right;
+  margin-right: 10px;
 }
 
-/* line 13, ../sass/home.scss */
+/* line 14, ../sass/home.scss */
 #banner nav ul {
   margin: 0px;
 }
 
-/* line 17, ../sass/home.scss */
+/* line 18, ../sass/home.scss */
 #banner ul li {
   float: left;
   list-style-type: none;
   padding: 0px 10px;
-  border-right: solid #B90504 1px;
 }
 
 /* line 24, ../sass/home.scss */
@@ -431,58 +443,82 @@ table tr td.icon {
 
 /* line 36, ../sass/home.scss */
 #banner a {
-  color: #B90504;
+  color: #E22E2F;
 }
 
 /* line 40, ../sass/home.scss */
 #banner h1 {
-  margin: 0px;
-  color: #B90504;
-  padding: 25px 0px 0px 70px;
+  margin: 0px auto;
+  color: #A7A7A7;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 50px;
+  text-align: center;
 }
 
-/* line 50, ../sass/home.scss */
+/* line 53, ../sass/home.scss */
 #headerMenu li {
   float: left;
   margin-right: 10px;
   padding-right: 10px;
-  border-right: solid #B90504 1px;
+  border-right: solid #E22E2F 1px;
 }
 
-/* line 57, ../sass/home.scss */
+/* line 60, ../sass/home.scss */
 #headerMenu li:before {
   content: none;
 }
 
 /**** MAIN CONTAINER ****/
-/* line 63, ../sass/home.scss */
+/* line 66, ../sass/home.scss */
 #container {
   margin: 0px auto;
   width: 1000px;
 }
 
 /**** FOOTER ****/
-/* line 70, ../sass/home.scss */
+/* line 73, ../sass/home.scss */
 #footer {
   margin-top: 30px;
-  background-color: #333333;
   width: 100%;
   float: left;
 }
 
-/* line 77, ../sass/home.scss */
+/* line 79, ../sass/home.scss */
 #footer ul {
-  float: left;
+  width: 400px;
+  margin: 0 auto;
 }
 
-/* line 85, ../sass/home.scss */
+/* line 84, ../sass/home.scss */
+#footer ul li {
+  float: left;
+  border-right: solid #A7A7A7 1px;
+  padding: 0px 10px;
+  margin: 10px 0px;
+  line-height: 18px;
+}
+
+/* line 92, ../sass/home.scss */
+#footer ul li.last {
+  border-right: none;
+}
+
+/* line 96, ../sass/home.scss */
 #footer ul li:before {
   content: none;
 }
 
-/* line 89, ../sass/home.scss */
+/* line 100, ../sass/home.scss */
 #footer ul li a {
-  color: #F6F6F6;
+  color: #333333;
+  font-size: 0.8em;
+}
+
+/* line 105, ../sass/home.scss */
+.button-add-recipe {
+  float: right;
+  margin-top: 10px;
 }
 
 /* Recipes */

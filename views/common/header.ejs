@@ -3,27 +3,15 @@
         <nav ng-controller="NavCtrl">
             <ul>
                 <li ng-show="isLoggedIn()">
-                    {{ currentUser()}}
-                </li>
-                <li ng-show="isLoggedIn()">
-                    <a href="/#/admin">Admin</a>
-                </li>
-                <li class="last" ng-show="isLoggedIn()">
                     <a href="" ng-click="logOut()">Se déconnecter</a>
                 </li>
                 <li ng-hide="isLoggedIn()">
                     <a href="/#/login">S'identifier</a>
                 </li>
-                <li class="last" ng-hide="isLoggedIn()">
-                    <a href="/#/register">S'enregistrer</a>
-                </li>
             </ul>
         </nav>
-        <a id="logo" href="/">
-            <img src="/images/logo.png" alt="Logo www.cooking.com" />
+        <a id="title" href="/">
+            <h1>Wikisto</h1>
         </a>
-    </div>
-    <div>
-        <a href='/#/recipef'>Proposer une recette</a>
     </div>
 </div>

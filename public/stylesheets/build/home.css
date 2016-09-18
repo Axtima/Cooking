@@ -1,26 +1,22 @@
 /*
 Error: Undefined variable: "$color-main".
-        on line 21 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss
+        on line 37 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss
 
-16: 
-17: #banner ul li {
-18:     float: left;
-19:     list-style-type: none;
-20:     padding: 0px 10px;
-21:     border-right: solid $color-main 1px;
-22: }
-23: 
-24: #banner ul li:before {
-25:     content: none;
-26: }
+32: #logo img {
+33:     width: 120px;
+34: }
+35: 
+36: #banner a {
+37:     color: $color-main;
+38: }
+39: 
+40: #banner h1 {
+41:     margin: 0px auto;
+42:     color: $color-gray;
 
 Backtrace:
-/home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss:21
+/home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss:37
 /var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `_perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
 /var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
@@ -72,4 +68,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-main\".\A         on line 21 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss\A \A 16: \A 17: #banner ul li {\A 18:     float: left;\A 19:     list-style-type: none;\A 20:     padding: 0px 10px;\A 21:     border-right: solid $color-main 1px;\A 22: }\A 23: \A 24: #banner ul li:before {\A 25:     content: none;\A 26: }"; }
+  content: "Error: Undefined variable: \"$color-main\".\A         on line 37 of /home/axtima/Workspace/cooking/public/stylesheets/sass/home.scss\A \A 32: #logo img {\A 33:     width: 120px;\A 34: }\A 35: \A 36: #banner a {\A 37:     color: $color-main;\A 38: }\A 39: \A 40: #banner h1 {\A 41:     margin: 0px auto;\A 42:     color: $color-gray;"; }

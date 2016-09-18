@@ -89,13 +89,16 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
 
 app.controller('MainCtrl', [
     '$scope',
+    '$location',
     'authService',
     'recipes',
-    function ($scope, authService, recipes) {
+    function ($scope, $location, authService, recipes) {
         $scope.isLoggedIn = authService.isLoggedIn;
         $scope.recipes = recipes;
+        $scope.addRecipe = function() {
+            $location.path('/recipef');
+        }
     }
-
 ]);
 
 app.controller('NavCtrl', [

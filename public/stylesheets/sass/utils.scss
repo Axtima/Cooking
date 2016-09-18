@@ -1,8 +1,8 @@
 /* Variables */
-$color-white: #F6F6F6;
-$color-gray: #E8E8E8;
+$color-white: #FFFFFF;
+$color-gray: #A7A7A7;
 $color-gray-dark: #333333;
-$color-main: #B90504;
+$color-main: #E22E2F;
 $color-main-dark: #990100;
 
 /* Tooltip */
@@ -20,7 +20,7 @@ $color-main-dark: #990100;
     left: 50%;
     margin-left: -150px;
     visibility: hidden;
-    background-color: $color-main-dark;
+    background-color: $color-main;
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -99,7 +99,7 @@ $color-main-dark: #990100;
 /* Messages */
 
 .alert {
-    padding: 20px 40px;
+    padding: 10px 40px;
 }
 
 .alert.alert-error {
@@ -163,7 +163,31 @@ $color-main-dark: #990100;
     position: relative;
 }
 
+/* Simple icon without text, dark on white */
+
+button.icon.fa,
+button.icon.fa:hover,
+button.icon.fa:active,
+button.icon.fa:focus,
+button.icon.fa:visited {
+    color: $color-gray;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Simple link main color on white, with or without icon */
+
 button.link,
 button.fa.link {
+    background-color: transparent;
+    padding: 0px;
+    margin: 10px 0px 0px 0px;
     color: $color-main;
+}
+
+.no-margin-top {
+    margin-top: 0px !important;
 }

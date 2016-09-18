@@ -16,7 +16,7 @@
   left: 50%;
   margin-left: -150px;
   visibility: hidden;
-  background-color: #990100;
+  background-color: #E22E2F;
   color: #fff;
   text-align: center;
   padding: 5px 0;
@@ -103,13 +103,13 @@
 /* Messages */
 /* line 101, ../sass/utils.scss */
 .alert {
-  padding: 20px 40px;
+  padding: 10px 40px;
 }
 
 /* line 105, ../sass/utils.scss */
 .alert.alert-error {
-  border-top: solid #B90504 1px;
-  border-bottom: solid #B90504 1px;
+  border-top: solid #E22E2F 1px;
+  border-bottom: solid #E22E2F 1px;
 }
 
 /* line 110, ../sass/utils.scss */
@@ -172,8 +172,32 @@
   position: relative;
 }
 
-/* line 166, ../sass/utils.scss */
+/* Simple icon without text, dark on white */
+/* line 168, ../sass/utils.scss */
+button.icon.fa,
+button.icon.fa:hover,
+button.icon.fa:active,
+button.icon.fa:focus,
+button.icon.fa:visited {
+  color: #A7A7A7;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Simple link main color on white, with or without icon */
+/* line 183, ../sass/utils.scss */
 button.link,
 button.fa.link {
-  color: #B90504;
+  background-color: transparent;
+  padding: 0px;
+  margin: 10px 0px 0px 0px;
+  color: #E22E2F;
+}
+
+/* line 191, ../sass/utils.scss */
+.no-margin-top {
+  margin-top: 0px !important;
 }

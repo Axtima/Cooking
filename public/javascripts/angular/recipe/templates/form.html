@@ -20,7 +20,7 @@
                ng-model="recipe.duration" width='100%' />
         
         <div>
-            <h3>Version :</h3>
+            <h3 style="margin-bottom: 0px">Version :</h3>
             <div class="button-group">
                 <div>
                     <button type="button" ng-class="{selected:recipe.version && recipe.version === 1}" ng-click="selectVersionQuick()">Rapide</button>
@@ -38,7 +38,7 @@
         </div>
         
         <div>
-            <h3>Difficulté :</h3>
+            <h3 style="margin-bottom: 0px">Difficulté :</h3>
             <div class="button-group">
                 <button ng-class="{selected:recipe.difficulty && recipe.difficulty === 1}" type="button" ng-click="selectDifficultyEasy()">Facile</button>
                 <button ng-class="{selected:recipe.difficulty && recipe.difficulty === 2}" type="button" ng-click="selectDifficultyMedium()">Moyenne</button>
@@ -47,7 +47,7 @@
         </div>
         
         <div>
-            <h3>Prix :</h3>
+            <h3 style="margin-bottom: 0px">Prix :</h3>
             <div class="button-group">
                 <button type="button" ng-class="{selected:recipe.cost && recipe.cost === 1}" ng-click="selectCostLow()">€</button>
                 <button type="button" ng-class="{selected:recipe.cost && recipe.cost === 2}" ng-click="selectCostMedium()">€€</button>
@@ -59,7 +59,7 @@
         <div>
             <h3>Illustration :</h3>
             <img class="thumbnail" ngf-thumbnail="recipe.file || '/images/thumb.jpg'">
-            <button class="fa fa-camera" ngf-select ng-model="recipe.file" name="file" ngf-pattern="'image/*'"
+            <button class="icon fa fa-camera" ngf-select ng-model="recipe.file" name="file" ngf-pattern="'image/*'"
                     ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
                     ngf-resize="{quality: .8, width: 100, height: 100}"></button>
         </div>
@@ -71,15 +71,16 @@
                  ng-repeat="ingredient in recipe.ingredients">
                 <div>
                     <input type="text" id="ingredientName{{ingredient.order}}" ng-model="ingredient.name" ng-required="true" />
-                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === recipe.ingredients.length" ng-click="ingredientDown(ingredient)" class="fa fa-arrow-down"></button>
-                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === 1" ng-click="ingredientUp(ingredient)" class="fa fa-arrow-up"></button>
-                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp" ng-click="removeIngredient(ingredient)" class="fa fa-times"></button>
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === recipe.ingredients.length" ng-click="ingredientDown(ingredient)" class="icon fa fa-arrow-down"></button>
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp || ingredient.order === 1" ng-click="ingredientUp(ingredient)" class="icon fa fa-arrow-up"></button>
+                    <button type="button" ng-hide="ingredient.movingDown || ingredient.movingUp" ng-click="removeIngredient(ingredient)" class="icon fa fa-times"></button>
                 </div>
             </div>
+            <div style="padding-left: 20px" class="clearer">
+                <button type="button" ng-click="addIngredient()" class="fa fa-plus padding-icon link">Ajouter un ingrédient</button>
+            </div>
         </div>
-        <div class="clearer">
-            <button type="button" ng-click="addIngredient()" class="fa fa-plus padding-icon link">Ajouter un ingrédient</button>
-        </div>
+        
 
         <h3>Etapes :</h3>
         <div class="clearer">
@@ -90,22 +91,22 @@
                     <label for="stepDescription{{step.order}}">
                         Etape n°{{step.order}}
                     </label>
-                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === recipe.steps.length" ng-click="stepDown(step)" class="fa fa-arrow-down"></button>
-                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === 1" ng-click="stepUp(step)" class="fa fa-arrow-up"></button>
-                    <button type="button" ng-hide="step.movingDown || step.movingUp" ng-click="removeStep(step)" class="fa fa-times"></button>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === recipe.steps.length" ng-click="stepDown(step)" class="icon fa fa-arrow-down"></button>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === 1" ng-click="stepUp(step)" class="icon fa fa-arrow-up"></button>
+                    <button type="button" ng-hide="step.movingDown || step.movingUp" ng-click="removeStep(step)" class="icon fa fa-times"></button>
                     <br />
                     <textarea id="stepDescription{{step.order}}" ng-model="step.description" ng-required="true" rows="6"></textarea>
                     <span>
                         <img class="thumbnail" ngf-thumbnail="step.file || '/images/thumb.jpg'">
-                        <button class="fa fa-camera" ngf-select ng-model="step.file" name="file" ngf-pattern="'image/*'"
+                        <button class="icon fa fa-camera" ngf-select ng-model="step.file" name="file" ngf-pattern="'image/*'"
                                 ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
                                 ngf-resize="{quality: .8, width: 100, height: 100}"></button>
                     </span>
                 </div>
             </div>
-        </div>
-        <div class="clearer">
-            <button type="button" ng-click="addStep()" class="fa fa-plus padding-icon link">Ajouter une étape</button>
+            <div style="padding-left: 20px" class="clearer">
+                <button type="button" ng-click="addStep()" class="fa fa-plus padding-icon link">Ajouter une étape</button>
+            </div>
         </div>
     </div>
 
