@@ -38,7 +38,7 @@ p {
     padding: 0px;
 }
 
-body {
+body, h1, h2, h3, h4, p, input, textarea, keygen, select, button {
     font-family: 'Roboto-Thin', Arial, sans-serif;
 }
 
@@ -66,6 +66,7 @@ a {
 }
 
 button, input[type="submit"] {
+    font-family: 'Roboto-Regular';
     background-color: $color-main;
     color: $color-white;
     border: none;
@@ -128,7 +129,7 @@ input[type="email"]:focus,
 textarea {
     border: solid $color-gray 1px;
     border-radius: 5px;
-    padding: 5px 8px;
+    padding: 10px 15px;
     font-size: 1.1em;
     outline: none;
     width: 500px;

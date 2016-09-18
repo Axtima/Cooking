@@ -2,6 +2,7 @@
 $color-white: #FFFFFF;
 $color-gray: #A7A7A7;
 $color-gray-dark: #333333;
+$color-gray-light: #F5F5F5;
 $color-main: #E22E2F;
 $color-main-dark: #990100;
 
@@ -115,8 +116,8 @@ $color-main-dark: #990100;
 /* Thumbnails */
 
 .thumbnail {
-    width: 200px;
-    max-height: 150px;
+    width: 250px;
+    height: 180px;
 }
 
 .thumbs{
@@ -125,17 +126,25 @@ $color-main-dark: #990100;
 
 .thumbs .thumb {
     float: left;
-    width: 200px
+    margin-left: 15px;
+}
+
+.thumbs .thumb.first {
+    margin-left: 0px;
+}
+
+.thumbs .thumb.last {
+    margin-right: 0px;
 }
 
 .thumbs .thumb .thumb-image {
-    width: 200px;
-    max-height: 150px;
+    width: 238px;
+    height: 180px;
 }
 
 .thumbs .thumb .thumb-text {
     height: 40px;
-    padding: 10px;
+    padding: 2px 5px;
     text-align: center;
 }
 
@@ -154,7 +163,7 @@ $color-main-dark: #990100;
 }
 
 .alt {
-    background-color: #EEE;
+    background-color: $color-gray-light;
 }
 
 .padding-icon::before {

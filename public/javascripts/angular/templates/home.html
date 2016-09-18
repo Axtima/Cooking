@@ -4,7 +4,7 @@
         <h2 class="panel-title">Recettes à la une</h2>
     </div>
     <div class="panel-body thumbs">
-        <div class="thumb" ng-repeat="recipe in recipes| orderBy:'-lastModificationDate'">
+        <div class="thumb" ng-class="{first:$index%4 === 0,last:$index%4 === 3}" ng-repeat="recipe in recipes| orderBy:'-lastModificationDate'">
             <a href="#/recipe/{{recipe._id}}">
                 <img class="thumb-image" src="/uploads/{{recipe.imageName}}" />
             </a>

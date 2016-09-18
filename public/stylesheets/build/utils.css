@@ -1,6 +1,6 @@
 /* Variables */
 /* Tooltip */
-/* line 10, ../sass/utils.scss */
+/* line 11, ../sass/utils.scss */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -8,7 +8,7 @@
   /* If you want dots under the hoverable text */
 }
 
-/* line 16, ../sass/utils.scss */
+/* line 17, ../sass/utils.scss */
 .tooltip .tooltiptext {
   width: 300px;
   font-size: 0.8em;
@@ -25,12 +25,12 @@
   z-index: 1;
 }
 
-/* line 32, ../sass/utils.scss */
+/* line 33, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-/* line 36, ../sass/utils.scss */
+/* line 37, ../sass/utils.scss */
 .tooltip .tooltiptext::after {
   content: " ";
   position: absolute;
@@ -43,19 +43,19 @@
   border-color: #333333 transparent transparent transparent;
 }
 
-/* line 47, ../sass/utils.scss */
+/* line 48, ../sass/utils.scss */
 .tooltip .tooltiptext {
   opacity: 0;
   transition: opacity 1s;
 }
 
-/* line 52, ../sass/utils.scss */
+/* line 53, ../sass/utils.scss */
 .tooltip:hover .tooltiptext {
   opacity: 1;
 }
 
 /* Modal Window */
-/* line 58, ../sass/utils.scss */
+/* line 59, ../sass/utils.scss */
 .ng-modal-overlay {
   position: absolute;
   z-index: 9999;
@@ -67,7 +67,7 @@
   opacity: 0.8;
 }
 
-/* line 69, ../sass/utils.scss */
+/* line 70, ../sass/utils.scss */
 .ng-modal-dialog {
   z-index: 10000;
   position: absolute;
@@ -81,13 +81,13 @@
   box-shadow: 4px 4px 80px #000;
 }
 
-/* line 82, ../sass/utils.scss */
+/* line 83, ../sass/utils.scss */
 .ng-modal-dialog-content {
   padding: 10px;
   text-align: left;
 }
 
-/* line 87, ../sass/utils.scss */
+/* line 88, ../sass/utils.scss */
 .ng-modal-close {
   position: absolute;
   top: 3px;
@@ -101,71 +101,81 @@
 }
 
 /* Messages */
-/* line 101, ../sass/utils.scss */
+/* line 102, ../sass/utils.scss */
 .alert {
   padding: 10px 40px;
 }
 
-/* line 105, ../sass/utils.scss */
+/* line 106, ../sass/utils.scss */
 .alert.alert-error {
   border-top: solid #E22E2F 1px;
   border-bottom: solid #E22E2F 1px;
 }
 
-/* line 110, ../sass/utils.scss */
+/* line 111, ../sass/utils.scss */
 .alert.alert-success {
   border-top: solid green 1px;
   border-bottom: solid green 1px;
 }
 
 /* Thumbnails */
-/* line 117, ../sass/utils.scss */
+/* line 118, ../sass/utils.scss */
 .thumbnail {
-  width: 200px;
-  max-height: 150px;
+  width: 250px;
+  height: 180px;
 }
 
-/* line 126, ../sass/utils.scss */
+/* line 127, ../sass/utils.scss */
 .thumbs .thumb {
   float: left;
-  width: 200px;
+  margin-left: 15px;
 }
 
-/* line 131, ../sass/utils.scss */
-.thumbs .thumb .thumb-image {
-  width: 200px;
-  max-height: 150px;
+/* line 132, ../sass/utils.scss */
+.thumbs .thumb.first {
+  margin-left: 0px;
 }
 
 /* line 136, ../sass/utils.scss */
+.thumbs .thumb.last {
+  margin-right: 0px;
+}
+
+/* line 140, ../sass/utils.scss */
+.thumbs .thumb .thumb-image {
+  width: 238px;
+  height: 180px;
+}
+
+/* line 145, ../sass/utils.scss */
 .thumbs .thumb .thumb-text {
   height: 40px;
-  padding: 10px;
+  padding: 2px 5px;
   text-align: center;
 }
 
 /* Others */
-/* line 144, ../sass/utils.scss */
+/* line 153, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 148, ../sass/utils.scss */
+/* line 157, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 152, ../sass/utils.scss */
+/* line 161, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 156, ../sass/utils.scss */
+/* line 165, ../sass/utils.scss */
 .alt {
-  background-color: #EEE;
+  background-color: #F5F5F5;
 }
 
-/* line 160, ../sass/utils.scss */
+/* line 169, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
@@ -173,7 +183,7 @@
 }
 
 /* Simple icon without text, dark on white */
-/* line 168, ../sass/utils.scss */
+/* line 177, ../sass/utils.scss */
 button.icon.fa,
 button.icon.fa:hover,
 button.icon.fa:active,
@@ -188,7 +198,7 @@ button.icon.fa:visited {
 }
 
 /* Simple link main color on white, with or without icon */
-/* line 183, ../sass/utils.scss */
+/* line 192, ../sass/utils.scss */
 button.link,
 button.fa.link {
   background-color: transparent;
@@ -197,7 +207,7 @@ button.fa.link {
   color: #E22E2F;
 }
 
-/* line 191, ../sass/utils.scss */
+/* line 200, ../sass/utils.scss */
 .no-margin-top {
   margin-top: 0px !important;
 }

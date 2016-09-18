@@ -79,6 +79,7 @@ app.controller('RecipeCtrl', [
         $scope.addRecipe = function () {
             recipeService.create({
                 title: $scope.recipe.title,
+                duration: $scope.recipe.duration,
                 version: $scope.recipe.version,
                 difficulty: $scope.recipe.difficulty,
                 cost: $scope.recipe.cost,

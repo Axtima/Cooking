@@ -1,3 +1,32 @@
+ul.recipe-information-bar {
+    
+}
+
+ul.recipe-information-bar li {
+    float: left;
+    list-style-type: none;
+    padding: 2px 10px 2px 10px;
+    border-right: solid $color-gray 1px;
+    font-family: "Roboto-Regular"
+}
+
+ul.recipe-information-bar li.first {
+    padding-left: 0px;
+}
+
+ul.recipe-information-bar li.last {
+    border-right: none;
+}
+
+ul.recipe-information-bar li::before {
+    content: none;
+}
+
+.recipe-picture {
+    clear: both;
+    padding-top: 20px;
+}
+
 .update-step {
     padding: 10px 15px 10px 15px;
     position: relative;
