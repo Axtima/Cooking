@@ -29,7 +29,10 @@ app.controller('AuthCtrl', [
         };
 
         $scope.logIn = function () {
-            authService.logIn($scope.user).error(function (error) {
+            authService.logIn({
+                username: $scope.user.email,
+                password: $scope.user.password
+            }).error(function (error) {
                 $scope.error = error;
             }).then(function () {
                 $location.path('/home');

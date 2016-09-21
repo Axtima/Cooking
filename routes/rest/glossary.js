@@ -37,6 +37,10 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/:glossary', function (req, res, next) {
+    res.json(req.glossary);
+});
+
 router.post('/', auth, function (req, res, next) {
     
     // Création de l'entrée de glossaire
@@ -79,11 +83,6 @@ router.delete('/:glossary', function (req, res, next) {
         }
         return res.sendStatus(204);
     });
-});
-
-
-router.get('/:glossary', function (req, res, next) {
-    res.json(req.glossary);
 });
 
 module.exports = router;

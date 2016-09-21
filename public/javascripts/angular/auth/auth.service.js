@@ -14,7 +14,7 @@ app.factory('authService', ['$http', '$window', 'constants', function ($http, $w
                 var token = authService.getToken();
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
 
-                return payload.username;
+                return payload.email;
             }
         };
         authService.register = function (user) {

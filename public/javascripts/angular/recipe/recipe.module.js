@@ -76,37 +76,69 @@ app.controller('RecipeCtrl', [
         /**
          * Add a recipe
          */
-        $scope.addRecipe = function () {
-            recipeService.create({
-                title: $scope.recipe.title,
-                duration: $scope.recipe.duration,
-                version: $scope.recipe.version,
-                difficulty: $scope.recipe.difficulty,
-                cost: $scope.recipe.cost,
-                steps: $scope.recipe.steps,
-                ingredients: $scope.recipe.ingredients
-            }).success(function (recipe) {
-                var nbFiles = 0;
-                if ($scope.recipe.file) {
-                    nbFiles++;
-                    $scope.uploadFile(recipe._id, null, $scope.recipe.file);
-                }
-                if ($scope.recipe.steps) {
-                    $scope.recipe.steps.forEach(function (step) {
-                        if (step.file) {
-                            nbFiles++;
-                            $scope.uploadFile(recipe._id, step.order, step.file);
-                        }
-                    });
-                }
-                if (nbFiles === 0) {
-                    $scope.successMsg = 'Recette créée avec succès';
-                } else {
-                    $scope.successMsg = 'Envoi des images ...';
-                }
-                $scope.title = '';
-                $scope.steps = [];
-            });
+        $scope.saveRecipe = function () {
+            if ($scope.recipe._id) {
+                // Modification
+                recipeService.update({
+                    id: $scope.recipe._id,
+                    title: $scope.recipe.title,
+                    duration: $scope.recipe.duration,
+                    version: $scope.recipe.version,
+                    difficulty: $scope.recipe.difficulty,
+                    cost: $scope.recipe.cost,
+                    steps: $scope.recipe.steps,
+                    ingredients: $scope.recipe.ingredients
+                }).success(function (recipe) {
+                    var nbFiles = 0;
+                    if ($scope.recipe.file) {
+                        nbFiles++;
+                        $scope.uploadFile(recipe._id, null, $scope.recipe.file);
+                    }
+                    if ($scope.recipe.steps) {
+                        $scope.recipe.steps.forEach(function (step) {
+                            if (step.file) {
+                                nbFiles++;
+                                $scope.uploadFile(recipe._id, step.order, step.file);
+                            }
+                        });
+                    }
+                    if (nbFiles === 0) {
+                        $scope.successMsg = 'Recette créée avec succès';
+                    } else {
+                        $scope.successMsg = 'Envoi des images ...';
+                    }
+                });
+            } else {
+                // Creation
+                recipeService.create({
+                    title: $scope.recipe.title,
+                    duration: $scope.recipe.duration,
+                    version: $scope.recipe.version,
+                    difficulty: $scope.recipe.difficulty,
+                    cost: $scope.recipe.cost,
+                    steps: $scope.recipe.steps,
+                    ingredients: $scope.recipe.ingredients
+                }).success(function (recipe) {
+                    var nbFiles = 0;
+                    if ($scope.recipe.file) {
+                        nbFiles++;
+                        $scope.uploadFile(recipe._id, null, $scope.recipe.file);
+                    }
+                    if ($scope.recipe.steps) {
+                        $scope.recipe.steps.forEach(function (step) {
+                            if (step.file) {
+                                nbFiles++;
+                                $scope.uploadFile(recipe._id, step.order, step.file);
+                            }
+                        });
+                    }
+                    if (nbFiles === 0) {
+                        $scope.successMsg = 'Recette créée avec succès';
+                    } else {
+                        $scope.successMsg = 'Envoi des images ...';
+                    }
+                });
+            }
         };
         /**
          * Add a ingredient
@@ -248,7 +280,7 @@ app.controller('RecipeCtrl', [
                 var file = $scope.file;
                 Upload.upload({
                     url: 'upload/url',
-                    data: {file: file, 'username': $scope.username}
+                    data: {file: file, 'email': $scope.email}
                 }).then(function (resp) {
                     console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                 }, function (resp) {

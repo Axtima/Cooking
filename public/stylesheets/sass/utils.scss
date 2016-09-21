@@ -120,6 +120,11 @@ $color-main-dark: #990100;
     height: 180px;
 }
 
+.small-thumbnail {
+    width: 150px;
+    height: 100px;
+}
+
 .thumbs{
     
 }
@@ -199,4 +204,19 @@ button.fa.link {
 
 .no-margin-top {
     margin-top: 0px !important;
+}
+
+/* Back button */
+
+.back {
+    margin-top: 20px;
+}
+
+.back a {
+    
+}
+
+.back a::before {
+    content: '<';
+    margin-right: 8px;
 }

@@ -1,0 +1,25 @@
+<h2>Recettes</h2>
+
+<a class="fa fa-plus padding-icon" href='/#/recipe/form'>Ajouter une recette</a>
+
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>
+        </th>
+    </tr>
+    <tr ng-repeat="recipe in recipes| orderBy:'+title'">
+        <td>
+            <a href="#/recipe/form/{{recipe._id}}">{{recipe.title}}</a>
+        </td>
+        <td class="icon">
+            <button class="icon fa fa-times" ng-click='remove(recipe)'></button>
+        </td>
+    </tr>
+</table>
+
+<div class="back">
+    <a href="/#/admin">Retour</a>
+</div>

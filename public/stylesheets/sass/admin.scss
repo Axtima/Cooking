@@ -1,0 +1,29 @@
+ul#adminMenu {
+    width: 550px;
+    margin: 0px auto;
+}
+
+ul#adminMenu li {
+    float: left;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: $color-main;
+    margin-right: 50px;
+    text-align: center;
+}
+
+ul#adminMenu li.last {
+    margin-right: 0px;
+}
+
+ul#adminMenu li::before {
+    content: none;
+}
+
+ul#adminMenu li a {
+    line-height: 150px;
+    color: $color-white;
+    text-transform: uppercase;
+    font-family: 'Roboto-Regular';
+}

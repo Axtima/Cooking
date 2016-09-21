@@ -30,17 +30,21 @@ ul.recipe-information-bar li::before {
 .update-step {
     padding: 10px 15px 10px 15px;
     position: relative;
-    height: 180px;
+    height: 200px;
 }
 
 .update-step textarea {
-    width: 500px;
+    width: 670px;
     float: left;
 }
 
 .update-ingredient {
     padding: 10px 15px 10px 15px;
     position: relative;
+}
+
+.update-ingredient input {
+    margin: 0px;
 }
 
 .thumb {
@@ -88,12 +92,12 @@ ul.recipe-information-bar li::before {
 
 @keyframes stepSlideDown {
   0%   { top: 0; }
-  100% { top: 200px; }
+  100% { top: 220px; }
 }
 
 @keyframes stepSlideUp {
   0%   { top: 0; }
-  100% { top: -200px; }
+  100% { top: -220px; }
 }
 
 /* Animation ingredient */

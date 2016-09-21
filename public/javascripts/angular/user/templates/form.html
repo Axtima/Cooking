@@ -1,0 +1,43 @@
+<div ng-hide="isLoggedIn()">
+    <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour modifier les utilisateurs</h3>
+</div>
+<form ng-submit="saveUser()" ng-show="isLoggedIn()">
+    
+    <div class="alert alert-success" ng-show='successMsg'>
+        {{successMsg}}
+    </div>
+    <div class="alert alert-error" ng-show='errorMsg'>
+        {{errorMsg}}
+    </div>
+
+    <h2>Utilisateur</h2>
+
+    <div>
+        <input name="email"
+               type="text"
+               placeholder='Email'
+               ng-required="true"
+               ng-model="user.email" />
+        
+        <input ng-hide="user._id"
+               name="password"
+               type="password"
+               placeholder='Mot de passe'
+               ng-required="user._id === undefined"
+               ng-model="user.password" />
+        
+        <div>
+            <h3 style="margin-bottom: 10px">Activation</h3>
+            <div style="margin-left: 20px">
+                <input type="checkbox" id="activation" ng-model="user.active">
+                <label for="activation">Actif</label>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn">Valider</button>
+    
+    <div class="back">
+        <a href="/#/user">Retour</a>
+    </div>
+</form>

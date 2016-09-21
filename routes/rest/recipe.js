@@ -83,7 +83,17 @@ router.get('/full', function (req, res, next) {
  * Création d'une recette
  */
 router.post('/', auth, function (req, res, next) {
+    createOrUpdateRecipe(req, res, next);
+});
 
+/**
+ * Modification d'une recette
+ */
+router.post('/:recipe', auth, function (req, res, next) {
+    createOrUpdateRecipe(req, res, next);
+});
+
+createOrUpdateRecipe = function(req, res, next) {
     // Récupération des valeurs à partir de la requête
     var steps = req.body.steps;
     var ingredients = req.body.ingredients;
@@ -115,10 +125,25 @@ router.post('/', auth, function (req, res, next) {
             }
 
             // Création de la recette
-            var recipe = new Recipe(req.body);
+            var recipe = req.recipe;
+            if (recipe) {
+                recipe.title = req.body.title;
+                recipe.active = req.body.active;
+                recipe.version = req.body.version;
+                recipe.cost = req.body.cost;
+                recipe.duration = req.body.duration;
+                recipe.difficulty = req.body.difficulty;
+                recipe.lastModificationUser = req.payload.id;
+                recipe.lastModificationDate = new Date();
+            } else {
+                recipe = new Recipe(req.body);
+                recipe.creationUser = req.payload.id;
+                recipe.creationDate = new Date();
+            }
+            
             recipe.steps = stepIds;
             recipe.ingredients = ingredientIds;
-            recipe.author = req.payload.username;
+            
             recipe.save(function (err, recipe) {
                 // Gestion des erreurs
                 if (err) {
@@ -149,8 +174,7 @@ router.post('/', auth, function (req, res, next) {
             });
         });
     });
-});
-
+};
 
 router.get('/:recipe', function (req, res, next) {
     req.recipe.populate(['ingredients', 'steps'], function (err, recipe) {
@@ -207,7 +231,7 @@ router.post('/upload/:recipe', function (req, res) {
  router.post('/:recipe/comments', auth, function (req, res, next) {
  var comment = new Comment(req.body);
  comment.recipe = req.recipe;
- comment.author = req.payload.username;
+ comment.author = req.payload.email;
  
  comment.save(function (err, comment) {
  if (err) {

@@ -1,7 +1,7 @@
 <div ng-hide="isLoggedIn()">
     <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour proposer une recette</h3>
 </div>
-<form ng-submit="addRecipe()" ng-show="isLoggedIn()">
+<form ng-submit="saveRecipe()" ng-show="isLoggedIn()">
 
     <div class="alert alert-success" ng-show='successMsg'>
         {{successMsg}}
@@ -11,7 +11,10 @@
     </div>
 
     <div ng-hide="successMsg">
-        <h2>Ajouter une nouvelle recette</h2>
+        
+        <h2 ng-hide="recipe._id">Ajouter une nouvelle recette</h2>
+        <h2 ng-show="recipe._id">Modifier une recette</h2>
+        
         <div>
             <div>
                 <h3 style="margin-bottom: 0px">Intitulé de la recette :</h3>
@@ -64,7 +67,9 @@
 
             <div>
                 <h3>Illustration :</h3>
-                <img class="thumbnail" ngf-thumbnail="recipe.file || '/images/thumb.jpg'">
+                <img ng-hide="recipe.imageName" class="thumbnail" ngf-thumbnail="recipe.file || '/images/thumb.jpg'">
+                <img ng-show="recipe.imageName" class="thumbnail" ngf-thumbnail="'/uploads/' + recipe.imageName">
+                
                 <button class="icon fa fa-camera" ngf-select ng-model="recipe.file" name="file" ngf-pattern="'image/*'"
                         ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
                         ngf-resize="{quality: .8, width: 100, height: 100}"></button>
@@ -101,9 +106,10 @@
                         <button type="button" ng-hide="step.movingDown || step.movingUp || step.order === 1" ng-click="stepUp(step)" class="icon fa fa-arrow-up"></button>
                         <button type="button" ng-hide="step.movingDown || step.movingUp" ng-click="removeStep(step)" class="icon fa fa-times"></button>
                         <br />
-                        <textarea id="stepDescription{{step.order}}" placeholder="Ex: Mélanger les ingrédients, ..." ng-model="step.description" ng-required="true" rows="6"></textarea>
+                        <textarea id="stepDescription{{step.order}}" placeholder="Ex: Mélanger les ingrédients, ..." ng-model="step.description" ng-required="true" rows="5"></textarea>
                         <span>
-                            <img class="thumbnail" ngf-thumbnail="step.file || '/images/thumb.jpg'">
+                            <img ng-hide="step.imageName" class="small-thumbnail" ngf-thumbnail="step.file || '/images/thumb.jpg'">
+                            <img ng-show="step.imageName" class="small-thumbnail" ngf-thumbnail="'/uploads/' + step.imageName">
                             <button class="icon fa fa-camera" ngf-select ng-model="step.file" name="file" ngf-pattern="'image/*'"
                                     ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
                                     ngf-resize="{quality: .8, width: 100, height: 100}"></button>
@@ -116,6 +122,18 @@
             </div>
         </div>
 
+        <div>
+            <h3 style="margin-bottom: 10px">Activation</h3>
+            <div style="margin-left: 20px">
+                <input type="checkbox" id="activation" ng-model="recipe.active">
+                <label for="activation">Actif</label>
+            </div>
+        </div>
+        
         <button type="submit" class="btn">Valider</button>
+        
+        <div class="back">
+            <a href="/#/recipe">Retour</a>
+        </div>
     </div>
 </form>

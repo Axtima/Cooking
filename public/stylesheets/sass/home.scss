@@ -46,6 +46,17 @@
     text-align: center;
 }
 
+#banner #title {
+    text-align: center;
+    clear: both;
+}
+
+#banner #title a {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    color: $color-gray;
+}
+
 #headerMenu {
     
 }

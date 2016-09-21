@@ -125,29 +125,35 @@
   height: 180px;
 }
 
-/* line 127, ../sass/utils.scss */
+/* line 123, ../sass/utils.scss */
+.small-thumbnail {
+  width: 150px;
+  height: 100px;
+}
+
+/* line 132, ../sass/utils.scss */
 .thumbs .thumb {
   float: left;
   margin-left: 15px;
 }
 
-/* line 132, ../sass/utils.scss */
+/* line 137, ../sass/utils.scss */
 .thumbs .thumb.first {
   margin-left: 0px;
 }
 
-/* line 136, ../sass/utils.scss */
+/* line 141, ../sass/utils.scss */
 .thumbs .thumb.last {
   margin-right: 0px;
 }
 
-/* line 140, ../sass/utils.scss */
+/* line 145, ../sass/utils.scss */
 .thumbs .thumb .thumb-image {
   width: 238px;
   height: 180px;
 }
 
-/* line 145, ../sass/utils.scss */
+/* line 150, ../sass/utils.scss */
 .thumbs .thumb .thumb-text {
   height: 40px;
   padding: 2px 5px;
@@ -155,27 +161,27 @@
 }
 
 /* Others */
-/* line 153, ../sass/utils.scss */
+/* line 158, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 157, ../sass/utils.scss */
+/* line 162, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 161, ../sass/utils.scss */
+/* line 166, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 165, ../sass/utils.scss */
+/* line 170, ../sass/utils.scss */
 .alt {
   background-color: #F5F5F5;
 }
 
-/* line 169, ../sass/utils.scss */
+/* line 174, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
@@ -183,7 +189,7 @@
 }
 
 /* Simple icon without text, dark on white */
-/* line 177, ../sass/utils.scss */
+/* line 182, ../sass/utils.scss */
 button.icon.fa,
 button.icon.fa:hover,
 button.icon.fa:active,
@@ -198,7 +204,7 @@ button.icon.fa:visited {
 }
 
 /* Simple link main color on white, with or without icon */
-/* line 192, ../sass/utils.scss */
+/* line 197, ../sass/utils.scss */
 button.link,
 button.fa.link {
   background-color: transparent;
@@ -207,7 +213,19 @@ button.fa.link {
   color: #E22E2F;
 }
 
-/* line 200, ../sass/utils.scss */
+/* line 205, ../sass/utils.scss */
 .no-margin-top {
   margin-top: 0px !important;
+}
+
+/* Back button */
+/* line 211, ../sass/utils.scss */
+.back {
+  margin-top: 20px;
+}
+
+/* line 219, ../sass/utils.scss */
+.back a::before {
+  content: '<';
+  margin-right: 8px;
 }

@@ -3,9 +3,13 @@ var app = angular.module('cooking', [
     'cooking.constant',
     'cooking.auth',
     'cooking.recipe',
+    'cooking.user',
     'cooking.glossary'
 ]);
 app.config(['$routeProvider', 'constants', function ($routeProvider, constants) {
+        
+        /************* FRONT ************/
+        
         // Home
         $routeProvider.when('/home', {
             templateUrl: constants.angularDirectory + 'templates/home.html',
@@ -16,7 +20,42 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 }]
             }
         });
+        
+        /************* ADMINISTRATION ************/
+        
+        // Admin
+        $routeProvider.when('/admin', {
+            templateUrl: constants.angularDirectory + '/templates/admin.html',
+            controller: 'MainCtrl'
+        });
         // Recipe
+        $routeProvider.when('/recipe', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/list.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: ['$route', 'recipeService', function ($route, recipeService) {
+                    return recipeService.getAll();
+                }]
+            }
+        });
+        $routeProvider.when('/recipe/form', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: function() {return {};},
+                glossaries: function() {return [{}];}
+            }
+        });
+        $routeProvider.when('/recipe/form/:id', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: ['$route', 'recipeService', function ($route, recipeService) {
+                    return recipeService.get($route.current.params.id);
+                }],
+                glossaries: function() {return [{}];}
+            }
+        });
         $routeProvider.when('/recipe/:id', {
             templateUrl: constants.angularDirectory + 'recipe/templates/entry.html',
             controller: 'RecipeCtrl',
@@ -28,29 +67,6 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                     return glossaryService.getAll();
                 }]
             }
-        });
-        $routeProvider.when('/recipef', {
-            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
-            controller: 'RecipeCtrl',
-            resolve: {
-                recipe: function() {return {};},
-                glossaries: function() {return [{}];}
-            }
-        });
-        $routeProvider.when('/recipef/:id', {
-            templateUrl: constants.angularDirectory + 'recipe/templates/form.html',
-            controller: 'RecipeCtrl',
-            resolve: {
-                recipe: ['$route', 'recipeService', function ($route, recipeService) {
-                    return recipeService.get($route.current.params.id);
-                }],
-                glossaries: function() {return [{}];}
-            }
-        });
-        // Admin
-        $routeProvider.when('/admin', {
-            templateUrl: constants.angularDirectory + '/templates/admin.html',
-            controller: 'MainCtrl'
         });
         // Glossary
         $routeProvider.when('/glossary', {
@@ -81,6 +97,45 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 }]
             }
         });
+        // User
+        $routeProvider.when('/user', {
+            templateUrl: constants.angularDirectory + 'user/templates/list.html',
+            controller: 'UserCtrl',
+            resolve: {
+                users: ['$route', 'userService', function ($route, userService) {
+                    return userService.getAll();
+                }],
+                user: function() {return {};}
+            }
+        });
+        $routeProvider.when('/user/form', {
+            templateUrl: constants.angularDirectory + 'user/templates/form.html',
+            controller: 'UserCtrl',
+            resolve: {
+                users: function() {return [{}];},
+                user: function() {return {};}
+            }
+        });
+        $routeProvider.when('/user/form/:id', {
+            templateUrl: constants.angularDirectory + 'user/templates/form.html',
+            controller: 'UserCtrl',
+            resolve: {
+                users: function() {return [{}];},
+                user: ['$route', 'userService', function ($route, userService) {
+                    return userService.get($route.current.params.id);
+                }]
+            }
+        });
+        $routeProvider.when('/user/formPassword/:id', {
+            templateUrl: constants.angularDirectory + 'user/templates/formPassword.html',
+            controller: 'UserCtrl',
+            resolve: {
+                users: function() {return [{}];},
+                user: ['$route', 'userService', function ($route, userService) {
+                    return userService.get($route.current.params.id);
+                }]
+            }
+        });
         // Default
         $routeProvider.otherwise({
             redirectTo: '/home'
@@ -96,7 +151,7 @@ app.controller('MainCtrl', [
         $scope.isLoggedIn = authService.isLoggedIn;
         $scope.recipes = recipes;
         $scope.addRecipe = function() {
-            $location.path('/recipef');
+            $location.path('/recipe/form');
         }
     }
 ]);

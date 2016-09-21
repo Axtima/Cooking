@@ -2,10 +2,11 @@ var mongoose = require('mongoose');
 
 var RecipeSchema = new mongoose.Schema({
     title: String,
-    author: String,
     imageName: String,
     creationDate: Date,
+    creationUser: String,
     lastModificationDate: Date,
+    lastModificationUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     duration: Number,
     version: Number,
     difficulty: Number,
