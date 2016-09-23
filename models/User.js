@@ -10,7 +10,9 @@ var UserSchema = new mongoose.Schema({
     },
     active: Boolean,
     hash: String,
-    salt: String
+    salt: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 });
 
 UserSchema.methods.setPassword = function (password) {

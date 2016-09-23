@@ -27,6 +27,16 @@ app.factory('authService', ['$http', '$window', 'constants', function ($http, $w
                 authService.saveToken(data.token);
             });
         };
+        authService.forgotPassword = function (user) {
+            return $http.post('/rest/user/forgot', user).success(function (res) {
+                return res.data;
+            });
+        };
+        authService.resetPassword = function (user) {
+            return $http.post('/rest/user/reset', user).success(function (res) {
+                return res.data;
+            });
+        };
         authService.logOut = function () {
             $window.localStorage.removeItem(constants.authTokenName);
         };

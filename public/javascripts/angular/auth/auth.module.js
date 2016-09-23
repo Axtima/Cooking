@@ -38,4 +38,26 @@ app.controller('AuthCtrl', [
                 $location.path('/home');
             });
         };
+        
+        $scope.forgotPassword = function () {
+            authService.forgotPassword({
+                email: $scope.email
+            }).error(function (error) {
+                $scope.error = error;
+            }).then(function () {
+                $scope.success = "Un email avec lien de réinitialisation du mot de passe vous a été envoyé";
+            });
+        };
+        
+        $scope.resetPassword = function () {
+            authService.resetPassword({
+                email: $scope.user.email,
+                password: $scope.password,
+                password2: $scope.password2
+            }).error(function (error) {
+                $scope.error = error;
+            }).then(function () {
+                $scope.success = "Votre mot de passe a été modifié avec succès";
+            });
+        };
     }]);

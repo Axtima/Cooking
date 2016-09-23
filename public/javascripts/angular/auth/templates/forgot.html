@@ -1,0 +1,18 @@
+<div ng-show="error" class="alert alert-error">
+    <span>{{error.message}}</span>
+</div>
+
+<form ng-submit="forgotPassword()"
+      style="margin-top:30px;">
+    <h2>Oubli du mot de passe</h2>
+
+    <div class="form-group">
+        <input type="email"
+               placeholder="Adresse email"
+               ng-model="email"></input>
+    </div>
+    <button type="submit" class="btn">Valider</button>
+    <div class="back">
+        <a href="/#/login">Retour</a>
+    </div>
+</form>

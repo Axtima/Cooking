@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -16,6 +17,7 @@
     "mongoose": "^4.5.9",
     "morgan": "~1.7.0",
     "multer": "^1.2.0",
+    "nodemailer": "^2.6.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0"
