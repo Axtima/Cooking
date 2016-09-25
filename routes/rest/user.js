@@ -5,6 +5,7 @@ var passport = require('passport');
 var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
 
 var router = express.Router();
 
@@ -91,7 +92,7 @@ router.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
-router.post('/:user', auth, function (req, res, next) {
+router.post('/update/:user', auth, function (req, res, next) {
 
     // Mise à jour de l'utilisateur
     var user = req.user;
@@ -147,13 +148,13 @@ router.post('/forgot', function (req, res, next) {
             });
         },
         function (token, user, done) {
-            var smtpTransport = nodemailer.createTransport('SMTP', {
+            var transport = nodemailer.createTransport((smtpTransport({
                 service: 'SendGrid',
                 auth: {
-                    user: 'Axtima',
-                    pass: 'Bonjour01'
+                    user: '[CHANGE]',
+                    pass: '[CHANGE]'
                 }
-            });
+            })));
             var mailOptions = {
                 to: user.email,
                 from: 'passwordreset@demo.com',
@@ -161,14 +162,16 @@ router.post('/forgot', function (req, res, next) {
                 text: 'Bonjour,\n\nVeuillez sélectionner sur le lien ci-dessous afin de réinitialiser votre mot de passe :\n\n' +
                         'http://' + req.headers.host + '/rest/user/reset/' + token
             };
-            smtpTransport.sendMail(mailOptions, function (err) {
-                done(err, 'done');
+            transport.sendMail(mailOptions, function (err, response) {
+                done(err, response);
             });
         }
-    ], function (err) {
-        if (err)
+    ], function (err, response) {
+        debugger;
+        if (err) {
             return next(err);
-        res.redirect('/forgot');
+        }
+        res.json({success: true});
     });
 });
 

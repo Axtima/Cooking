@@ -1,0 +1,25 @@
+<div ng-show="error" class="alert alert-error">
+    <span>{{error.message}}</span>
+</div>
+
+<form ng-submit="resetPassword(user)"
+      style="margin-top:30px;">
+    <h2>Réinitialisation du mot de passe</h2>
+
+    <div class="form-group">
+        <input name="password"
+               type="password"
+               placeholder='Mot de passe'
+               ng-required="true"
+               ng-model="user.password" />
+    </div>
+    <div class="form-group">
+        <input name="password2"
+               type="password"
+               placeholder='Mot de passe'
+               ng-required="true"
+               ng-model="user.password2" />
+    </div>
+    <button type="submit" class="btn">Valider</button>
+    <a href="/#/">Annuler</a>
+</form>

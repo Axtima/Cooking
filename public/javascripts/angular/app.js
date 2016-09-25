@@ -26,7 +26,10 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
         // Admin
         $routeProvider.when('/admin', {
             templateUrl: constants.angularDirectory + '/templates/admin.html',
-            controller: 'MainCtrl'
+            controller: 'MainCtrl',
+            resolve: {
+                recipes: function() {return [{}];}
+            }
         });
         // Recipe
         $routeProvider.when('/recipe', {

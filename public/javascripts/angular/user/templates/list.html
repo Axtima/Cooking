@@ -1,30 +1,37 @@
-<h2>Utilisateurs</h2>
+<div ng-hide="isLoggedIn()">
+    <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour modifier les utilisateurs</h3>
+</div>
 
-<a class="fa fa-plus padding-icon" href='/#/admin/user/form'>Ajouter un utilisateur</a>
+<div ng-show="isLoggedIn()">
 
-<table>
-    <tr>
-        <th>
-            Email
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-    </tr>
-    <tr ng-repeat="user in users| orderBy:'+email'">
-        <td>
-            <a href="#/user/form/{{user._id}}">{{user.email}}</a>
-        </td>
-        <td class="icon">
-            <button class="icon fa fa-key" ng-click='gotoChangePasswordForm(user)' title="Modifier le mot de passe"></button>
-        </td>
-        <td class="icon">
-            <button class="icon fa fa-times" ng-click='remove(user)' title="Supprimer cet utilisateur"></button>
-        </td>
-    </tr>
-</table>
+    <h2>Utilisateurs</h2>
 
-<div class="back">
-    <a href="/#/admin">Retour</a>
+    <a class="fa fa-plus padding-icon" href='/#/admin/user/form'>Ajouter un utilisateur</a>
+
+    <table>
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+        <tr ng-repeat="user in users| orderBy:'+email'">
+            <td>
+                <a href="#/user/form/{{user._id}}">{{user.email}}</a>
+            </td>
+            <td class="icon">
+                <button class="icon fa fa-key" ng-click='gotoChangePasswordForm(user)' title="Modifier le mot de passe"></button>
+            </td>
+            <td class="icon">
+                <button class="icon fa fa-times" ng-click='remove(user)' title="Supprimer cet utilisateur"></button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="back">
+        <a href="/#/admin">Retour</a>
+    </div>
 </div>

@@ -10,6 +10,9 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
         }).when('/register', {
             templateUrl: constants.angularDirectory + '/auth/templates/register.html',
             controller: 'AuthCtrl'
+        }).when('/forgot', {
+            templateUrl: constants.angularDirectory + '/auth/templates/forgot.html',
+            controller: 'AuthCtrl'
         });
     }]);
 

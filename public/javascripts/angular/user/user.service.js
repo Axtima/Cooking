@@ -16,17 +16,9 @@ app.factory('userService', ['$http', 'authService', function ($http, authService
                 return res.data;
             });
         };
-
-        o.create = function (user) {
-            return $http.post('/rest/user', user, {
-                headers: {Authorization: 'Bearer ' + authService.getToken()}
-            }).success(function (data) {
-                o.glossaries.push(data);
-            });
-        };
         
         o.update = function (user) {
-            return $http.post('/rest/user/' + user._id, user, {
+            return $http.post('/rest/user/update/' + user._id, user, {
                 headers: {Authorization: 'Bearer ' + authService.getToken()}
             }).success(function (data) {
             });

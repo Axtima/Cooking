@@ -18,6 +18,12 @@
                placeholder="Mot de passe"
                ng-model="user.password"></input>
     </div>
+    <div ng-hide="isLoggedIn()">
+        <a href="/#/forgot">J'ai oublié mon mot de passe</a>
+    </div>
     <button type="submit" class="btn">Valider</button>
-    <a ng-hide="isLoggedIn()" href="/#/register">S'enregistrer</a>
+    <span ng-hide="isLoggedIn()">
+        <a href="/#/register">S'enregistrer</a>
+    </span>
+
 </form>
