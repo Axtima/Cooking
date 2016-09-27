@@ -8,7 +8,13 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var async = require('async');
+var nconf = require('nconf');
 
+// Chargement de la configuration
+nconf.add('common', {type: 'file', file: 'config.json'});
+nconf.add('local', {type: 'file', file: 'config-local.json'});
+nconf.load();
+  
 require('./models/User');
 require('./models/Recipe');
 require('./models/Step');

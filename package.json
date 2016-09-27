@@ -17,6 +17,7 @@
     "mongoose": "^4.5.9",
     "morgan": "~1.7.0",
     "multer": "^1.2.0",
+    "nconf": "^0.8.4",
     "nodemailer": "^2.6.4",
     "nodemailer-smtp-transport": "^2.7.2",
     "passport": "^0.3.2",

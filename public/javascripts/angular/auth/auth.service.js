@@ -32,8 +32,13 @@ app.factory('authService', ['$http', '$window', 'constants', function ($http, $w
                 return res.data;
             });
         };
-        authService.resetPassword = function (user) {
-            return $http.post('/rest/user/reset', user).success(function (res) {
+        authService.loadResetToken = function (token) {
+            return $http.get('/rest/user/reset/' + token).success(function (res) {
+                return res.data;
+            });
+        };
+        authService.resetPassword = function (user, token) {
+            return $http.post('/rest/user/reset/' + token, user).success(function (res) {
                 return res.data;
             });
         };

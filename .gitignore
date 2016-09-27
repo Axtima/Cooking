@@ -4,3 +4,5 @@
 public/stylesheets/build/
 public/stylesheets/.sass-cache/
 public/uploads/
+
+config-local.json

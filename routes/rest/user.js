@@ -6,6 +6,7 @@ var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var smtpTransport = require("nodemailer-smtp-transport");
+var nconf = require('nconf');
 
 var router = express.Router();
 
@@ -135,8 +136,11 @@ router.post('/forgot', function (req, res, next) {
         function (token, done) {
             User.findOne({email: req.body.email}, function (err, user) {
                 if (!user) {
-                    req.flash('error', 'Aucun compte n\'est associé à cet email');
-                    return res.json({error_code: 1, err_desc: err});
+                    return res.json({
+                        error: {
+                            message: 'Aucun compte n\'est associé à cet email'
+                        }
+                    });
                 }
 
                 user.resetPasswordToken = token;
@@ -151,8 +155,8 @@ router.post('/forgot', function (req, res, next) {
             var transport = nodemailer.createTransport((smtpTransport({
                 service: 'SendGrid',
                 auth: {
-                    user: '[CHANGE]',
-                    pass: '[CHANGE]'
+                    user: nconf.get("nodemailer:username"),
+                    pass: nconf.get("nodemailer:password")
                 }
             })));
             var mailOptions = {
@@ -160,14 +164,13 @@ router.post('/forgot', function (req, res, next) {
                 from: 'passwordreset@demo.com',
                 subject: 'Réinitialisation du mot de passe',
                 text: 'Bonjour,\n\nVeuillez sélectionner sur le lien ci-dessous afin de réinitialiser votre mot de passe :\n\n' +
-                        'http://' + req.headers.host + '/rest/user/reset/' + token
+                        'http://' + req.headers.host + '/#/reset/' + token
             };
             transport.sendMail(mailOptions, function (err, response) {
                 done(err, response);
             });
         }
     ], function (err, response) {
-        debugger;
         if (err) {
             return next(err);
         }
@@ -175,33 +178,30 @@ router.post('/forgot', function (req, res, next) {
     });
 });
 
-router.get('/reset/:token', function (req, res) {
+router.get('/reset/:token', function (req, res, next) {
     User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, function (err, user) {
         if (!user) {
             next('Le jeton de réinitialisation est invalide ou a expiré');
         }
-        res.render('reset', {
-            user: req.user
-        });
+        res.json(user);
     });
 });
 
-router.post('/reset/:token', function (req, res) {
-
+router.post('/reset/:token', function (req, res, next) {
     User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, function (err, user) {
         if (!user) {
-            req.flash('error', 'Le jeton de réinitialisation est invalide ou a expiré');
-            return res.redirect('back');
+            next('Le jeton de réinitialisation est invalide ou a expiré');
         }
 
-        user.password = req.body.password;
+        user.setPassword(req.body.password);
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
         user.save(function (err) {
-            req.logIn(user, function (err) {
-                done(err, user);
-            });
+            if (err) {
+                next(err);
+            }
+            res.json({success: true});
         });
     });
 });

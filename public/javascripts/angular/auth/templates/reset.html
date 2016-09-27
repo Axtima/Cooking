@@ -1,8 +1,14 @@
 <div ng-show="error" class="alert alert-error">
     <span>{{error.message}}</span>
 </div>
+<div ng-show="success" class="alert alert-success">
+    <span>{{success.message}}</span>
+</div>
+<div ng-show="success">
+    <a href="/#/login">S'identifier</a>
+</div>
 
-<form ng-submit="resetPassword(user)"
+<form ng-hide="success || !user" ng-submit="resetPassword(user)"
       style="margin-top:30px;">
     <h2>Réinitialisation du mot de passe</h2>
 
@@ -23,3 +29,4 @@
     <button type="submit" class="btn">Valider</button>
     <a href="/#/">Annuler</a>
 </form>
+
