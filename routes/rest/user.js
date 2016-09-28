@@ -7,6 +7,18 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var smtpTransport = require("nodemailer-smtp-transport");
 var nconf = require('nconf');
+var path = require('path');
+var emailTemplates = require('email-templates');
+
+// Init mailer
+var templatesDir = path.resolve(__dirname, '../..', 'templates/emails');
+var defaultTransport = nodemailer.createTransport(smtpTransport({
+    service: 'SendGrid',
+    auth: {
+        user: nconf.get("nodemailer:username"),
+        pass: nconf.get("nodemailer:password")
+    }
+}));
 
 var router = express.Router();
 
@@ -62,7 +74,7 @@ router.post('/register', function (req, res, next) {
 
         user.email = req.body.email;
         user.active = true;
-        
+
         user.setPassword(req.body.password);
 
         user.save(function (err) {
@@ -152,25 +164,35 @@ router.post('/forgot', function (req, res, next) {
             });
         },
         function (token, user, done) {
-            var transport = nodemailer.createTransport((smtpTransport({
-                service: 'SendGrid',
-                auth: {
-                    user: nconf.get("nodemailer:username"),
-                    pass: nconf.get("nodemailer:password")
-                }
-            })));
-            var mailOptions = {
-                to: user.email,
-                from: 'passwordreset@demo.com',
-                subject: 'Réinitialisation du mot de passe',
-                text: 'Bonjour,\n\nVeuillez sélectionner sur le lien ci-dessous afin de réinitialiser votre mot de passe :\n\n' +
-                        'http://' + req.headers.host + '/#/reset/' + token
+            var transport = defaultTransport;
+            var templateVars = {
+                username: user.email,
+                resetUrl: 'http://' + req.headers.host + '/#/reset/' + token
             };
-            transport.sendMail(mailOptions, function (err, response) {
-                done(err, response);
+            emailTemplates(templatesDir, function (err, template) {
+                if (err) {
+                    next(err);
+                }
+                template("forgotPassword", templateVars, function (err, html, text) {
+                    if (err) {
+                        next(err);
+                    }
+                    transport.sendMail({
+                        from: 'Wikisto <passwordreset@wikisto.com>',
+                        to: user.email,
+                        subject: 'Réinitialisation du mot de passe',
+                        html: html,
+                        generateTextFromHTML: true
+                    }, function (err, info) {
+                        if (err) {
+                            next(err);
+                        }
+                        done(err, info);
+                    });
+                });
             });
         }
-    ], function (err, response) {
+    ], function (err, info) {
         if (err) {
             return next(err);
         }

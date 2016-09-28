@@ -2,10 +2,6 @@
     <h3>Vous devez vous <a href="/#/login">identifier</a> ou vous <a href="/#/register">inscrire</a> pour modifier le glossaire</h3>
 </div>
 <form ng-submit="saveGlossary()" ng-show="isLoggedIn()">
-
-    <cook-modal show='modalShown' width='400px' height='60%'>
-      Test
-    </cook-modal>
     
     <div class="alert alert-success" ng-show='successMsg'>
         {{successMsg}}
