@@ -22,6 +22,10 @@ app.controller('RecipeCtrl', [
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
+        $scope.newComment = {
+            score: 1
+        };
+        $scope.newTrick = {};
         $scope.isLoggedIn = authService.isLoggedIn;
         /**
          * Upload d'un fichier

@@ -163,26 +163,31 @@
 
 /* Others */
 /* line 158, ../sass/utils.scss */
+.pointer {
+  cursor: pointer;
+}
+
+/* line 162, ../sass/utils.scss */
 .clearer {
   clear: both;
 }
 
-/* line 162, ../sass/utils.scss */
+/* line 166, ../sass/utils.scss */
 .spacer {
   margin-top: 20px;
 }
 
-/* line 166, ../sass/utils.scss */
+/* line 170, ../sass/utils.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 170, ../sass/utils.scss */
+/* line 174, ../sass/utils.scss */
 .alt {
   background-color: #F5F5F5;
 }
 
-/* line 174, ../sass/utils.scss */
+/* line 178, ../sass/utils.scss */
 .padding-icon::before {
   padding-right: 5px;
   top: 2px;
@@ -190,7 +195,7 @@
 }
 
 /* Simple icon without text, dark on white */
-/* line 182, ../sass/utils.scss */
+/* line 186, ../sass/utils.scss */
 button.icon.fa,
 button.icon.fa:hover,
 button.icon.fa:active,
@@ -205,7 +210,7 @@ button.icon.fa:visited {
 }
 
 /* Simple link main color on white, with or without icon */
-/* line 197, ../sass/utils.scss */
+/* line 201, ../sass/utils.scss */
 button.link,
 button.fa.link {
   background-color: transparent;
@@ -214,18 +219,18 @@ button.fa.link {
   color: #E22E2F;
 }
 
-/* line 205, ../sass/utils.scss */
+/* line 209, ../sass/utils.scss */
 .no-margin-top {
   margin-top: 0px !important;
 }
 
 /* Back button */
-/* line 211, ../sass/utils.scss */
+/* line 215, ../sass/utils.scss */
 .back {
   margin-top: 20px;
 }
 
-/* line 219, ../sass/utils.scss */
+/* line 223, ../sass/utils.scss */
 .back a::before {
   content: '<';
   margin-right: 8px;

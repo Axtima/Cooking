@@ -8,7 +8,6 @@ var router = express.Router();
 var Recipe = mongoose.model('Recipe');
 var Ingredient = mongoose.model('Ingredient');
 var Step = mongoose.model('Step');
-var Opinion = mongoose.model('Opinion');
 
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
@@ -71,7 +70,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/full', function (req, res, next) {
-    Recipe.find().populate('ingredients').populate('steps').exec(function (err, recipes) {
+    Recipe.find()
+            .populate('ingredients').populate('steps').populate('comments').populate('tricks')
+            .exec(function (err, recipes) {
         if (err) {
             return next(err);
         }
