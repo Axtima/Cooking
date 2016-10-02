@@ -24,7 +24,7 @@ var router = express.Router();
 
 var User = mongoose.model('User');
 
-var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+var auth = jwt({secret: 'SECRET', userProperty: 'loggedInUser'});
 
 /* Params */
 
@@ -70,9 +70,7 @@ router.post('/register', function (req, res, next) {
         if (user) {
             return next(res.status(400).json({message: 'Cette adresse email est déjà utilisée'}));
         }
-        user = new User();
-
-        user.email = req.body.email;
+        user = new User(req.body);
         user.active = true;
 
         user.setPassword(req.body.password);
@@ -110,6 +108,7 @@ router.post('/update/:user', auth, function (req, res, next) {
     // Mise à jour de l'utilisateur
     var user = req.user;
     user.email = req.body.email;
+    user.username = req.body.username;
     user.active = req.body.active;
 
     user.save(function (err, userData) {

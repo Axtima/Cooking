@@ -12,10 +12,15 @@ app.factory('recipeService', ['$http', 'authService', function ($http, authServi
         };
 
         o.getAll = function () {
-            /*return $http.get('/rest/recipe').success(function (data) {
-             angular.copy(data, o.recipes);
-             });*/
             return $http.get('/rest/recipe').then(function (res) {
+                return res.data;
+            });
+        };
+
+        o.search = function (searchText) {
+            return $http.get('/rest/recipe/search', {
+                params: {searchText: searchText}
+            }).then(function (res) {
                 return res.data;
             });
         };
@@ -28,20 +33,29 @@ app.factory('recipeService', ['$http', 'authService', function ($http, authServi
             });
         };
 
-        o.upvote = function (recipe) {
-            return $http.put('/rest/recipe/' + recipe._id + '/upvote', null, {
+        o.addTrick = function (id, trick) {
+            return $http.post('/rest/recipe/trick/' + id, trick, {
                 headers: {Authorization: 'Bearer ' + authService.getToken()}
-            }).success(function (data) {
-                recipe.upvotes += 1;
+            });
+        };
+
+        o.downvoteTrick = function (trick) {
+            return $http.post('/rest/recipe/trick/downvote/' + trick._id, null, {
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
+            });
+        };
+
+        o.upvoteTrick = function (trick) {
+            return $http.post('/rest/recipe/trick/upvote/' + trick._id, null, {
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
             });
         };
 
         o.addComment = function (id, comment) {
-            return $http.post('/rest/recipe/' + id + '/comments', comment, {
+            return $http.post('/rest/comment/recipe/' + id, comment, {
                 headers: {Authorization: 'Bearer ' + authService.getToken()}
             });
         };
-
         return o;
     }]
         );

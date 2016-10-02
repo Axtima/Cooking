@@ -193,8 +193,14 @@
   position: relative;
 }
 
+/* line 184, ../sass/utils.scss */
+.subtitle {
+  font-size: 0.8em;
+  color: #A7A7A7;
+}
+
 /* Simple icon without text, dark on white */
-/* line 186, ../sass/utils.scss */
+/* line 191, ../sass/utils.scss */
 button.icon.fa,
 button.icon.fa:hover,
 button.icon.fa:active,
@@ -209,7 +215,7 @@ button.icon.fa:visited {
 }
 
 /* Simple link main color on white, with or without icon */
-/* line 201, ../sass/utils.scss */
+/* line 206, ../sass/utils.scss */
 button.link,
 button.fa.link {
   background-color: transparent;
@@ -218,18 +224,18 @@ button.fa.link {
   color: #E22E2F;
 }
 
-/* line 209, ../sass/utils.scss */
+/* line 214, ../sass/utils.scss */
 .no-margin-top {
   margin-top: 0px !important;
 }
 
 /* Back button */
-/* line 215, ../sass/utils.scss */
+/* line 220, ../sass/utils.scss */
 .back {
   margin-top: 20px;
 }
 
-/* line 223, ../sass/utils.scss */
+/* line 228, ../sass/utils.scss */
 .back a::before {
   content: '<';
   margin-right: 8px;

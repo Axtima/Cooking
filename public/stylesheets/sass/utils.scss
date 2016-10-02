@@ -181,6 +181,11 @@ $color-main-dark: #990100;
     position: relative;
 }
 
+.subtitle {
+    font-size: 0.8em;
+    color: $color-gray;
+}
+
 /* Simple icon without text, dark on white */
 
 button.icon.fa,

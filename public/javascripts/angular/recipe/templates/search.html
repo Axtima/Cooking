@@ -3,11 +3,10 @@
         <input class="search-input" type="text" ng-model="searchText" placeholder="Rechercher une recette ..." /><button type="submit" class="icon fa fa-search"></button>
     </form>
 </div>
-    
-<button type="button" ng-click="addRecipe()" class="fa fa-plus button-icon button-add-recipe">Proposer une recette</button>
+
 <div class="panel clearer">
     <div class="panel-heading">
-        <h2 class="panel-title">Recettes à la une</h2>
+        <h2 class="panel-title">Résultats de la recherche</h2>
     </div>
     <div class="panel-body thumbs">
         <div class="thumb" ng-class="{first:$index%4 === 0,last:$index%4 === 3}" ng-repeat="recipe in recipes| orderBy:'-lastModificationDate'">
@@ -21,4 +20,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="clearer back">
+    <a href="/#/">Retour à la page d'accueil</a>
 </div>

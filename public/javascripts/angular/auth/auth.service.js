@@ -12,9 +12,9 @@ app.factory('authService', ['$http', '$window', 'constants', function ($http, $w
         authService.currentUser = function () {
             if (authService.isLoggedIn()) {
                 var token = authService.getToken();
-                var payload = JSON.parse($window.atob(token.split('.')[1]));
+                var loggedInUser = JSON.parse($window.atob(token.split('.')[1]));
 
-                return payload.email;
+                return loggedInUser.email;
             }
         };
         authService.register = function (user) {

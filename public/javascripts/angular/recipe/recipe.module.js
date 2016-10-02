@@ -12,18 +12,20 @@ app.controller('RecipeCtrl', [
     '$scope',
     'recipeService',
     'recipe',
+    'recipes',
     'glossaries',
     'authService',
     'Upload',
     '$timeout',
     '$sce',
     'constants',
-    function ($scope, recipeService, recipe, glossaries, authService, Upload, $timeout, $sce, constants) {
+    function ($scope, recipeService, recipe, recipes, glossaries, authService, Upload, $timeout, $sce, constants) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
+        $scope.recipes = recipes;
         $scope.newComment = {
-            score: 1
+            score: 0
         };
         $scope.newTrick = {};
         $scope.isLoggedIn = authService.isLoggedIn;
@@ -53,97 +55,97 @@ app.controller('RecipeCtrl', [
                 file.progress = progressPercentage;
             });
         },
-        /**
-         * Get html of step description with glossary tooltips
-         */
-        $scope.displayDescription = function (step) {
-            var description = step.description;
-            glossaries.forEach(function (glossary) {
-                glossary.terms.forEach(function (term) {
-                    var index = description.search(term);
-                    if (index >= 0) {
-                        var text = description.slice(0, index) +
-                                '<div class="tooltip">' +
-                                description.slice(index, index + term.length) +
-                                '<span class="tooltiptext">' +
-                                glossary.definition +
-                                '</span>' +
-                                '</div>' +
-                                description.slice(index + term.length);
-                        description = text;
-                    }
-                });
-            });
-            var res = $sce.trustAsHtml(description);
-            return res;
-        },
-        /**
-         * Add a recipe
-         */
-        $scope.saveRecipe = function () {
-            if ($scope.recipe._id) {
-                // Modification
-                recipeService.update({
-                    id: $scope.recipe._id,
-                    title: $scope.recipe.title,
-                    duration: $scope.recipe.duration,
-                    version: $scope.recipe.version,
-                    difficulty: $scope.recipe.difficulty,
-                    cost: $scope.recipe.cost,
-                    steps: $scope.recipe.steps,
-                    ingredients: $scope.recipe.ingredients
-                }).success(function (recipe) {
-                    var nbFiles = 0;
-                    if ($scope.recipe.file) {
-                        nbFiles++;
-                        $scope.uploadFile(recipe._id, null, $scope.recipe.file);
-                    }
-                    if ($scope.recipe.steps) {
-                        $scope.recipe.steps.forEach(function (step) {
-                            if (step.file) {
+                /**
+                 * Get html of step description with glossary tooltips
+                 */
+                $scope.displayDescription = function (step) {
+                    var description = step.description;
+                    glossaries.forEach(function (glossary) {
+                        glossary.terms.forEach(function (term) {
+                            var index = description.search(term);
+                            if (index >= 0) {
+                                var text = description.slice(0, index) +
+                                        '<div class="tooltip">' +
+                                        description.slice(index, index + term.length) +
+                                        '<span class="tooltiptext">' +
+                                        glossary.definition +
+                                        '</span>' +
+                                        '</div>' +
+                                        description.slice(index + term.length);
+                                description = text;
+                            }
+                        });
+                    });
+                    var res = $sce.trustAsHtml(description);
+                    return res;
+                },
+                /**
+                 * Add a recipe
+                 */
+                $scope.saveRecipe = function () {
+                    if ($scope.recipe._id) {
+                        // Modification
+                        recipeService.update({
+                            id: $scope.recipe._id,
+                            title: $scope.recipe.title,
+                            duration: $scope.recipe.duration,
+                            version: $scope.recipe.version,
+                            difficulty: $scope.recipe.difficulty,
+                            cost: $scope.recipe.cost,
+                            steps: $scope.recipe.steps,
+                            ingredients: $scope.recipe.ingredients
+                        }).success(function (recipe) {
+                            var nbFiles = 0;
+                            if ($scope.recipe.file) {
                                 nbFiles++;
-                                $scope.uploadFile(recipe._id, step.order, step.file);
+                                $scope.uploadFile(recipe._id, null, $scope.recipe.file);
+                            }
+                            if ($scope.recipe.steps) {
+                                $scope.recipe.steps.forEach(function (step) {
+                                    if (step.file) {
+                                        nbFiles++;
+                                        $scope.uploadFile(recipe._id, step.order, step.file);
+                                    }
+                                });
+                            }
+                            if (nbFiles === 0) {
+                                $scope.successMsg = 'Recette créée avec succès';
+                            } else {
+                                $scope.successMsg = 'Envoi des images ...';
+                            }
+                        });
+                    } else {
+                        // Creation
+                        recipeService.create({
+                            title: $scope.recipe.title,
+                            duration: $scope.recipe.duration,
+                            version: $scope.recipe.version,
+                            difficulty: $scope.recipe.difficulty,
+                            cost: $scope.recipe.cost,
+                            steps: $scope.recipe.steps,
+                            ingredients: $scope.recipe.ingredients
+                        }).success(function (recipe) {
+                            var nbFiles = 0;
+                            if ($scope.recipe.file) {
+                                nbFiles++;
+                                $scope.uploadFile(recipe._id, null, $scope.recipe.file);
+                            }
+                            if ($scope.recipe.steps) {
+                                $scope.recipe.steps.forEach(function (step) {
+                                    if (step.file) {
+                                        nbFiles++;
+                                        $scope.uploadFile(recipe._id, step.order, step.file);
+                                    }
+                                });
+                            }
+                            if (nbFiles === 0) {
+                                $scope.successMsg = 'Recette créée avec succès';
+                            } else {
+                                $scope.successMsg = 'Envoi des images ...';
                             }
                         });
                     }
-                    if (nbFiles === 0) {
-                        $scope.successMsg = 'Recette créée avec succès';
-                    } else {
-                        $scope.successMsg = 'Envoi des images ...';
-                    }
-                });
-            } else {
-                // Creation
-                recipeService.create({
-                    title: $scope.recipe.title,
-                    duration: $scope.recipe.duration,
-                    version: $scope.recipe.version,
-                    difficulty: $scope.recipe.difficulty,
-                    cost: $scope.recipe.cost,
-                    steps: $scope.recipe.steps,
-                    ingredients: $scope.recipe.ingredients
-                }).success(function (recipe) {
-                    var nbFiles = 0;
-                    if ($scope.recipe.file) {
-                        nbFiles++;
-                        $scope.uploadFile(recipe._id, null, $scope.recipe.file);
-                    }
-                    if ($scope.recipe.steps) {
-                        $scope.recipe.steps.forEach(function (step) {
-                            if (step.file) {
-                                nbFiles++;
-                                $scope.uploadFile(recipe._id, step.order, step.file);
-                            }
-                        });
-                    }
-                    if (nbFiles === 0) {
-                        $scope.successMsg = 'Recette créée avec succès';
-                    } else {
-                        $scope.successMsg = 'Envoi des images ...';
-                    }
-                });
-            }
-        };
+                };
         /**
          * Add a ingredient
          */
@@ -355,4 +357,57 @@ app.controller('RecipeCtrl', [
         $scope.selectCostVeryHigh = function () {
             $scope.recipe.cost = constants.recipe.cost.veryHigh;
         };
+        /**
+         * Add a trick
+         */
+        $scope.saveTrick = function () {
+            recipeService.addTrick($scope.recipe._id, {
+                content: $scope.newTrick.content
+            }).success(function (recipe) {
+                $scope.recipe = recipe;
+                $scope.trickSuccessMsg = 'Astuce ajoutée avec succès';
+            });
+        };
+        /**
+         * Down score a trick
+         */
+        $scope.downvoteTrick = function (trick) {
+            recipeService.downvoteTrick(trick).success(function () {
+                $scope.successMsg = 'Vote pris en compte avec succès';
+                trick.score = trick.score - 1;
+            });
+        };
+        /**
+         * Up score a trick
+         */
+        $scope.upvoteTrick = function (trick) {
+            recipeService.upvoteTrick(trick).success(function () {
+                $scope.successMsg = 'Vote pris en compte avec succès';
+                trick.score = trick.score + 1;
+            });
+        };
+        /**
+         * Add a comment
+         */
+        $scope.saveComment = function () {
+            if ($scope.newComment.score > 0) {
+                recipeService.addComment($scope.recipe._id, {
+                    score: $scope.newComment.score,
+                    content: $scope.newComment.content
+                }).success(function (comment) {
+                    $scope.recipe.comments.push(comment);
+                    $scope.commentSuccessMsg = 'Commentaire ajouté avec succès';
+                });
+            } else {
+                $scope.commentErrorMsg = 'Veuillez saisir un score';
+            }
+        };
+        /**
+         * Search recipes
+         */
+        $scope.searchRecipes = function(searchText) {
+            recipeService.search(searchText).then(function(recipes) {
+                $scope.recipes = recipes;
+            });
+        }
     }]);

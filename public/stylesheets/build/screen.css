@@ -194,8 +194,14 @@
   position: relative;
 }
 
+/* line 184, ../sass/utils.scss */
+.subtitle {
+  font-size: 0.8em;
+  color: #A7A7A7;
+}
+
 /* Simple icon without text, dark on white */
-/* line 186, ../sass/utils.scss */
+/* line 191, ../sass/utils.scss */
 button.icon.fa,
 button.icon.fa:hover,
 button.icon.fa:active,
@@ -210,7 +216,7 @@ button.icon.fa:visited {
 }
 
 /* Simple link main color on white, with or without icon */
-/* line 201, ../sass/utils.scss */
+/* line 206, ../sass/utils.scss */
 button.link,
 button.fa.link {
   background-color: transparent;
@@ -219,18 +225,18 @@ button.fa.link {
   color: #E22E2F;
 }
 
-/* line 209, ../sass/utils.scss */
+/* line 214, ../sass/utils.scss */
 .no-margin-top {
   margin-top: 0px !important;
 }
 
 /* Back button */
-/* line 215, ../sass/utils.scss */
+/* line 220, ../sass/utils.scss */
 .back {
   margin-top: 20px;
 }
 
-/* line 223, ../sass/utils.scss */
+/* line 228, ../sass/utils.scss */
 .back a::before {
   content: '<';
   margin-right: 8px;
@@ -618,28 +624,44 @@ table tr td.icon {
   content: none;
 }
 
+/* line 75, ../sass/home.scss */
+.search-section {
+  margin-bottom: 20px;
+}
+
+/* line 79, ../sass/home.scss */
+.search-section .search-form {
+  width: 550px;
+  margin: 0 auto;
+}
+
+/* line 84, ../sass/home.scss */
+.search-section .search-form .search-input {
+  margin-right: 20px;
+}
+
 /**** MAIN CONTAINER ****/
-/* line 77, ../sass/home.scss */
+/* line 90, ../sass/home.scss */
 #container {
   margin: 0px auto;
   width: 1000px;
 }
 
 /**** FOOTER ****/
-/* line 84, ../sass/home.scss */
+/* line 97, ../sass/home.scss */
 #footer {
   margin-top: 30px;
   width: 100%;
   float: left;
 }
 
-/* line 90, ../sass/home.scss */
+/* line 103, ../sass/home.scss */
 #footer ul {
   width: 400px;
   margin: 0 auto;
 }
 
-/* line 95, ../sass/home.scss */
+/* line 108, ../sass/home.scss */
 #footer ul li {
   float: left;
   border-right: solid #A7A7A7 1px;
@@ -648,28 +670,28 @@ table tr td.icon {
   line-height: 18px;
 }
 
-/* line 103, ../sass/home.scss */
+/* line 116, ../sass/home.scss */
 #footer ul li.last {
   border-right: none;
 }
 
-/* line 107, ../sass/home.scss */
+/* line 120, ../sass/home.scss */
 #footer ul li:before {
   content: none;
 }
 
-/* line 111, ../sass/home.scss */
+/* line 124, ../sass/home.scss */
 #footer ul li a {
   color: #333333;
   font-size: 0.8em;
 }
 
-/* line 116, ../sass/home.scss */
+/* line 129, ../sass/home.scss */
 h2.panel-title {
   padding-bottom: 5px;
 }
 
-/* line 120, ../sass/home.scss */
+/* line 133, ../sass/home.scss */
 .button-add-recipe {
   float: right;
   margin-top: 0px;
@@ -711,6 +733,81 @@ ul#adminMenu li a {
 }
 
 /* Recipes */
+/* line 1, ../sass/recipe/entry.scss */
+.trick-section {
+  float: right;
+  width: 300px;
+}
+
+/* line 6, ../sass/recipe/entry.scss */
+.trick-section .trick {
+  position: relative;
+  background-color: #E22E2F;
+  color: #FFFFFF;
+  float: right;
+  width: 300px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  font-family: 'Roboto-Regular';
+  padding: 10px 10px 10px 20px;
+}
+
+/* line 18, ../sass/recipe/entry.scss */
+.trick-section .trick:before {
+  content: "\f0eb";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 40px;
+  top: 15px;
+}
+
+/* line 26, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-title {
+  text-transform: uppercase;
+  padding-left: 50px;
+}
+
+/* line 31, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-content {
+  padding-left: 50px;
+}
+
+/* line 35, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-vote {
+  padding-left: 50px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* line 41, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-vote .trick-vote-score {
+  margin-right: 10px;
+}
+
+/* line 45, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-vote .trick-vote-score .icon {
+  padding-right: 0px;
+}
+
+/* line 49, ../sass/recipe/entry.scss */
+.trick-section .trick .trick-vote button.icon {
+  color: #FFFFFF;
+}
+
+/* line 57, ../sass/recipe/entry.scss */
+.comment-section .comment {
+  border-bottom: solid #E22E2F 1px;
+  padding: 10px 20px 10px 20px;
+}
+
+/* line 62, ../sass/recipe/entry.scss */
+.comment-section .comment .comment-content {
+  margin-top: 5px;
+  padding: 5px 10px 5px 10px;
+  border: solid #F5F5F5 1px;
+  border-radius: 5px;
+}
+
 /* line 5, ../sass/recipe/form.scss */
 ul.recipe-information-bar li {
   float: left;
@@ -737,41 +834,40 @@ ul.recipe-information-bar li::before {
 
 /* line 25, ../sass/recipe/form.scss */
 .recipe-picture {
-  clear: both;
   padding-top: 20px;
 }
 
-/* line 30, ../sass/recipe/form.scss */
+/* line 29, ../sass/recipe/form.scss */
 .update-step {
   padding: 10px 15px 10px 15px;
   position: relative;
   height: 200px;
 }
 
-/* line 36, ../sass/recipe/form.scss */
+/* line 35, ../sass/recipe/form.scss */
 .update-step textarea {
   width: 670px;
   float: left;
 }
 
-/* line 41, ../sass/recipe/form.scss */
+/* line 40, ../sass/recipe/form.scss */
 .update-ingredient {
   padding: 10px 15px 10px 15px;
   position: relative;
 }
 
-/* line 46, ../sass/recipe/form.scss */
+/* line 45, ../sass/recipe/form.scss */
 .update-ingredient input {
   margin: 0px;
 }
 
-/* line 50, ../sass/recipe/form.scss */
+/* line 49, ../sass/recipe/form.scss */
 .thumb {
   margin-left: 10px;
 }
 
 /* Animation step */
-/* line 56, ../sass/recipe/form.scss */
+/* line 55, ../sass/recipe/form.scss */
 .update-step.ng-enter,
 .update-step.ng-leave,
 .update-step.ng-move {
@@ -782,36 +878,36 @@ ul.recipe-information-bar li::before {
   position: relative;
 }
 
-/* line 66, ../sass/recipe/form.scss */
+/* line 65, ../sass/recipe/form.scss */
 .update-step.ng-enter {
   left: -30px;
   opacity: 0;
 }
 
-/* line 71, ../sass/recipe/form.scss */
+/* line 70, ../sass/recipe/form.scss */
 .update-step.ng-enter.ng-enter-active {
   left: 0;
   opacity: 1;
 }
 
-/* line 76, ../sass/recipe/form.scss */
+/* line 75, ../sass/recipe/form.scss */
 .update-step.ng-leave {
   left: 0;
   opacity: 1;
 }
 
-/* line 81, ../sass/recipe/form.scss */
+/* line 80, ../sass/recipe/form.scss */
 .update-step.ng-leave.ng-leave-active {
   left: -30px;
   opacity: 0;
 }
 
-/* line 86, ../sass/recipe/form.scss */
+/* line 85, ../sass/recipe/form.scss */
 .update-step.slideDown {
   animation: stepSlideDown 2s ease;
 }
 
-/* line 89, ../sass/recipe/form.scss */
+/* line 88, ../sass/recipe/form.scss */
 .update-step.slideUp {
   animation: stepSlideUp 2s ease;
 }
@@ -833,7 +929,7 @@ ul.recipe-information-bar li::before {
   }
 }
 /* Animation ingredient */
-/* line 105, ../sass/recipe/form.scss */
+/* line 104, ../sass/recipe/form.scss */
 .update-ingredient.ng-enter,
 .update-ingredient.ng-leave,
 .update-ingredient.ng-move {
@@ -844,36 +940,36 @@ ul.recipe-information-bar li::before {
   position: relative;
 }
 
-/* line 115, ../sass/recipe/form.scss */
+/* line 114, ../sass/recipe/form.scss */
 .update-ingredient.ng-enter {
   left: -30px;
   opacity: 0;
 }
 
-/* line 120, ../sass/recipe/form.scss */
+/* line 119, ../sass/recipe/form.scss */
 .update-ingredient.ng-enter.ng-enter-active {
   left: 0;
   opacity: 1;
 }
 
-/* line 125, ../sass/recipe/form.scss */
+/* line 124, ../sass/recipe/form.scss */
 .update-ingredient.ng-leave {
   left: 0;
   opacity: 1;
 }
 
-/* line 130, ../sass/recipe/form.scss */
+/* line 129, ../sass/recipe/form.scss */
 .update-ingredient.ng-leave.ng-leave-active {
   left: -30px;
   opacity: 0;
 }
 
-/* line 135, ../sass/recipe/form.scss */
+/* line 134, ../sass/recipe/form.scss */
 .update-ingredient.slideDown {
   animation: ingredientSlideDown 2s ease;
 }
 
-/* line 138, ../sass/recipe/form.scss */
+/* line 137, ../sass/recipe/form.scss */
 .update-ingredient.slideUp {
   animation: ingredientSlideUp 2s ease;
 }
@@ -894,3 +990,4 @@ ul.recipe-information-bar li::before {
     top: -70px;
   }
 }
+/* Glossaries */

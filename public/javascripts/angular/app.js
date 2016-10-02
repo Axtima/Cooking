@@ -36,9 +36,22 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
             templateUrl: constants.angularDirectory + 'recipe/templates/list.html',
             controller: 'RecipeCtrl',
             resolve: {
-                recipe: ['$route', 'recipeService', function ($route, recipeService) {
+                recipe: function() {return {};},
+                recipes: ['$route', 'recipeService', function ($route, recipeService) {
                     return recipeService.getAll();
-                }]
+                }],
+                glossaries: function() {return [{}];}
+            }
+        });
+        $routeProvider.when('/recipe/search/:searchText', {
+            templateUrl: constants.angularDirectory + 'recipe/templates/search.html',
+            controller: 'RecipeCtrl',
+            resolve: {
+                recipe: function() {return {};},
+                recipes: ['$route', 'recipeService', function ($route, recipeService) {
+                    return recipeService.search($route.current.params.searchText);
+                }],
+                glossaries: function() {return [{}];}
             }
         });
         $routeProvider.when('/recipe/form', {
@@ -46,6 +59,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
             controller: 'RecipeCtrl',
             resolve: {
                 recipe: function() {return {};},
+                recipes: function() {return [{}];},
                 glossaries: function() {return [{}];}
             }
         });
@@ -56,6 +70,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 recipe: ['$route', 'recipeService', function ($route, recipeService) {
                     return recipeService.get($route.current.params.id);
                 }],
+                recipes: function() {return [{}];},
                 glossaries: function() {return [{}];}
             }
         });
@@ -66,6 +81,7 @@ app.config(['$routeProvider', 'constants', function ($routeProvider, constants) 
                 recipe: ['$route', 'recipeService', function ($route, recipeService) {
                     return recipeService.get($route.current.params.id);
                 }],
+                recipes: function() {return [{}];},
                 glossaries: ['$route', 'glossaryService', function ($route, glossaryService) {
                     return glossaryService.getAll();
                 }]
@@ -153,9 +169,13 @@ app.controller('MainCtrl', [
     function ($scope, $location, authService, recipes) {
         $scope.isLoggedIn = authService.isLoggedIn;
         $scope.recipes = recipes;
+        $scope.searchText = '';
         $scope.addRecipe = function() {
             $location.path('/recipe/form');
-        }
+        };
+        $scope.searchRecipes = function(searchText) {
+            $location.path('/recipe/search/' + JSON.stringify(searchText));
+        };
     }
 ]);
 

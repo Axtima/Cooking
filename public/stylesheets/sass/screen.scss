@@ -4,4 +4,10 @@
 @import 'admin';
 
 /* Recipes */
+@import 'recipe/entry';
 @import 'recipe/form';
+@import 'recipe/list';
+
+/* Glossaries */
+@import 'glossary/form';
+@import 'glossary/list';

@@ -5,8 +5,9 @@ var jwt = require('express-jwt');
 var router = express.Router();
 
 var Comment = mongoose.model('Comment');
+var Recipe = mongoose.model('Recipe');
 
-var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+var auth = jwt({secret: 'SECRET', userProperty: 'loggedInUser'});
 
 /* Params */
 
@@ -26,31 +27,48 @@ router.param('comment', function (req, res, next, id) {
     });
 });
 
-/* Requests */
+router.param('recipe', function (req, res, next, id) {
+    var query = Recipe.findById(id);
 
-router.get('/recipe/:recipeId', function (req, res, next) {
-    Comment.findOne({recipe:req.params.recipeId}).exec(function (err, comments) {
+    query.exec(function (err, recipe) {
         if (err) {
             return next(err);
         }
-        res.json(comments);
+        if (!recipe) {
+            return next(new Error('can\'t find recipe'));
+        }
+
+        req.recipe = recipe;
+        return next();
     });
 });
 
-router.post('/', auth, function (req, res, next) {
+/* Create comment on recipe */
+
+router.post('/recipe/:recipe', auth, function (req, res, next) {
     
     // Création du commentaire
     var comment = new Comment(req.body);
+    comment.recipe = req.recipe;
+    comment.user = req.loggedInUser._id;
+    comment.creationDate = new Date();
     comment.save(function (err, commentData) {
         // Gestion des erreurs
         if (err) {
             return next(err);
         }
-        res.json(commentData);
+        req.recipe.comments.push(commentData._id);
+        req.recipe.save(function (err, recipe) {
+            // Gestion des erreurs
+            if (err) {
+                return next(err);
+            }
+            res.json(commentData);
+        });
     });
 });
 
-router.delete('/:comment', function (req, res, next) {
+router.delete('/:comment', auth, function (req, res, next) {
 
     // Suppression du commentaire
     var comment = req.comment;

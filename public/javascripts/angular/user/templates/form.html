@@ -14,10 +14,16 @@
 
     <div>
         <input name="email"
-               type="text"
+               type="email"
                placeholder='Email'
                ng-required="true"
                ng-model="user.email" />
+        
+        <input name="username"
+               type="text"
+               placeholder="Nom d'utilisateur"
+               ng-required="true"
+               ng-model="user.username" />
         
         <input ng-hide="user._id"
                name="password"

@@ -1,0 +1,67 @@
+.trick-section {
+    float: right;
+    width: 300px;
+}
+
+.trick-section .trick {
+    position: relative;
+    background-color: $color-main;
+    color: $color-white;
+    float: right;
+    width: 300px;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    font-family: 'Roboto-Regular';
+    padding: 10px 10px 10px 20px;
+}
+
+.trick-section .trick:before {
+    content: "\f0eb";
+    font-family: FontAwesome;
+    position:absolute;
+    font-size: 40px;
+    top:15px;
+}
+
+.trick-section .trick .trick-title {
+    text-transform: uppercase;
+    padding-left: 50px;
+}
+
+.trick-section .trick .trick-content {
+    padding-left: 50px;
+}
+
+.trick-section .trick .trick-vote {
+    padding-left: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.trick-section .trick .trick-vote .trick-vote-score {
+    margin-right: 10px;
+}
+
+.trick-section .trick .trick-vote .trick-vote-score .icon {
+    padding-right: 0px;
+}
+
+.trick-section .trick .trick-vote button.icon {
+    color: $color-white;
+}
+
+.comment-section {
+    
+}
+
+.comment-section .comment {
+    border-bottom: solid $color-main 1px;
+    padding: 10px 20px 10px 20px;
+}
+
+.comment-section .comment .comment-content {
+    margin-top: 5px;
+    padding: 5px 10px 5px 10px;
+    border: solid $color-gray-light 1px;
+    border-radius: 5px;
+}

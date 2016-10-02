@@ -1,6 +1,10 @@
 
 <h2>{{recipe.title}}</h2>
 
+<div class="subtitle">
+    Proposé par {{recipe.user.username}} le {{recipe.creationDate| date:'dd/MM/yyyy'}}
+</div>
+
 <ul class="recipe-information-bar">
     <li class="first">
         Version :
@@ -26,8 +30,26 @@
     </li>
 </ul>
 
+<div class="trick-section">
+    <div class="trick" ng-repeat="trick in recipe.tricks| orderBy:'+creationDate'">
+        <div class="trick-title">Astuce de {{trick.user.username}}</div>
+        <div class="trick-content">
+            {{trick.content}}
+        </div>
+        <div class="trick-vote">
+            <span class="trick-vote-score">
+                <span ng-show="trick.score >= 0" class="icon fa fa-plus"></span>
+                <span ng-show="trick.score < 0" class="icon fa fa-minus"></span>
+                {{trick.score}}
+            </span>
+            <button class="pointer icon fa fa-thumbs-down" ng-click="downvoteTrick(trick)"></button>
+            <button class="pointer icon fa fa-thumbs-up" ng-click="upvoteTrick(trick)"></button>
+        </div>
+    </div>
+</div>
+
 <div class="recipe-picture">
-    <img ng-show="{{recipe.imageName}}" class="thumbnail" src="/uploads/{{recipe.imageName}}" />
+    <img ng-show="recipe.imageName !== undefined" class="thumbnail" src="/uploads/{{recipe.imageName}}" />
 </div>
 
 <h3>Ingrédients :</h3>
@@ -49,15 +71,9 @@
     <a class="button" href="/#/recipe/form/{{recipe._id}}">Modifier</a>
 </p>
 
-<div class="trick" ng-repeat="trick in recipe.tricks| orderBy:'+creationDate'">
-    <h3>Etape {{step.order}} :</h3>
-    Ajouté par {{trick.user.username}} le {{trick.creationDate}}
-    <div class="trick-content">
-        {{trick.content}}
-    </div>
-</div>
 
-<form ng-submit="addTrick()" ng-show="isLoggedIn()">
+
+<form ng-submit="saveTrick()" ng-show="isLoggedIn()">
     <div class="alert alert-success" ng-show='trickSuccessMsg'>
         {{trickSuccessMsg}}
     </div>
@@ -71,41 +87,50 @@
     <button type="submit" class="btn">Valider</button>
 </form>
 
-<div class="comment" ng-repeat="comment in recipe.comments| orderBy:'+creationDate'">
-    <h3>Etape {{step.order}} :</h3>
-    Ajouté par {{comment.user.username}} le {{comment.creationDate}}
-    <span class="fa fa-star-o" ng-show="comment.score <= 0"></span><span class="fa fa-star" ng-show="comment.score > 0"></span>
-    <span class="fa fa-star-o" ng-show="comment.score <= 1"></span><span class="fa fa-star" ng-show="comment.score > 1"></span>
-    <span class="fa fa-star-o" ng-show="comment.score <= 2"></span><span class="fa fa-star" ng-show="comment.score > 2"></span>
-    <span class="fa fa-star-o" ng-show="comment.score <= 3"></span><span class="fa fa-star" ng-show="comment.score > 3"></span>
-    <span class="fa fa-star-o" ng-show="comment.score <= 4"></span><span class="fa fa-star" ng-show="comment.score > 4"></span>
-    <div class="comment-content">
-        {{comment.content}}
+<div class="comment-section">
+    <h3 style="margin-bottom: 0px">Commentaires</h3>
+
+    <div class="comment" ng-repeat="comment in recipe.comments| orderBy:'+creationDate'">
+        <div class="comment-user">
+            {{comment.user.username}} le {{comment.creationDate| date:'dd/MM/yyyy'}} à {{comment.creationDate| date:'HH:mm:ss'}}
+        </div>
+        <span class="fa fa-star-o" ng-show="comment.score <= 0"></span><span class="fa fa-star" ng-show="comment.score > 0"></span>
+        <span class="fa fa-star-o" ng-show="comment.score <= 1"></span><span class="fa fa-star" ng-show="comment.score > 1"></span>
+        <span class="fa fa-star-o" ng-show="comment.score <= 2"></span><span class="fa fa-star" ng-show="comment.score > 2"></span>
+        <span class="fa fa-star-o" ng-show="comment.score <= 3"></span><span class="fa fa-star" ng-show="comment.score > 3"></span>
+        <span class="fa fa-star-o" ng-show="comment.score <= 4"></span><span class="fa fa-star" ng-show="comment.score > 4"></span>
+        <div class="comment-content">
+            {{comment.content}}
+        </div>
     </div>
+
+    <form ng-submit="saveComment()" ng-show="isLoggedIn()">
+        <div class="alert alert-success" ng-show='commentSuccessMsg'>
+            {{commentSuccessMsg}}
+        </div>
+        <div class="alert alert-error" ng-show='commentErrorMsg'>
+            {{commentErrorMsg}}
+        </div>
+        <div>
+            <h3 style="margin-bottom: 0px">Ajouter un commentaire :</h3>
+            <span class="pointer fa fa-star-o" ng-show="newComment.score <= 0" ng-click="newComment.score = 1"></span>
+            <span class="pointer fa fa-star" ng-show="newComment.score > 0" ng-click="newComment.score = 1"></span>
+            <span class="pointer fa fa-star-o" ng-show="newComment.score <= 1" ng-click="newComment.score = 2"></span>
+            <span class="pointer fa fa-star" ng-show="newComment.score > 1" ng-click="newComment.score = 2"></span>
+            <span class="pointer fa fa-star-o" ng-show="newComment.score <= 2" ng-click="newComment.score = 3"></span>
+            <span class="pointer fa fa-star" ng-show="newComment.score > 2" ng-click="newComment.score = 3"></span>
+            <span class="pointer fa fa-star-o" ng-show="newComment.score <= 3" ng-click="newComment.score = 4"></span>
+            <span class="pointer fa fa-star" ng-show="newComment.score > 3" ng-click="newComment.score = 4"></span>
+            <span class="pointer fa fa-star-o" ng-show="newComment.score <= 4" ng-click="newComment.score = 5"></span>
+            <span class="pointer fa fa-star" ng-show="newComment.score > 4" ng-click="newComment.score = 5"></span>
+            <div>
+                <textarea ng-model="newComment.content" ng-required="true" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn">Valider</button>
+        </div>
+    </form>
 </div>
 
-<form ng-submit="addComment()" ng-show="isLoggedIn()">
-    <div class="alert alert-success" ng-show='commentSuccessMsg'>
-        {{commentSuccessMsg}}
-    </div>
-    <div class="alert alert-error" ng-show='commentErrorMsg'>
-        {{commentErrorMsg}}
-    </div>
-    <div>
-        <h3 style="margin-bottom: 0px">Commentaire :</h3>
-        <span class="pointer fa fa-star-o" ng-show="newComment.score <= 0" ng-click="newComment.score = 1"></span>
-        <span class="pointer fa fa-star" ng-show="newComment.score > 0" ng-click="newComment.score = 1"></span>
-        <span class="pointer fa fa-star-o" ng-show="newComment.score <= 1" ng-click="newComment.score = 2"></span>
-        <span class="pointer fa fa-star" ng-show="newComment.score > 1" ng-click="newComment.score = 2"></span>
-        <span class="pointer fa fa-star-o" ng-show="newComment.score <= 2" ng-click="newComment.score = 3"></span>
-        <span class="pointer fa fa-star" ng-show="newComment.score > 2" ng-click="newComment.score = 3"></span>
-        <span class="pointer fa fa-star-o" ng-show="newComment.score <= 3" ng-click="newComment.score = 4"></span>
-        <span class="pointer fa fa-star" ng-show="newComment.score > 3" ng-click="newComment.score = 4"></span>
-        <span class="pointer fa fa-star-o" ng-show="newComment.score <= 4" ng-click="newComment.score = 5"></span>
-        <span class="pointer fa fa-star" ng-show="newComment.score > 4" ng-click="newComment.score = 5"></span>
-        <div>
-            <textarea ng-model="newComment.content" ng-required="true" rows="5"></textarea>
-        </div>
-        <button type="submit" class="btn">Valider</button>
-    </div>
-</form>
+<div class="clearer back">
+    <a href="/#/">Retour à la page d'accueil</a>
+</div>

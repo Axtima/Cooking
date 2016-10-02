@@ -22,17 +22,20 @@ app.controller('UserCtrl', [
             if(!$scope.user._id) {
                 userService.create({
                     email: $scope.user.email,
+                    username: $scope.user.username,
                     password: $scope.user.password,
                     active: $scope.user.active
                 }).success(function (user) {
                     $scope.successMsg = 'Utilisateur ajouté avec succès';
                     $scope.user.email = '';
+                    $scope.user.username = '';
                     $scope.user.password = '';
                 });
             } else {
                 userService.update({
                     _id: $scope.user._id,
                     email: $scope.user.email,
+                    username: $scope.user.username,
                     active: $scope.user.active
                 }).success(function (glossary) {
                     $scope.successMsg = 'Utilisateur modifié avec succès';
