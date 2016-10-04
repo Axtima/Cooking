@@ -1,0 +1,43 @@
+<h2>Alertes</h2>
+
+<table id="alert-tables">
+    <tr>
+        <th>
+            Signalé le
+        </th>
+        <th>
+            Commentaire
+        </th>
+        <th>
+            Lien
+        </th>
+        <th>
+            Etat
+        </th>
+    </tr>
+    <tr ng-repeat="alert in alerts| orderBy:'-creationDate'">
+        <td>
+            {{alert.creationDate| date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+            {{alert.comment}}
+        </td>
+        <td>
+            <a href="#/recipe/{{alert.recipe}}">Recette</a>
+        </td>
+        <td class="icon">
+            <button ng-show="alert.status === 'NEW'" ng-class="{active:alert.status === 'NEW'}"
+                    class="icon fa fa-plus-circle" ng-click="changeStatus(alert, 'NEW')"></button>
+            <button ng-show="alert.status === 'NEW'" ng-class="{active:alert.status === 'IGNORED'}"
+                    class="icon fa fa-arrow-circle-right" ng-click="changeStatus(alert, 'IGNORED')"></button>
+            <button ng-show="alert.status === 'NEW'" ng-class="{active:alert.status === 'MISUSE'}"
+                    class="icon fa fa-exclamation-circle" ng-click="changeStatus(alert, 'MISUSE')"></button>
+            <button ng-show="alert.status === 'NEW'" ng-class="{active:alert.status === 'PROCESSED'}"
+                    class="icon fa fa-check-circle" ng-click="changeStatus(alert, 'PROCESSED')"></button>
+        </td>
+    </tr>
+</table>
+
+<div class="back">
+    <a href="/#/admin">Retour</a>
+</div>

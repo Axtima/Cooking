@@ -10,6 +10,7 @@ var app = angular.module('cooking.recipe', [
 
 app.controller('RecipeCtrl', [
     '$scope',
+    '$location',
     'recipeService',
     'recipe',
     'recipes',
@@ -19,7 +20,7 @@ app.controller('RecipeCtrl', [
     '$timeout',
     '$sce',
     'constants',
-    function ($scope, recipeService, recipe, recipes, glossaries, authService, Upload, $timeout, $sce, constants) {
+    function ($scope, $location, recipeService, recipe, recipes, glossaries, authService, Upload, $timeout, $sce, constants) {
         $scope.successMsg = null;
         $scope.errorMsg = null;
         $scope.recipe = recipe;
@@ -409,5 +410,11 @@ app.controller('RecipeCtrl', [
             recipeService.search(searchText).then(function(recipes) {
                 $scope.recipes = recipes;
             });
-        }
+        };
+        /**
+         * Add alert
+         */
+        $scope.addAlert = function() {
+            $location.path('/alert/form').search({recipeId: $scope.recipe._id});
+        };
     }]);

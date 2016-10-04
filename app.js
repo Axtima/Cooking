@@ -20,6 +20,7 @@ require('./models/Recipe');
 require('./models/Step');
 require('./models/Ingredient');
 require('./models/Comment');
+require('./models/Alert');
 require('./models/Trick');
 require('./models/Vote');
 require('./models/Glossary');
@@ -34,6 +35,7 @@ var userRoutes = require('./routes/rest/user');
 var recipeRoutes = require('./routes/rest/recipe');
 var glossaryRoutes = require('./routes/rest/glossary');
 var commentRoutes = require('./routes/rest/comment');
+var alertRoutes = require('./routes/rest/alert');
 
 var app = express();
 
@@ -62,6 +64,7 @@ app.use('/rest/recipe', recipeRoutes);
 app.use('/rest/user', userRoutes);
 app.use('/rest/glossary', glossaryRoutes);
 app.use('/rest/comment', commentRoutes);
+app.use('/rest/alert', alertRoutes);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

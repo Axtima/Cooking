@@ -1,6 +1,6 @@
 ul#adminMenu {
     width: 550px;
-    margin: 0px auto;
+    margin: 20px auto 0px auto;
 }
 
 ul#adminMenu li {
@@ -9,7 +9,7 @@ ul#adminMenu li {
     height: 150px;
     border-radius: 50%;
     background-color: $color-main;
-    margin-right: 50px;
+    margin: 0px 50px 20px 0px;
     text-align: center;
 }
 
@@ -25,5 +25,5 @@ ul#adminMenu li a {
     line-height: 150px;
     color: $color-white;
     text-transform: uppercase;
-    font-family: 'Roboto-Regular';
+    font-size: 4em;
 }

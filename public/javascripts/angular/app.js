@@ -4,7 +4,8 @@ var app = angular.module('cooking', [
     'cooking.auth',
     'cooking.recipe',
     'cooking.user',
-    'cooking.glossary'
+    'cooking.glossary',
+    'cooking.alert'
 ]);
 app.config(['$routeProvider', 'constants', function ($routeProvider, constants) {
         

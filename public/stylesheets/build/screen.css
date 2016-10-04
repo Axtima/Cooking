@@ -700,7 +700,7 @@ h2.panel-title {
 /* line 1, ../sass/admin.scss */
 ul#adminMenu {
   width: 550px;
-  margin: 0px auto;
+  margin: 20px auto 0px auto;
 }
 
 /* line 6, ../sass/admin.scss */
@@ -710,7 +710,7 @@ ul#adminMenu li {
   height: 150px;
   border-radius: 50%;
   background-color: #E22E2F;
-  margin-right: 50px;
+  margin: 0px 50px 20px 0px;
   text-align: center;
 }
 
@@ -729,7 +729,7 @@ ul#adminMenu li a {
   line-height: 150px;
   color: #FFFFFF;
   text-transform: uppercase;
-  font-family: 'Roboto-Regular';
+  font-size: 4em;
 }
 
 /* Recipes */
@@ -991,3 +991,13 @@ ul.recipe-information-bar li::before {
   }
 }
 /* Glossaries */
+/* Alerts */
+/* line 5, ../sass/alert/list.scss */
+#alert-tables tr td.icon {
+  width: 120px;
+}
+
+/* line 9, ../sass/alert/list.scss */
+#alert-tables td.icon button.active {
+  color: #E22E2F;
+}

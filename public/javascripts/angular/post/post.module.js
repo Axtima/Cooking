@@ -1,4 +1,4 @@
-var app = angular.module('cooking.post', ['cooking.auth']);
+/*var app = angular.module('cooking.post', ['cooking.auth']);
 
 app.factory('posts', ['$http', 'authService', function ($http, authService) {
 
@@ -74,4 +74,4 @@ app.controller('PostsCtrl', [
         $scope.incrementUpvotes = function (comment) {
             posts.upvoteComment(post, comment);
         };
-    }]);
+    }]);*/

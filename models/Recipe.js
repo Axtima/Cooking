@@ -15,6 +15,7 @@ var RecipeSchema = new mongoose.Schema({
     ingredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}],
     steps: [{type: mongoose.Schema.Types.ObjectId, ref: 'Step'}],
     comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+    alerts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Alert'}],
     tricks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Trick'}],
     removed: Boolean
 });
