@@ -79,6 +79,23 @@ router.param('trick', function (req, res, next, id) {
 
 /* Requests */
 
+router.get('/:recipe', function (req, res, next) {
+    req.recipe.populate([
+        'ingredients',
+        'steps',
+        'creationUser',
+        'lastModificationUser',
+        {path: 'comments', populate: { path: 'user'}},
+        {path: 'tricks', populate: { path: 'user'}}
+    ], function(err, recipe) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(recipe);
+    });
+});
+
 router.get('/', function (req, res, next) {
     Recipe.find().exec(function (err, recipes) {
         if (err) {
@@ -92,6 +109,8 @@ router.get('/full', function (req, res, next) {
     Recipe.find()
             .populate('ingredients')
             .populate('steps')
+            .populate('creationUser')
+            .populate('lastModificationUser')
             .populate({path: 'comments', populate: { path: 'user'}})
             .populate({path: 'tricks', populate: { path: 'user'}})
             .exec(function (err, recipes) {
@@ -110,6 +129,8 @@ router.get('/search', function (req, res, next) {
     Recipe.find({title: {$regex: searchText, $options: 'i'}})
             .populate('ingredients')
             .populate('steps')
+            .populate('creationUser')
+            .populate('lastModificationUser')
             .populate({path: 'comments', populate: { path: 'user'}})
             .populate({path: 'tricks', populate: { path: 'user'}})
             .exec(function (err, recipes) {
@@ -216,21 +237,6 @@ createOrUpdateRecipe = function (req, res, next) {
         });
     });
 };
-
-router.get('/:recipe', function (req, res, next) {
-    req.recipe.populate([
-        'ingredients',
-        'steps',
-        {path: 'comments', populate: { path: 'user'}},
-        {path: 'tricks', populate: { path: 'user'}}
-    ], function(err, recipe) {
-        if (err) {
-            return next(err);
-        }
-
-        res.json(recipe);
-    });
-});
 
 router.post('/upload/:recipe/step/:stepOrder', auth, function (req, res) {
     upload(req, res, function (err) {

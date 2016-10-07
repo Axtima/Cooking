@@ -47,7 +47,7 @@ router.param('recipe', function (req, res, next, id) {
 /* Get */
 
 router.get('/', function (req, res, next) {
-    Alert.find().exec(function (err, alerts) {
+    Alert.find().populate('user').exec(function (err, alerts) {
         if (err) {
             return next(err);
         }
@@ -63,6 +63,20 @@ router.post('/', auth, function (req, res, next) {
     var alert = new Alert(req.body);
     alert.user = req.loggedInUser._id;
     alert.creationDate = new Date();
+    alert.save(function (err, alertData) {
+        // Gestion des erreurs
+        if (err) {
+            return next(err);
+        }
+        res.json(alertData);
+    });
+});
+
+router.post('/status/:alert', auth, function (req, res, next) {
+
+    // Modification du statut
+    var alert = req.alert;
+    alert.status = req.body.newStatus;
     alert.save(function (err, alertData) {
         // Gestion des erreurs
         if (err) {

@@ -52,4 +52,11 @@ app.controller('AlertCtrl', [
                 $scope.comment = '';
             });
         };
+        
+        $scope.changeStatus = function (alert, newStatus) {
+            alertService.changeStatus(alert, newStatus).success(function (alertResult) {
+                $scope.successMsg = 'Statut modifié';
+                alert.status = newStatus;
+            });
+        };
     }]);

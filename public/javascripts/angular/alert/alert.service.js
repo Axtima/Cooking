@@ -39,6 +39,12 @@ app.factory('alertService', ['$http', 'authService', function ($http, authServic
             });
         };
 
+        o.changeStatus = function(alert, newStatus) {
+            return $http.post('/rest/alert/status/' + alert._id, {newStatus: newStatus}, {
+                headers: {Authorization: 'Bearer ' + authService.getToken()}
+            }).success(function (data) {
+            });
+        };
         return o;
     }]
         );
